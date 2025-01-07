@@ -1,4 +1,7 @@
 import { getMdxFileDataBySlug } from "@/utils/parseMdx";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import CustomComponents from "@/components/mdx/CustomComponents";
+import { PostPageProps } from "@/types/post";
 
 export async function generateStaticParams() {
   const { getAllMdxMetadataAndSlug } = await import("@/utils/parseMdx");
@@ -9,10 +12,6 @@ export async function generateStaticParams() {
   }));
 }
 
-interface PostPageProps {
-  params: { slug: string };
-}
-
 export default function PostPage({ params }: PostPageProps) {
   const { slug } = params;
   const { mdxContent, mdxMetaData } = getMdxFileDataBySlug(slug);
@@ -21,7 +20,7 @@ export default function PostPage({ params }: PostPageProps) {
     <article className="prose mx-auto">
       <h1>{mdxMetaData.title}</h1>
       <p>{mdxMetaData.date}</p>
-      <div>{mdxContent}</div>
+      <MDXRemote source={mdxContent} components={CustomComponents} />
     </article>
   );
 }
