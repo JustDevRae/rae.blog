@@ -21,3 +21,20 @@ export const getAllMdxMetadataAndSlug = () => {
     return { mdxMetaData, slug };
   });
 };
+
+export const getHeadingsForTOC = (slug: string) => {
+  const mdxFilePath = path.join(MDX_DIRECTORY, `${slug}.mdx`);
+  const mdxFileContents = fs.readFileSync(mdxFilePath, "utf-8");
+  const { content: mdxContent } = matter(mdxFileContents);
+
+  const lines = mdxContent.split("\n");
+  const headings = lines
+    .filter((line) => line.match(/^###*\s/))
+    .map((raw) => {
+      const level = raw.startsWith("###") ? 3 : 2;
+      const text = raw.replace(/^###*\s/, "");
+      return { level, text };
+    });
+
+  return { headings };
+};
