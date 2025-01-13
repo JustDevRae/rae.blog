@@ -19,7 +19,7 @@ export default async function PostPage({
 }) {
   const { slug } = await params;
   const { mdxContent, mdxMetaData } = getMdxFileDataBySlug(slug);
-  const { headings } = getHeadingsForTOC(slug);
+  const headings = getHeadingsForTOC(slug);
 
   return (
     <div>
