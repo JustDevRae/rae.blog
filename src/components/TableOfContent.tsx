@@ -1,3 +1,5 @@
+import { throttle } from "es-toolkit";
+import { useEffect, useState } from "react";
 import { TOCProps } from "@/types/type";
 
 export default function TOC({ headings }: TOCProps) {

@@ -12,12 +12,18 @@
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.1.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "es-toolkit": "^1.31.0",
     "gray-matter": "^4.0.3",
+    "lucide-react": "^0.471.0",
     "next": "15.1.3",
     "next-mdx-remote": "^5.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "remark-gfm": "^4.0.0"
+    "remark-gfm": "^4.0.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
