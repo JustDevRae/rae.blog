@@ -1,6 +1,7 @@
 import { getMdxFileDataBySlug } from "@/utils/parseMdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import CustomComponents from "@/components/mdx/CustomComponents";
+import Comments from "@/components/Comments";
 
 export async function generateStaticParams() {
   const { getAllMdxMetadataAndSlug } = await import("@/utils/parseMdx");
@@ -25,6 +26,7 @@ export default async function PostPage({
         <h1>{mdxMetaData.title}</h1>
         <p>{mdxMetaData.date}</p>
         <MDXRemote source={mdxContent} components={CustomComponents} />
+        <Comments />
       </article>
     </div>
   );
