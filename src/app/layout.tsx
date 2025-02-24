@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
+import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   title: "rae.blog",
@@ -13,10 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className="flex min-h-screen flex-col items-center justify-center bg-red-300">
-        <Header />
-        {children}
+    <html lang="ko" suppressHydrationWarning>
+      <body className="flex min-h-screen flex-col items-center justify-center">
+        <ThemeProvider attribute="class">
+          <Header />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
