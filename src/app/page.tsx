@@ -4,7 +4,7 @@ import { getAllMdxMetadataAndSlug } from "@/utils/parseMdx";
 export default async function Home() {
   const posts = getAllMdxMetadataAndSlug();
   return (
-    <div>
+    <main className="mt-[50px] flex flex-1 flex-col">
       <ul>
         {posts.map((post) => (
           <li key={post.slug}>
@@ -12,6 +12,6 @@ export default async function Home() {
           </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 }
