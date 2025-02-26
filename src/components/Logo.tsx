@@ -1,35 +1,39 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Logo() {
-  const [clickCount, setClickCount] = useState(0);
-  const [lastClickTime, setLastClickTime] = useState<number | null>(null);
+  const [clickCount, setClickCount] = useState<number>(0);
   const router = useRouter();
 
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (clickCount > 0) {
+      timer = setTimeout(() => setClickCount(0), 500);
+    }
+    return () => clearTimeout(timer);
+  }, [clickCount]);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const newCount = clickCount + 1;
+    setClickCount(newCount);
+
+    if (newCount === 5) {
+      router.push("/easter-egg");
+    } else if (newCount === 1) {
+      setTimeout(() => {
+        if (clickCount < 5) {
+          router.push("/");
+        }
+      }, 500);
+    }
+  };
+
   return (
-    <Link
-      href="/"
-      className="hover:text-cyan-400"
-      onClick={(e) => {
-        e.preventDefault();
-        const now = Date.now();
-
-        if (lastClickTime && now - lastClickTime > 1000) {
-          setClickCount(1);
-        } else {
-          setClickCount((prev) => prev + 1);
-        }
-
-        setLastClickTime(now);
-
-        if (clickCount + 1 === 10) {
-          router.push("/easter-egg");
-        }
-      }}
-    >
+    <Link href="/" onClick={handleClick} className="hover:text-cyan-400">
       Rae.
     </Link>
   );
