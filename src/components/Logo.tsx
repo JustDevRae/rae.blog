@@ -9,7 +9,8 @@ export default function Logo() {
   const router = useRouter();
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: ReturnType<typeof setTimeout>;
+
     if (clickCount > 0) {
       timer = setTimeout(() => setClickCount(0), 500);
     }
