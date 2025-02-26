@@ -9,10 +9,10 @@ export default function Header() {
         <Logo />
       </div>
       <div className="flex items-center gap-4">
-        <Link href="/" className="hover:text-cyan-400">
+        <Link href="/tag" className="hover:text-cyan-400">
           Tag
         </Link>
-        <Link href="/" className="hover:text-cyan-400">
+        <Link href="/aboutme" className="hover:text-cyan-400">
           About Me
         </Link>
         <ThemeDropdown />
