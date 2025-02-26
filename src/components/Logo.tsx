@@ -17,6 +17,7 @@ export default function Logo() {
     return () => clearTimeout(timer);
   }, [clickCount]);
 
+  // TODO: Needs refactoring
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const newCount = clickCount + 1;
