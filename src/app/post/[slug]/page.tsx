@@ -22,8 +22,8 @@ export default async function PostPage({
 
   return (
     <div>
-      <article className="prose mx-auto">
-        <h1>{mdxMetaData.title}</h1>
+      <article className="prose prose-sm dark:prose-invert">
+        <h2>{mdxMetaData.title}</h2>
         <p>{mdxMetaData.date}</p>
         <MDXRemote source={mdxContent} components={CustomComponents} />
         <Comments />
