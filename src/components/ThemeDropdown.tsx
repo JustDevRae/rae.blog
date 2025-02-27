@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 import { Dot, LucideIcon, Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useMounted } from "@/hooks/useMounted";
 
 interface DropdownItemProps {
   t: string;
@@ -19,16 +18,10 @@ interface DropdownItemProps {
 }
 
 const ThemeSwitch = () => {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
+  if (!mounted) return null;
 
   const Item = ({ t, Icon, label }: DropdownItemProps) => (
     <DropdownMenuItem onClick={() => setTheme(t)} className="justify-between">

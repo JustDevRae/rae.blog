@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useMounted } from "@/hooks/useMounted";
 
 export default function ProgressBar() {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const [scrollTop, setScrollTop] = useState(0);
 
   const handleScroll = () => {
@@ -21,10 +22,6 @@ export default function ProgressBar() {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setMounted(true);
   }, []);
 
   if (!mounted) return null;
