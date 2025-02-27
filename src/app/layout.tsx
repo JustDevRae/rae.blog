@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "rae.blog",
@@ -14,9 +14,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // TODO: remove suppressHydrationWarning
     <html lang="ko" suppressHydrationWarning>
       <body className="flex min-h-screen flex-col items-center justify-center">
-        <ThemeProvider attribute="class">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Header />
           {children}
         </ThemeProvider>
