@@ -2,11 +2,16 @@
 
 import { useShowAndHideHeader } from "@/hooks/useShowAndHideHeader";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import ThemeDropdown from "./ThemeDropdown";
 import Logo from "./Logo";
+import ProgressBar from "./ProgressBar";
 
 export default function Header() {
   const { visible } = useShowAndHideHeader();
+  const pathname = usePathname();
+
+  const isPostPage = pathname.startsWith("/post");
 
   return (
     <header
@@ -14,10 +19,10 @@ export default function Header() {
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div>
+      <nav>
         <Logo />
-      </div>
-      <div className="flex items-center gap-4">
+      </nav>
+      <nav className="flex items-center gap-4">
         <Link href="/tag" className="hover:text-cyan-400">
           Tag
         </Link>
@@ -25,7 +30,8 @@ export default function Header() {
           About Me
         </Link>
         <ThemeDropdown />
-      </div>
+      </nav>
+      {isPostPage && <ProgressBar />}
     </header>
   );
 }
