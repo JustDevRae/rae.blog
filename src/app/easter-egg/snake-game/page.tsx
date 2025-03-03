@@ -22,6 +22,17 @@ const INITIAL_SNAKE = [
 const INITIAL_APPLE = { x: 150, y: 200 };
 const INITIAL_DIRECTION = "DOWN";
 
+const VALID_KEYS = [
+  "ArrowUp",
+  "ArrowDown",
+  "ArrowLeft",
+  "ArrowRight",
+  "w",
+  "a",
+  "s",
+  "d",
+];
+
 export default function SnakeGame() {
   const [snake, setSnake] = useState([...INITIAL_SNAKE]);
   const [apple, setApple] = useState({ ...INITIAL_APPLE });
@@ -61,16 +72,19 @@ export default function SnakeGame() {
 
       if (
         head.x < 0 ||
-        head.x >= BOARD_SIZE ||
         head.y < 0 ||
+        head.x >= BOARD_SIZE ||
         head.y >= BOARD_SIZE ||
-        newSnake.some((segment) => segment.x === head.x && segment.y === head.y)
+        newSnake.some((body) => body.x === head.x && body.y === head.y)
       ) {
         setRunning(false);
-        if (score > highScore) {
-          localStorage.setItem("highScore", score.toString());
-          setHighScore(score);
-        }
+        setHighScore((prevHighScore) => {
+          if (score > prevHighScore) {
+            localStorage.setItem("highScore", score.toString());
+            return score;
+          }
+          return prevHighScore;
+        });
         return [...INITIAL_SNAKE];
       }
 
@@ -84,60 +98,56 @@ export default function SnakeGame() {
 
       return newSnake;
     });
-  }, [direction, apple, score, highScore]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [direction, apple]);
+
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (!VALID_KEYS.includes(e.key)) return;
+
+    setDirection((prevDirection) => {
+      switch (e.key) {
+        case "ArrowUp":
+        case "w":
+          return prevDirection !== "DOWN" ? "UP" : prevDirection;
+        case "ArrowDown":
+        case "s":
+          return prevDirection !== "UP" ? "DOWN" : prevDirection;
+        case "ArrowLeft":
+        case "a":
+          return prevDirection !== "RIGHT" ? "LEFT" : prevDirection;
+        case "ArrowRight":
+        case "d":
+          return prevDirection !== "LEFT" ? "RIGHT" : prevDirection;
+        default:
+          return prevDirection;
+      }
+    });
+
+    setRunning(true);
+  }, []);
+
+  useEffect(() => {
+    if (running) {
+      setSnake([...INITIAL_SNAKE]);
+      setApple({ ...INITIAL_APPLE });
+      setScore(0);
+      setDirection(INITIAL_DIRECTION);
+    }
+  }, [running]);
 
   useEffect(() => {
     if (running) {
       const interval = setInterval(moveSnake, SPEED);
       return () => clearInterval(interval);
     }
+
     return undefined;
   }, [running, moveSnake]);
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      const validKeys = [
-        "ArrowUp",
-        "ArrowDown",
-        "ArrowLeft",
-        "ArrowRight",
-        "w",
-        "a",
-        "s",
-        "d",
-      ];
-      if (!validKeys.includes(e.key)) return;
-      if (!running) {
-        setSnake([...INITIAL_SNAKE]);
-        setApple({ ...INITIAL_APPLE });
-        setScore(0);
-        setDirection(INITIAL_DIRECTION);
-        setRunning(true);
-      }
-      switch (e.key) {
-        case "ArrowUp":
-        case "w":
-          if (direction !== "DOWN") setDirection("UP");
-          break;
-        case "ArrowDown":
-        case "s":
-          if (direction !== "UP") setDirection("DOWN");
-          break;
-        case "ArrowLeft":
-        case "a":
-          if (direction !== "RIGHT") setDirection("LEFT");
-          break;
-        case "ArrowRight":
-        case "d":
-          if (direction !== "LEFT") setDirection("RIGHT");
-          break;
-        default:
-          break;
-      }
-    };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [direction, running]);
+  }, [handleKeyDown]);
 
   return (
     <div className="mt-10 flex flex-col items-center">
