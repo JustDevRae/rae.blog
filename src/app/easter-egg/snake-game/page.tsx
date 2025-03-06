@@ -41,6 +41,7 @@ export default function SnakeGame() {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
 
+  // 마운트시 로컬 스토리지에서 "highScore" 값을 가져와 저장.
   useEffect(() => {
     const savedHighScore = localStorage.getItem("highScore");
     if (savedHighScore) {
@@ -48,6 +49,7 @@ export default function SnakeGame() {
     }
   }, []);
 
+  // 뱀의 모습을 그림.
   const moveSnake = useCallback(() => {
     setSnake((prevSnake) => {
       const newSnake = [...prevSnake];
@@ -89,8 +91,9 @@ export default function SnakeGame() {
       }
 
       newSnake.unshift(head);
+
       if (head.x === apple.x && head.y === apple.y) {
-        setScore((prevScore) => prevScore + 100);
+        setScore(score + 100);
         setApple(getRandomPosition());
       } else {
         newSnake.pop();
@@ -98,9 +101,9 @@ export default function SnakeGame() {
 
       return newSnake;
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [direction, apple]);
+  }, [direction, apple, score]);
 
+  // 뱀의 움직임 조작 및 게임 시작.
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (!VALID_KEYS.includes(e.key)) return;
 
@@ -108,16 +111,24 @@ export default function SnakeGame() {
       switch (e.key) {
         case "ArrowUp":
         case "w":
-          return prevDirection !== "DOWN" ? "UP" : prevDirection;
+          if (prevDirection === "DOWN") return prevDirection;
+          return "UP";
+
         case "ArrowDown":
         case "s":
-          return prevDirection !== "UP" ? "DOWN" : prevDirection;
+          if (prevDirection === "UP") return prevDirection;
+          return "DOWN";
+
         case "ArrowLeft":
         case "a":
-          return prevDirection !== "RIGHT" ? "LEFT" : prevDirection;
+          if (prevDirection === "RIGHT") return prevDirection;
+          return "LEFT";
+
         case "ArrowRight":
         case "d":
-          return prevDirection !== "LEFT" ? "RIGHT" : prevDirection;
+          if (prevDirection === "LEFT") return prevDirection;
+          return "RIGHT";
+
         default:
           return prevDirection;
       }
@@ -126,6 +137,7 @@ export default function SnakeGame() {
     setRunning(true);
   }, []);
 
+  // 게임 시작과 재시작 시 초기화.
   useEffect(() => {
     if (running) {
       setSnake([...INITIAL_SNAKE]);
@@ -135,6 +147,7 @@ export default function SnakeGame() {
     }
   }, [running]);
 
+  // running이 true로 변경된 것을 감지.
   useEffect(() => {
     if (running) {
       const interval = setInterval(moveSnake, SPEED);
@@ -144,6 +157,7 @@ export default function SnakeGame() {
     return undefined;
   }, [running, moveSnake]);
 
+  // 마운트 시 이벤트 리스터 실행, 언마운트 시 클린업 함수로 이벤트 리스너 정리.
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
