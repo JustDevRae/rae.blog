@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 
 const GRID_SIZE = 10;
 const BOARD_SIZE = 350;
@@ -40,8 +40,8 @@ export default function SnakeGame() {
   const [running, setRunning] = useState(false);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
+  const directionRef = useRef(direction);
 
-  // 마운트시 로컬 스토리지에서 "highScore" 값을 가져와 저장.
   useEffect(() => {
     const savedHighScore = localStorage.getItem("highScore");
     if (savedHighScore) {
@@ -49,61 +49,63 @@ export default function SnakeGame() {
     }
   }, []);
 
-  // 뱀의 모습을 그림.
+  useEffect(() => {
+    directionRef.current = direction;
+  }, [direction]);
+
   const moveSnake = useCallback(() => {
-    setSnake((prevSnake) => {
-      const newSnake = [...prevSnake];
-      const head = { ...newSnake[0] };
+    const newSnake = [...snake];
+    const head = { ...newSnake[0] };
 
-      switch (direction) {
-        case "UP":
-          head.y -= GRID_SIZE;
-          break;
-        case "DOWN":
-          head.y += GRID_SIZE;
-          break;
-        case "LEFT":
-          head.x -= GRID_SIZE;
-          break;
-        case "RIGHT":
-          head.x += GRID_SIZE;
-          break;
-        default:
-          break;
-      }
+    switch (directionRef.current) {
+      case "UP":
+        head.y -= GRID_SIZE;
+        break;
+      case "DOWN":
+        head.y += GRID_SIZE;
+        break;
+      case "LEFT":
+        head.x -= GRID_SIZE;
+        break;
+      case "RIGHT":
+        head.x += GRID_SIZE;
+        break;
+      default:
+        break;
+    }
 
-      if (
-        head.x < 0 ||
-        head.y < 0 ||
-        head.x >= BOARD_SIZE ||
-        head.y >= BOARD_SIZE ||
-        newSnake.some((body) => body.x === head.x && body.y === head.y)
-      ) {
-        setRunning(false);
-        setHighScore((prevHighScore) => {
-          if (score > prevHighScore) {
-            localStorage.setItem("highScore", score.toString());
-            return score;
-          }
-          return prevHighScore;
-        });
-        return [...INITIAL_SNAKE];
-      }
+    if (
+      head.x < 0 ||
+      head.y < 0 ||
+      head.x >= BOARD_SIZE ||
+      head.y >= BOARD_SIZE ||
+      newSnake.some((body) => body.x === head.x && body.y === head.y)
+    ) {
+      setRunning(false);
+      setHighScore((prevHighScore) => {
+        if (score > prevHighScore) {
+          localStorage.setItem("highScore", score.toString());
+          return score;
+        }
+        return prevHighScore;
+      });
 
-      newSnake.unshift(head);
+      setSnake([...INITIAL_SNAKE]);
+      return;
+    }
 
-      if (head.x === apple.x && head.y === apple.y) {
-        setScore(score + 100);
-        setApple(getRandomPosition());
-      } else {
-        newSnake.pop();
-      }
+    newSnake.unshift(head);
 
-      return newSnake;
-    });
-  }, [direction, apple, score]);
+    if (head.x === apple.x && head.y === apple.y) {
+      setScore((prev) => prev + 100);
+      setApple(getRandomPosition());
+    } else {
+      newSnake.pop();
+    }
 
-  // 뱀의 움직임 조작 및 게임 시작.
+    setSnake(newSnake);
+  }, [apple, score, snake]);
+
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (!VALID_KEYS.includes(e.key)) return;
 
@@ -137,7 +139,6 @@ export default function SnakeGame() {
     setRunning(true);
   }, []);
 
-  // 게임 시작과 재시작 시 초기화.
   useEffect(() => {
     if (running) {
       setSnake([...INITIAL_SNAKE]);
@@ -147,7 +148,6 @@ export default function SnakeGame() {
     }
   }, [running]);
 
-  // running이 true로 변경된 것을 감지.
   useEffect(() => {
     if (running) {
       const interval = setInterval(moveSnake, SPEED);
@@ -157,7 +157,6 @@ export default function SnakeGame() {
     return undefined;
   }, [running, moveSnake]);
 
-  // 마운트 시 이벤트 리스터 실행, 언마운트 시 클린업 함수로 이벤트 리스너 정리.
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
