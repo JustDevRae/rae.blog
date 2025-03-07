@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 
 const GRID_SIZE = 10;
 const BOARD_SIZE = 350;
-const SPEED = 100;
+const SPEED = 70;
 
 const getRandomPosition = () => {
   return {
