@@ -23,11 +23,8 @@ export default function Header() {
         <Logo />
       </nav>
       <nav className="flex items-center gap-4">
-        <Link href="/tag" className="hover:text-cyan-400">
-          Tag
-        </Link>
-        <Link href="/aboutme" className="hover:text-cyan-400">
-          About Me
+        <Link href="/post" className="hover:text-cyan-400">
+          Post
         </Link>
         <ThemeDropdown />
       </nav>
