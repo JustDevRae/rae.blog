@@ -12,7 +12,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function PostPage({
+export default async function PostDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
