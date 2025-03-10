@@ -11,7 +11,7 @@ export default function Header() {
   const { visible } = useShowAndHideHeader();
   const pathname = usePathname();
 
-  const isPostPage = pathname.startsWith("/post");
+  const isPostPage = pathname.startsWith("/post/");
 
   return (
     <header
