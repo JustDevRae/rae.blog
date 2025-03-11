@@ -53,7 +53,6 @@ const useTocScroll = (tableOfContents: TOCSection[]) => {
     window.addEventListener("scroll", onScroll, { capture: true });
     window.addEventListener("resize", onResize, { capture: true });
 
-    // eslint-disable-next-line consistent-return
     return () => {
       window.removeEventListener("scroll", onScroll, { capture: true });
       window.removeEventListener("resize", onResize, { capture: true });

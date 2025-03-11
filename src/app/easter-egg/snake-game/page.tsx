@@ -153,8 +153,6 @@ export default function SnakeGame() {
       const interval = setInterval(moveSnake, SPEED);
       return () => clearInterval(interval);
     }
-
-    return undefined;
   }, [running, moveSnake]);
 
   useEffect(() => {
