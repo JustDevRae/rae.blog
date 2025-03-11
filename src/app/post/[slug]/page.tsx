@@ -1,7 +1,7 @@
-import { getMdxFileDataBySlug } from "@/lib/parseMdx";
+import { getMdxFileDataBySlug, parseToc } from "@/lib/parseMdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import CustomComponents from "@/components/mdx/CustomComponents";
 import Comments from "@/components/Comments";
+import TableOfContent from "@/components/TableOfContents";
 
 export async function generateStaticParams() {
   const { getAllMdxMetadataAndSlug } = await import("@/lib/parseMdx");
@@ -19,6 +19,7 @@ export default async function PostDetailPage({
 }) {
   const { slug } = await params;
   const { mdxContent, mdxMetaData } = getMdxFileDataBySlug(slug);
+  const toc = parseToc(mdxContent);
 
   return (
     <article className="prose prose-sm mt-[50px] dark:prose-invert">
@@ -28,8 +29,8 @@ export default async function PostDetailPage({
         </h1>
         <p className="mt-1 text-sm text-gray-500">{mdxMetaData.date}</p>
       </section>
-
-      <MDXRemote source={mdxContent} components={CustomComponents} />
+      <TableOfContent data-animate className="px-2 text-sm" toc={toc} />
+      <MDXRemote source={mdxContent} />
       <Comments />
     </article>
   );
