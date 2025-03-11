@@ -1,4 +1,4 @@
-import { getAllMdxMetadataAndSlug } from "@/utils/parseMdx";
+import { getAllMdxMetadataAndSlug } from "@/lib/parseMdx";
 import PostCard from "@/components/PostCard";
 
 export default async function PostPage() {

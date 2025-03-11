@@ -1,10 +1,10 @@
-import { getMdxFileDataBySlug } from "@/utils/parseMdx";
+import { getMdxFileDataBySlug } from "@/lib/parseMdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import CustomComponents from "@/components/mdx/CustomComponents";
 import Comments from "@/components/Comments";
 
 export async function generateStaticParams() {
-  const { getAllMdxMetadataAndSlug } = await import("@/utils/parseMdx");
+  const { getAllMdxMetadataAndSlug } = await import("@/lib/parseMdx");
   const mdxMetadataAndSlugs = getAllMdxMetadataAndSlug();
 
   return mdxMetadataAndSlugs.map(({ slug }) => ({
