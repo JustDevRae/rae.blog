@@ -2,6 +2,9 @@ import { getMdxFileDataBySlug, parseToc } from "@/lib/parseMdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Comments from "@/components/Comments";
 import TableOfContent from "@/components/TableOfContents";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import remarkGfm from "remark-gfm";
 
 export async function generateStaticParams() {
   const { getAllMdxMetadataAndSlug } = await import("@/lib/parseMdx");
@@ -30,7 +33,26 @@ export default async function PostDetailPage({
         <p className="mt-1 text-sm text-gray-500">{mdxMetaData.date}</p>
       </section>
       <TableOfContent data-animate className="px-2 text-sm" toc={toc} />
-      <MDXRemote source={mdxContent} />
+      <MDXRemote
+        source={mdxContent}
+        options={{
+          mdxOptions: {
+            remarkPlugins: [remarkGfm],
+            rehypePlugins: [
+              rehypeSlug,
+              [
+                rehypeAutolinkHeadings,
+                {
+                  behavior: "wrap",
+                  properties: {
+                    className: ["anchor"],
+                  },
+                },
+              ],
+            ],
+          },
+        }}
+      />
       <Comments />
     </article>
   );
