@@ -15,11 +15,17 @@ export const getAllMdxMetadataAndSlug = () => {
     .readdirSync(MDX_DIRECTORY)
     .filter((file) => file.endsWith(".mdx"));
 
-  return mdxFiles.map((file) => {
-    const slug = file.replace(/\.mdx$/, "");
-    const { mdxMetaData } = getMdxFileDataBySlug(slug);
-    return { mdxMetaData, slug };
-  });
+  return mdxFiles
+    .map((file) => {
+      const slug = file.replace(/\.mdx$/, "");
+      const { mdxMetaData } = getMdxFileDataBySlug(slug);
+      return { mdxMetaData, slug };
+    })
+    .sort(
+      (a, b) =>
+        new Date(b.mdxMetaData.date).getTime() -
+        new Date(a.mdxMetaData.date).getTime(),
+    );
 };
 
 export const parseToc = (source: string) => {
