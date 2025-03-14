@@ -16,6 +16,10 @@ export default {
       desktop: { min: "1024px" },
     },
     extend: {
+      fontFamily: {
+        inter: "var(--font-inter)",
+        noto: "var(--font-noto-sans-kr)",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

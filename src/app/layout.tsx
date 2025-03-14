@@ -1,8 +1,21 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import Header from "@/components/Header";
+import { Inter, Noto_Sans_KR } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const notoSansKR = Noto_Sans_KR({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-noto-sans-kr",
+});
 
 export const metadata: Metadata = {
   title: "rae.blog",
@@ -16,7 +29,11 @@ export default function RootLayout({
 }>) {
   return (
     // TODO: remove suppressHydrationWarning
-    <html lang="ko" suppressHydrationWarning>
+    <html
+      lang="ko"
+      className={`${inter.className} ${notoSansKR.className}`}
+      suppressHydrationWarning
+    >
       <body className="flex min-h-screen flex-col">
         <ThemeProvider
           attribute="class"
