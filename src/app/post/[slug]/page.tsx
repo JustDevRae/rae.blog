@@ -25,7 +25,7 @@ export default async function PostDetailPage({
   const toc = parseToc(mdxContent);
 
   return (
-    <article className="prose prose-sm mt-[50px] dark:prose-invert">
+    <article className="prose prose-sm mt-[50px] px-4 dark:prose-invert">
       <section className="mb-6 flex flex-col items-center border-b pb-4">
         <h1 className="text-2xl font-bold tracking-tight">
           {mdxMetaData.title}
