@@ -28,13 +28,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // TODO: remove suppressHydrationWarning
-    <html
-      lang="ko"
-      className={`${inter.className} ${notoSansKR.className}`}
-      suppressHydrationWarning
-    >
-      <body className="flex min-h-screen flex-col">
+    <html lang="ko" suppressHydrationWarning>
+      <body
+        className={`flex min-h-screen flex-col ${inter.className} ${notoSansKR.className}`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
