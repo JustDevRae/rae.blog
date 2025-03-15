@@ -39,9 +39,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="flex w-full flex-grow flex-col items-center justify-center">
-            {children}
-          </main>
+          <main className="mx-auto px-2 py-8">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

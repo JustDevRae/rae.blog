@@ -18,7 +18,7 @@ export default function PostCard({
 }: PostCardProps) {
   return (
     <Link href={`/post/${slug}`} className="block">
-      <Card className="w-[600px] transition-all duration-300 hover:bg-gray-100 hover:shadow-inner dark:hover:bg-gray-900">
+      <Card className="w-full transition-all duration-300 hover:bg-gray-100 hover:shadow-inner dark:hover:bg-gray-900">
         <CardHeader>
           <CardTitle className="flex justify-between text-lg font-semibold">
             <h1>{title}</h1>
