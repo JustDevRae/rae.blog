@@ -39,7 +39,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="mx-auto mt-20 px-4">{children}</main>
+          <main className="mx-auto mb-12 mt-20 px-4">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
