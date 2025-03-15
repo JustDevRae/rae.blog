@@ -12,6 +12,8 @@ export default async function PostPage() {
             <PostCard
               slug={post.slug}
               title={post.mdxMetaData.title}
+              description={post.mdxMetaData.description}
+              tags={post.mdxMetaData.tags}
               date={post.mdxMetaData.date}
             />
           </li>
