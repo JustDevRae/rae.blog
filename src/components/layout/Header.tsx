@@ -3,9 +3,9 @@
 import { useShowAndHideHeader } from "@/hooks/useShowAndHideHeader";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ThemeDropdown from "./ThemeDropdown";
-import Logo from "./Logo";
-import ProgressBar from "./ProgressBar";
+import ThemeDropdown from "../ThemeDropdown";
+import Logo from "../Logo";
+import ProgressBar from "../ProgressBar";
 
 export default function Header() {
   const { visible } = useShowAndHideHeader();
