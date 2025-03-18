@@ -5,11 +5,9 @@ import CustomPagination from "@/components/CustomPagination";
 export default async function PostPage({
   params,
 }: {
-  params: { page: string | string[] };
+  params: { page: string };
 }) {
-  const currentPage =
-    parseInt(Array.isArray(params.page) ? params.page[0] : params.page, 10) ||
-    1;
+  const currentPage = parseInt(params.page, 10) || 1;
   const itemsPerPage = 4;
 
   const { posts, totalPages } = getPaginatedPostData(currentPage, itemsPerPage);
@@ -30,7 +28,6 @@ export default async function PostPage({
         ))}
       </ul>
 
-      {/* Custom Pagination 적용 */}
       <CustomPagination currentPage={currentPage} totalPages={totalPages} />
     </div>
   );
