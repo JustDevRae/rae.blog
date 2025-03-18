@@ -1,7 +1,7 @@
 import { getAllPostData } from "@/lib/parseMdx";
 import PostCard from "@/components/PostCard";
 
-export default async function PostPage() {
+export default function PostPage() {
   const posts = getAllPostData();
 
   return (
