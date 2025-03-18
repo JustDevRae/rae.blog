@@ -28,6 +28,35 @@ export const getAllPostData = () => {
     );
 };
 
+export const getPaginatedPostData = (page: number, itemsPerPage: number) => {
+  const mdxFiles = fs
+    .readdirSync(MDX_DIRECTORY)
+    .filter((file) => file.endsWith(".mdx"));
+
+  // 최신순 정렬을 위해 먼저 모든 슬러그를 가져옴
+  const allPosts = mdxFiles.map((file) => {
+    const slug = file.replace(/\.mdx$/, "");
+    const { mdxMetaData } = getPostDetailData(slug);
+    return { slug, mdxMetaData };
+  });
+
+  // 최신순 정렬
+  allPosts.sort(
+    (a, b) =>
+      new Date(b.mdxMetaData.date).getTime() -
+      new Date(a.mdxMetaData.date).getTime(),
+  );
+
+  // 페이지네이션 적용
+  const startIndex = (page - 1) * itemsPerPage;
+  const paginatedPosts = allPosts.slice(startIndex, startIndex + itemsPerPage);
+
+  return {
+    posts: paginatedPosts,
+    totalPages: Math.ceil(allPosts.length / itemsPerPage),
+  };
+};
+
 export const parseToc = (source: string) => {
   return source
     .split("\n")
