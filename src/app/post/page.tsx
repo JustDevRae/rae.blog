@@ -1,8 +1,8 @@
-import { getAllMdxMetadataAndSlug } from "@/lib/parseMdx";
+import { getAllPostData } from "@/lib/parseMdx";
 import PostCard from "@/components/PostCard";
 
 export default async function PostPage() {
-  const posts = getAllMdxMetadataAndSlug();
+  const posts = getAllPostData();
 
   return (
     <ul className="grid grid-cols-1 gap-4">

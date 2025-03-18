@@ -1,4 +1,4 @@
-import { getMdxFileDataBySlug, parseToc } from "@/lib/parseMdx";
+import { getPostDetailData, parseToc } from "@/lib/parseMdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Comments from "@/components/Comments";
 import TableOfContent from "@/components/TableOfContents";
@@ -7,7 +7,9 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
 
 export async function generateStaticParams() {
-  const { getAllMdxMetadataAndSlug } = await import("@/lib/parseMdx");
+  const { getAllPostData: getAllMdxMetadataAndSlug } = await import(
+    "@/lib/parseMdx"
+  );
   const mdxMetadataAndSlugs = getAllMdxMetadataAndSlug();
 
   return mdxMetadataAndSlugs.map(({ slug }) => ({
@@ -21,7 +23,7 @@ export default async function PostDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const { mdxContent, mdxMetaData } = getMdxFileDataBySlug(slug);
+  const { mdxContent, mdxMetaData } = getPostDetailData(slug);
   const toc = parseToc(mdxContent);
 
   return (
