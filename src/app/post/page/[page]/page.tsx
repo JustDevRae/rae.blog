@@ -2,11 +2,11 @@ import { getPaginatedPostData } from "@/lib/parseMdx";
 import PostCard from "@/components/PostCard";
 import CustomPagination from "@/components/CustomPagination";
 
-export default async function PostPage({
-  params,
-}: {
+interface PageProps {
   params: { page: string };
-}) {
+}
+
+export default async function PostPage({ params }: PageProps) {
   const currentPage = parseInt(params.page, 10) || 1;
   const itemsPerPage = 4;
 
