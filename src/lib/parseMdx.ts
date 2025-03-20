@@ -3,10 +3,20 @@ import path from "path";
 import matter from "gray-matter";
 import { MDX_DIRECTORY } from "@/constants/path";
 
+type MdxMetaData = {
+  title: string;
+  description: string;
+  tags: string[];
+  date: string;
+};
+
 export const getPostDetailData = (slug: string) => {
   const mdxFilePath = path.join(MDX_DIRECTORY, `${slug}.mdx`);
   const mdxFileContents = fs.readFileSync(mdxFilePath, "utf-8");
-  const { content: mdxContent, data: mdxMetaData } = matter(mdxFileContents);
+  const { content: mdxContent, data } = matter(mdxFileContents);
+
+  const mdxMetaData = data as MdxMetaData;
+
   return { mdxContent, mdxMetaData };
 };
 
@@ -19,6 +29,7 @@ export const getAllPostData = () => {
     .map((file) => {
       const slug = file.replace(/\.mdx$/, "");
       const { mdxMetaData } = getPostDetailData(slug);
+
       return { mdxMetaData, slug };
     })
     .sort(
@@ -28,30 +39,25 @@ export const getAllPostData = () => {
     );
 };
 
-export const getPaginatedPostData = (page: number, itemsPerPage: number) => {
+export const getAllUniqueTags = () => {
   const mdxFiles = fs
     .readdirSync(MDX_DIRECTORY)
     .filter((file) => file.endsWith(".mdx"));
 
-  const allPosts = mdxFiles.map((file) => {
+  const allTags = new Set<string>();
+
+  mdxFiles.forEach((file) => {
     const slug = file.replace(/\.mdx$/, "");
     const { mdxMetaData } = getPostDetailData(slug);
-    return { slug, mdxMetaData };
+
+    if (mdxMetaData.tags && Array.isArray(mdxMetaData.tags)) {
+      mdxMetaData.tags.forEach((tag: string) => {
+        allTags.add(tag.trim());
+      });
+    }
   });
 
-  allPosts.sort(
-    (a, b) =>
-      new Date(b.mdxMetaData.date).getTime() -
-      new Date(a.mdxMetaData.date).getTime(),
-  );
-
-  const startIndex = (page - 1) * itemsPerPage;
-  const paginatedPosts = allPosts.slice(startIndex, startIndex + itemsPerPage);
-
-  return {
-    posts: paginatedPosts,
-    totalPages: Math.ceil(allPosts.length / itemsPerPage),
-  };
+  return Array.from(allTags);
 };
 
 export const parseToc = (source: string) => {

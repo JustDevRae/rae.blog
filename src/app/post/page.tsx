@@ -1,5 +1,9 @@
-import { redirect } from "next/navigation";
+import { getAllPostData, getAllUniqueTags } from "@/lib/parseMdx";
+import PostList from "@/components/PostList";
 
-export default function PostRedirect() {
-  redirect("/post/page/1");
+export default function BlogPage() {
+  const posts = getAllPostData();
+  const availableTags = getAllUniqueTags();
+
+  return <PostList posts={posts} availableTags={availableTags} />;
 }
