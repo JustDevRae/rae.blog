@@ -15,7 +15,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed left-1/2 top-0 flex h-[50px] w-full -translate-x-1/2 transform items-center justify-around bg-blue-700 px-[100px] font-semibold transition-transform duration-300 mobile:justify-between mobile:px-[30px] ${
+      className={`fixed left-1/2 top-0 flex h-[50px] w-full -translate-x-1/2 transform items-center justify-around px-[100px] font-semibold backdrop-blur-sm transition-transform duration-300 mobile:justify-between mobile:px-[30px] ${
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
