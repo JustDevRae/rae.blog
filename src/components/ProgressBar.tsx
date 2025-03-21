@@ -28,7 +28,10 @@ export default function ProgressBar() {
 
   return (
     <div className="fixed left-0 top-[50px] h-1 w-full">
-      <div className="h-1 bg-sky-400" style={{ width: `${scrollTop}%` }} />
+      <div
+        className="h-1 bg-black dark:bg-white"
+        style={{ width: `${scrollTop}%` }}
+      />
     </div>
   );
 }
