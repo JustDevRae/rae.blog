@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <header
       className={clsx(
-        "fixed left-1/2 top-0 flex h-[50px] w-full -translate-x-1/2 transform items-center justify-around px-[100px] font-semibold backdrop-blur-sm transition-transform duration-300 mobile:justify-between mobile:px-[30px]",
+        "fixed left-1/2 top-0 flex h-[50px] w-full -translate-x-1/2 transform items-center justify-around border-b px-[100px] font-semibold backdrop-blur-sm transition-transform duration-300 mobile:justify-between mobile:px-[30px]",
         {
           "translate-y-0": showHeader,
           "-translate-y-full": !showHeader,
