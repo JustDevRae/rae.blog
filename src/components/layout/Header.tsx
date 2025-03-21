@@ -21,9 +21,13 @@ export default function Header() {
     >
       <Logo />
       <nav className="flex items-center gap-4">
-        <Link href="/post" className="hover:text-cyan-400">
+        <Link
+          href={{ pathname: "/post", query: { page: "1" } }}
+          className="hover:text-cyan-400"
+        >
           Post
         </Link>
+
         <ThemeDropdown />
       </nav>
       {isPostPage && <ProgressBar />}

@@ -1,9 +1,21 @@
 import { getAllPostData, getAllUniqueTags } from "@/lib/parseMdx";
-import PostList from "@/components/PostList";
+import SearchBar from "@/components/SearchBar";
+import TagButton from "@/components/TagButton";
+import PostListContainer from "@/components/PostListContainer";
 
-export default function BlogPage() {
+export default function PostPage() {
   const posts = getAllPostData();
-  const availableTags = getAllUniqueTags();
+  const uniqueTagArray = getAllUniqueTags();
 
-  return <PostList posts={posts} availableTags={availableTags} />;
+  return (
+    <div>
+      <SearchBar />
+      <div className="flex gap-3">
+        {uniqueTagArray.map((tag) => (
+          <TagButton key={tag} tag={tag} />
+        ))}
+      </div>
+      <PostListContainer posts={posts} />
+    </div>
+  );
 }

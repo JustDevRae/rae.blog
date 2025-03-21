@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   Pagination,
   PaginationContent,
@@ -7,53 +10,65 @@ import {
   PaginationLink,
 } from "@/components/ui/pagination";
 
-interface CustomPaginationProps {
-  currentPage: number;
-  totalPages: number;
-  basePath?: string;
-}
-
 export default function CustomPagination({
-  currentPage,
   totalPages,
-  basePath = "/post/page/",
-}: CustomPaginationProps) {
+}: {
+  totalPages: number;
+}) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const currentPage = Number(searchParams.get("page")) || 1;
+
+  const changePage = (newPage: number) => {
+    if (newPage < 1 || newPage > totalPages) return;
+
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("page", newPage.toString());
+    router.push(`?${params.toString()}`);
+  };
+
   return (
-    <div className="mt-6 flex justify-center">
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              href={currentPage > 1 ? `${basePath}${currentPage - 1}` : "#"}
-              className={
-                currentPage === 1 ? "pointer-events-none opacity-50" : ""
-              }
-            />
+    <Pagination className="mt-6 flex justify-center">
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious
+            href={`?${new URLSearchParams({ page: (currentPage - 1).toString() }).toString()}`}
+            onClick={(e) => {
+              e.preventDefault();
+              changePage(currentPage - 1);
+            }}
+            className={currentPage <= 1 ? "pointer-events-none opacity-50" : ""}
+          />
+        </PaginationItem>
+
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+          <PaginationItem key={page}>
+            <PaginationLink
+              href={`?${new URLSearchParams({ page: page.toString() }).toString()}`}
+              isActive={page === currentPage}
+              onClick={(e) => {
+                e.preventDefault();
+                changePage(page);
+              }}
+            >
+              {page}
+            </PaginationLink>
           </PaginationItem>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <PaginationItem key={page}>
-              <PaginationLink
-                href={`${basePath}${page}`}
-                isActive={page === currentPage}
-              >
-                {page}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
-          <PaginationItem>
-            <PaginationNext
-              href={
-                currentPage < totalPages ? `${basePath}${currentPage + 1}` : "#"
-              }
-              className={
-                currentPage === totalPages
-                  ? "pointer-events-none opacity-50"
-                  : ""
-              }
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
-    </div>
+        ))}
+
+        <PaginationItem>
+          <PaginationNext
+            href={`?${new URLSearchParams({ page: (currentPage + 1).toString() }).toString()}`}
+            onClick={(e) => {
+              e.preventDefault();
+              changePage(currentPage + 1);
+            }}
+            className={
+              currentPage >= totalPages ? "pointer-events-none opacity-50" : ""
+            }
+          />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
   );
 }
