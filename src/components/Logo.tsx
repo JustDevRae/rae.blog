@@ -35,7 +35,7 @@ export default function Logo() {
   };
 
   return (
-    <Link href="/" onClick={handleClick} className="hover:text-cyan-400">
+    <Link href="/" onClick={handleClick}>
       Rae.
     </Link>
   );
