@@ -5,6 +5,7 @@ import TableOfContent from "@/components/TableOfContents";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
+import components from "@/components/mdx/CustomComponents";
 
 export async function generateStaticParams() {
   const { getAllPostData: getAllMdxMetadataAndSlug } = await import(
@@ -37,6 +38,7 @@ export default async function PostDetailPage({
       <TableOfContent data-animate className="px-2 text-sm" toc={toc} />
       <MDXRemote
         source={mdxContent}
+        components={components}
         options={{
           mdxOptions: {
             remarkPlugins: [remarkGfm],
