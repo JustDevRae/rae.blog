@@ -73,22 +73,24 @@ export default function TableOfContent({
   const { currentSectionSlug } = useTocScroll(toc);
 
   return (
-    <ul {...props} className={cn("space-y-2.5 font-sans text-sm", className)}>
-      {toc.map((section, i) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <li key={i} className="flex">
-          <a
-            className={cn(
-              "link text-second",
-              currentSectionSlug === section.slug &&
-                "text-body font-medium text-purple-700",
-            )}
-            href={`#${section.slug}`}
-          >
-            {section.text}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div {...props} className={cn("space-y-2.5 font-sans text-sm", className)}>
+      <h4 className="text-base font-semibold">On This Page</h4>
+      <ul>
+        {toc.map((section) => (
+          <li key={section.text} className="flex">
+            <a
+              className={cn(
+                "link text-base font-medium text-zinc-400 no-underline",
+                currentSectionSlug === section.slug &&
+                  "text-black dark:text-white",
+              )}
+              href={`#${section.slug}`}
+            >
+              {section.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

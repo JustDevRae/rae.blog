@@ -35,7 +35,11 @@ export default async function PostDetailPage({
         </h1>
         <p className="mt-1 text-sm text-gray-500">{mdxMetaData.date}</p>
       </section>
-      <TableOfContent data-animate className="px-2 text-sm" toc={toc} />
+      <TableOfContent
+        data-animate
+        className="text-sm desktop:fixed desktop:right-[10%] desktop:top-1/2 desktop:z-10 desktop:-translate-y-1/2"
+        toc={toc}
+      />
       <MDXRemote
         source={mdxContent}
         components={components}

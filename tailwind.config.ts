@@ -11,9 +11,9 @@ export default {
   ],
   theme: {
     screens: {
-      mobile: { max: "800px" },
-      tablet: { min: "801px", max: "1023px" },
-      desktop: { min: "1024px" },
+      mobile: { max: "450px" },
+      tablet: { min: "451px", max: "1000px" },
+      desktop: { min: "1001px" },
     },
     extend: {
       fontFamily: {
