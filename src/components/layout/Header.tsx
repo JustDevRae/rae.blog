@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useShowAndHideHeader } from "@/hooks/useShowAndHideHeader";
-import { clsx } from "clsx";
 import Logo from "@/components/Logo";
 import ProgressBar from "@/components/ProgressBar";
 import ThemeDropdown from "@/components/ThemeDropdown";
+import HeaderWrapper from "@/components/layout/HeaderWrapper";
 
 export default function Header() {
   const pathname = usePathname();
@@ -16,21 +16,15 @@ export default function Header() {
   const showHeader = isScrollAblePage ? visible : true;
 
   return (
-    <header
-      className={clsx(
-        "fixed left-1/2 top-0 flex h-[50px] w-full -translate-x-1/2 transform items-center justify-around border-b px-[100px] font-semibold backdrop-blur-sm transition-transform duration-300 mobile:justify-between mobile:px-[30px]",
-        {
-          "translate-y-0": showHeader,
-          "-translate-y-full": !showHeader,
-        },
-      )}
-    >
+    <HeaderWrapper isVisible={showHeader}>
       <Logo />
+
       <nav className="flex items-center gap-4">
         <Link href="/post?page=1">Post</Link>
         <ThemeDropdown />
       </nav>
+
       {isScrollAblePage && <ProgressBar />}
-    </header>
+    </HeaderWrapper>
   );
 }
