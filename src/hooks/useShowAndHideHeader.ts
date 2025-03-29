@@ -1,25 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { throttle } from "es-toolkit";
 
 export const useShowAndHideHeader = () => {
   const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollYRef = useRef(0);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+      if (currentScrollY > lastScrollYRef.current && currentScrollY > 50) {
         setVisible(false);
       } else {
         setVisible(true);
       }
 
-      setLastScrollY(currentScrollY);
-    };
+      lastScrollYRef.current = currentScrollY;
+    }, 200);
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   return { visible };
 };
