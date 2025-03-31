@@ -46,7 +46,7 @@ export default function PostListContainer({ posts }: PostListProps) {
   return (
     <div>
       <PostList posts={paginatedPosts} />
-      {totalPages > 1 && <CustomPagination totalPages={totalPages} />}
+      {totalPages > 0 && <CustomPagination totalPages={totalPages} />}
     </div>
   );
 }
