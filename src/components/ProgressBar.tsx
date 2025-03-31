@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useMounted } from "@/hooks/useMounted";
+import { cn } from "@/lib/utils";
 
 export default function ProgressBar() {
   const mounted = useMounted();
@@ -27,7 +28,13 @@ export default function ProgressBar() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed left-0 top-[50px] h-1 w-full">
+    <div
+      className={cn(
+        "fixed left-0 top-[50px]",
+        "h-1 w-full",
+        "hidden mobile:block tablet:block",
+      )}
+    >
       <div
         className="h-1 bg-black dark:bg-white"
         style={{ width: `${scrollTop}%` }}
