@@ -1,6 +1,5 @@
 import { getAllPostData, getAllUniqueTags } from "@/lib/parseMdx";
 import SearchBar from "@/components/SearchBar";
-import TagButton from "@/components/TagButton";
 import PostListContainer from "@/components/PostListContainer";
 
 import { Suspense } from "react";

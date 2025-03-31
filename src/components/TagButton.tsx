@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 interface TagButtonProps {
   tag: string;
@@ -35,7 +35,7 @@ export default function TagButton({ tag }: TagButtonProps) {
     <button
       type="button"
       onClick={handleTagClick}
-      className={clsx("rounded border px-3 py-2 text-sm font-medium", {
+      className={cn("rounded border px-3 py-2 text-sm font-medium", {
         "border-blue-500 bg-blue-500 text-white": isSelected,
         "border-gray-300 bg-white text-black": !isSelected,
       })}

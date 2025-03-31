@@ -1,4 +1,4 @@
-import TagButton from "./TagButton";
+import TagButton from "@/components/TagButton";
 
 interface TagListProps {
   tagArray: string[];
