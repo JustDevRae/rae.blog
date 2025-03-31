@@ -1,4 +1,5 @@
 import PostCard from "@/components/PostCard";
+import { AlertCircle } from "lucide-react";
 
 interface Post {
   slug: string;
@@ -31,7 +32,10 @@ export default function PostList({ posts }: PostListProps) {
             </li>
           ))
         ) : (
-          <p className="text-gray-500">해당 게시글이 없습니다.</p>
+          <div className="flex flex-col items-center justify-center gap-4 py-20 text-zinc-600">
+            <AlertCircle className="h-10 w-10" />
+            <p className="text-xl">게시글을 찾을 수 없습니다.</p>
+          </div>
         )}
       </ul>
     </div>
