@@ -10,7 +10,7 @@ export default function PostPage() {
   const uniqueTagArray = getAllUniqueTags();
 
   return (
-    <div>
+    <div className="max-w-[500px]">
       <Suspense fallback={<div>검색창 로딩 중...</div>}>
         <SearchBar />
       </Suspense>
