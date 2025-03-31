@@ -36,8 +36,8 @@ export default function TagButton({ tag }: TagButtonProps) {
       type="button"
       onClick={handleTagClick}
       className={cn("rounded border px-3 py-2 text-sm font-medium", {
-        "border-blue-500 bg-blue-500 text-white": isSelected,
-        "border-gray-300 bg-white text-black": !isSelected,
+        "bg-zinc-700 text-white": isSelected,
+        "": !isSelected,
       })}
     >
       {tag}
