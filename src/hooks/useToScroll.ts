@@ -9,7 +9,6 @@ export const useTocScroll = (tableOfContents: TOCSection[]) => {
     if (tableOfContents.length === 0) return;
 
     let headings: { id: string; top: number }[];
-    const pageTop = 50;
 
     const onResize = () => {
       headings = Array.from(document.querySelectorAll<HTMLElement>("h2")).map(
@@ -24,11 +23,9 @@ export const useTocScroll = (tableOfContents: TOCSection[]) => {
       if (!headings) return;
 
       let current: typeof currentSectionSlug;
-      const top = window.scrollY + pageTop;
-      const HEADING_OFFSET = 10;
 
       headings.forEach((heading) => {
-        if (top >= heading.top - HEADING_OFFSET) {
+        if (window.scrollY >= heading.top) {
           current = heading.id;
         }
       });
