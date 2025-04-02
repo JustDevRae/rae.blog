@@ -79,3 +79,9 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+}

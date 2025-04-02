@@ -38,7 +38,6 @@ export default async function PostDetailPage({
       </section>
       <aside className="not-prose absolute left-full top-0 hidden h-full desktop:block">
         <TableOfContent
-          data-animate
           className={cn(
             "sticky top-[200px] z-10 ml-[50%] mt-[200px] w-[200px]",
             "text-sm",
