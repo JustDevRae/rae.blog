@@ -84,4 +84,7 @@ body {
   html {
     @apply scroll-smooth;
   }
+  h2 {
+    scroll-margin-top: 50px;
+  }
 }

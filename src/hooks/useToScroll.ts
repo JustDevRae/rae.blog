@@ -9,7 +9,7 @@ export const useTocScroll = (tableOfContents: TOCSection[]) => {
     if (tableOfContents.length === 0) return;
 
     let headings: { id: string; top: number }[];
-    let pageTop = 0;
+    const pageTop = 50;
 
     const onResize = () => {
       headings = Array.from(document.querySelectorAll<HTMLElement>("h2")).map(
@@ -17,13 +17,6 @@ export const useTocScroll = (tableOfContents: TOCSection[]) => {
           id: element.id,
           top: element.offsetTop,
         }),
-      );
-
-      pageTop = parseFloat(
-        window
-          .getComputedStyle(document.documentElement)
-          .getPropertyValue("--page-top")
-          .match(/[\d.]+/)?.[0] ?? "0",
       );
     };
 
