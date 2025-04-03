@@ -30,7 +30,7 @@ export default async function PostDetailPage({
   const toc = parseToc(mdxContent);
 
   return (
-    <article className="prose prose-sm relative mt-[50px] px-4 dark:prose-invert">
+    <article className="prose relative mt-[50px] px-4 dark:prose-invert">
       <section className="mb-6 flex flex-col items-center border-b pb-4">
         <h1 className="text-2xl font-bold tracking-tight">
           {mdxMetaData.title}
@@ -50,27 +50,30 @@ export default async function PostDetailPage({
         />
       </aside>
 
-      <MDXRemote
-        source={mdxContent}
-        components={components}
-        options={{
-          mdxOptions: {
-            remarkPlugins: [remarkGfm],
-            rehypePlugins: [
-              rehypeSlug,
-              [
-                rehypeAutolinkHeadings,
-                {
-                  behavior: "wrap",
-                  properties: {
-                    className: ["anchor"],
+      <section className="border-b pb-4">
+        <MDXRemote
+          source={mdxContent}
+          components={components}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+              rehypePlugins: [
+                rehypeSlug,
+                [
+                  rehypeAutolinkHeadings,
+                  {
+                    behavior: "wrap",
+                    properties: {
+                      className: ["anchor"],
+                    },
                   },
-                },
+                ],
               ],
-            ],
-          },
-        }}
-      />
+            },
+          }}
+        />
+      </section>
+
       <Comments />
     </article>
   );
