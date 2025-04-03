@@ -37,7 +37,7 @@ export default async function PostDetailPage({
         </h1>
         <p className="mt-1 text-sm text-gray-500">{mdxMetaData.date}</p>
       </section>
-      <aside className="hidden mobile:block tablet:block">
+      <aside className="block desktop:hidden">
         <TopTableOfContent toc={toc} />
       </aside>
       <aside className="not-prose absolute left-full top-0 hidden h-full desktop:block">
