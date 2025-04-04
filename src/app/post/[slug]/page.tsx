@@ -12,9 +12,10 @@ import { cn } from "@/lib/utils";
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { mdxMetaData } = getPostDetailData(params.slug);
+  const { slug } = await params;
+  const { mdxMetaData } = getPostDetailData(slug);
 
   return {
     title: mdxMetaData.title,
