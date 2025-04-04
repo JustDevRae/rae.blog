@@ -18,11 +18,21 @@ const notoSansKR = Noto_Sans_KR({
 });
 
 export const metadata: Metadata = {
-  title: "rae.blog",
-  description: "created Next.js + MDX",
-  other: {
-    "google-site-verification": "DXMy_WFa0KUo8TgC-10lrIb2HPvzD3Hf_R95dd6jx1U",
+  title: {
+    default: "Rae",
+    template: "Rae - %s",
   },
+  description:
+    "학습한 내용에 대해 다른 사람도 쉽게 읽을 수 있도록 공유하는 김승래의 개인 기술 블로그",
+  openGraph: {
+    title: "Rae",
+    description: "Rae의 기술 블로그 - 학습한 내용을 기록하고 유합니다.",
+    url: "https://rae-blog.vercel.app",
+    siteName: "Rae",
+    locale: "ko_KR",
+    type: "website",
+  },
+  robots: "index, follow",
 };
 
 export default function RootLayout({
