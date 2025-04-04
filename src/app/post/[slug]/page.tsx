@@ -9,6 +9,23 @@ import remarkGfm from "remark-gfm";
 import components from "@/components/mdx/CustomComponents";
 import { cn } from "@/lib/utils";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { mdxMetaData } = getPostDetailData(params.slug);
+
+  return {
+    title: mdxMetaData.title,
+    description: mdxMetaData.description,
+    openGraph: {
+      title: mdxMetaData.title,
+      description: mdxMetaData.description,
+    },
+  };
+}
+
 export async function generateStaticParams() {
   const { getAllPostData: getAllMdxMetadataAndSlug } = await import(
     "@/lib/parseMdx"
