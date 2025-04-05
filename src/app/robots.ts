@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { baseURL } from "@/constants/path";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://rae-blog.vercel.app/sitemap.xml",
+    sitemap: `${baseURL}/sitemap.xml`,
   };
 }
