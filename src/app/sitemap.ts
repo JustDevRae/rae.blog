@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPostData } from "@/lib/parseMdx";
-
-const baseURL = "https://rae-blog.vercel.app";
+import { baseURL } from "@/constants/path";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPostData().map((post) => ({
