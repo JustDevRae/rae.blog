@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   },
   description:
     "학습한 내용에 대해 다른 사람도 쉽게 읽을 수 있도록 공유하는 김승래의 개인 기술 블로그",
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "Rae",
     description: "Rae의 기술 블로그 - 학습한 내용을 기록하고 유합니다.",
