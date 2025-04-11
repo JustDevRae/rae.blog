@@ -18,7 +18,7 @@ export default function PostCard({
 }: PostCardProps) {
   return (
     <Link href={`/post/${slug}`} className="block">
-      <Card className="w-full transition-all duration-300 hover:bg-gray-100 hover:shadow-inner dark:hover:bg-gray-900">
+      <Card className="w-full transition-all duration-300">
         <CardHeader>
           <CardTitle className="flex justify-between text-lg font-semibold">
             <h1>{title}</h1>
@@ -31,7 +31,7 @@ export default function PostCard({
           </p>
           <p className="flex flex-wrap">
             {tags.map((tag) => (
-              <span key={tag} className="tag mr-2 text-blue-500">
+              <span key={tag} className="tag mr-2 text-yellow-500">
                 {tag}
               </span>
             ))}
