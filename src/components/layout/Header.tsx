@@ -20,7 +20,7 @@ export default function Header() {
       <Logo />
 
       <nav className="flex items-center gap-4">
-        <Link href="/aboutme">About</Link>
+        <Link href="/about">About</Link>
         <ThemeDropdown />
       </nav>
 

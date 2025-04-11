@@ -67,6 +67,26 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      keyframes: {
+        orbit: {
+          "0%": { transform: "rotate(0deg) translateX(55px) rotate(0deg)" },
+          "100%": {
+            transform: "rotate(360deg) translateX(55px) rotate(-360deg)",
+          },
+        },
+        orbitReverse: {
+          "0%": {
+            transform: "rotate(180deg) translateX(55px) rotate(-180deg)",
+          },
+          "100%": {
+            transform: "rotate(540deg) translateX(55px) rotate(-540deg)",
+          },
+        },
+      },
+      animation: {
+        orbit: "orbit 5s linear infinite",
+        orbitReverse: "orbitReverse 5s linear infinite",
+      },
     },
   },
   plugins: [tailwindcssAnimate, typography],
