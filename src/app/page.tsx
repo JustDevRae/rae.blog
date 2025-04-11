@@ -1,8 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default function Home() {
-  return (
-    <main>
-      <div>Hi! I am JustDevRae.</div>
-      <div>My Project</div>
-    </main>
-  );
+  redirect("/post?page=1");
 }
