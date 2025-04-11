@@ -6,13 +6,13 @@ export default function NotFound() {
       <div className="relative flex h-[200px] w-[200px] items-center justify-center">
         <div className="z-10 text-5xl font-extrabold">0</div>
 
-        <div className="animate-orbit absolute left-1/2 top-1/2">
+        <div className="absolute left-1/2 top-1/2 animate-orbit">
           <div className="-translate-x-1/2 -translate-y-1/2 text-5xl font-extrabold">
             4
           </div>
         </div>
 
-        <div className="animate-orbitReverse absolute left-1/2 top-1/2">
+        <div className="absolute left-1/2 top-1/2 animate-orbitReverse">
           <div className="-translate-x-1/2 -translate-y-1/2 text-5xl font-extrabold">
             4
           </div>
