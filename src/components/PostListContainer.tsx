@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import PostList from "@/components/PostList";
-import CustomPagination from "./CustomPagination";
+import CustomPagination from "./custom-pagination";
 
 interface Post {
   slug: string;
