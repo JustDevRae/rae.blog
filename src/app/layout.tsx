@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_KR } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Header from "@/components/layout/Header";
+import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import "./globals.css";
 
