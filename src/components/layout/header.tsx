@@ -6,7 +6,7 @@ import { useShowAndHideHeader } from "@/hooks/useShowAndHideHeader";
 import Logo from "@/components/Logo";
 import ProgressBar from "@/components/ProgressBar";
 import ThemeDropdown from "@/components/ThemeDropdown";
-import HeaderWrapper from "@/components/layout/HeaderWrapper";
+import HeaderWrapper from "@/components/layout/header-wrapper";
 
 export default function Header() {
   const pathname = usePathname();
