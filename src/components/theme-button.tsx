@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { useMounted } from "@/hooks/useMounted";
 import { Button } from "./ui/button";
 
-export default function ThemeToggleButton() {
+export default function ThemeButton() {
   const mounted = useMounted();
   const { theme, setTheme } = useTheme();
 
