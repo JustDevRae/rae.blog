@@ -1,6 +1,6 @@
 import { getPostDetailData, parseToc } from "@/lib/parseMdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import Comments from "@/components/Comments";
+import Comments from "@/components/giscus-comments";
 import TableOfContent from "@/components/SideTableOfContents";
 import TopTableOfContent from "@/components/TopTableOfContents";
 import rehypeSlug from "rehype-slug";

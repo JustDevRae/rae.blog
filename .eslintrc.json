@@ -38,7 +38,8 @@
         "extensions": [".tsx", ".jsx"]
       }
     ],
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "react-hooks/exhaustive-deps": "off"
   },
   "ignorePatterns": ["postcss.config.mjs", "node_modules/**", "dist/**"]
 }
