@@ -49,7 +49,7 @@ export default async function PostDetailPage({
 
   return (
     <article className="prose relative mt-[50px] px-4 dark:prose-invert">
-      <section className="mb-6 flex flex-col items-center border-b pb-4">
+      <section className="flex flex-col items-center border-b pb-16">
         <h1 className="text-2xl font-bold tracking-tight">
           {mdxMetaData.title}
         </h1>
