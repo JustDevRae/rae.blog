@@ -1,0 +1,348 @@
+---
+title: "Next.js + MDX로 포스팅 기능 구현하기"
+description: "Next.js와 MDX를 통해 포스팅을 구현하는 방법에 대해 설명합니다."
+date: "2025-04-28"
+tags: ["blog", "next.js", "mdx"]
+---
+
+## 들어가기에 앞서
+
+이번 글에서는 제가 Next.js와 MDX를 통해 어떻게 게시글을 구현했는지에 대해 최대한 쉽게 설명해봤습니다.
+
+## 게시글 라우팅 방식 선정
+
+Next.js의 [Markdonw and MDX](https://nextjs.org/docs/app/guides/mdx)
+문서에서는 Next.js와 MDX를 통해 블로그 페이지를 구현하는 방법에 대해 다음과 같이 설명해줍니다.
+
+> Next.js는 내부의 로컬 MDX와 서버에서 동적으로 가져온 원격 MDX를 모두 지원할 수 있습니다.
+> Next.js는 마크다운 및 리액트 구성 요소를 HTML로 변환하는 작업을 처리하며,
+> 서버 구성 요소(App Router의 기본값)에서 사용할 수 있도록 지원합니다.
+
+즉, 아래 코드처럼 MDX를 파일 기반 라우팅을 통해 페이지로서 직접 사용하는 것이 가능하며,
+
+```
+📦 app/
+└─ blog/
+   ├─ post-1/
+   │  └─ page.mdx
+   └─ post-2/
+      └─ page.mdx
+```
+
+혹은 아래처럼 MDX를 페이지로 직접 사용하지 않고,
+외부에 저장한 MDX를 서버에서 Dynamic Route을 통해 동적으로 가져오는 것도 가능합니다.
+
+```
+app/
+└─ blog/
+   └─ [slug]
+      └─ page.tsx <- 해당 페이지에 .mdx 파일을 라우팅.
+contents/
+└─ welcome.mdx
+└─ about.mdx
+```
+
+저는 파일 기반 라우팅보다, 동적 라우팅을 통해 페이지를 생성하는 방식이
+MDX 게시글 생성 및 관리에 더 편리하다고 생각해서 동적 라우팅으로 MDX 파일을
+렌더링하는 방식을 선택했습니다.
+
+그리고 MDX 파일의 데이터를 편하게 관리하고 생성할 수 있는
+`next-mdx-remote`와 `gray-matter`를선택하게 되었습니다.
+선택한 이유는 다음과 같습니다.
+
+`gray-matter`
+
+- Frontmatter를 통해 MDX 파일 안에 제목, 날짜, 태그 등의 메타데이터를 쉽게 설정할 수 있습니다.
+- `gray-matter`의 `matter` 메서드를 통해 MDX 파일에 작성한 Frontmatter를
+  `data` 객체로, MDX의 markdown에 해당하는 `content`라는 객체를 반환해줍니다.
+  이는 `next-mdx-remote`의 `<MDXRemote/>` 컴포넌트에 props로 전달하여 게시글을 쉽게 렌더링할 수 있게 해줍니다.
+
+`next-mdx-remote`
+
+- MDX 파일을 문자열 형태로 읽어와서, 빌드 타임이 아닌 런타임에 렌더링할 수 있게 해줍니다.
+- `<MDXRemote/>` 컴포넌트에 MDX 문자열에 해당하는`source`와
+  사용자가 정의할 스타일을 담은 객체인 `components`를 props로 전달하여,
+  게시글을 자유롭게 커스텀 할 수 있습니다.
+
+## 구현 방법에 대해 설명
+
+### 1. 초기 설치
+
+Next.js의 App Router를 설치해줍니다.
+
+```bash
+npx create-next-app@latest
+```
+
+저는 설치할 때 나오는 옵션에 대해 다음과 같이 선택해줬습니다.
+
+```
+Would you like to use TypeScript? Yes
+Would you like to use ESLint? Yes
+Would you like to use Tailwind CSS? Yes
+Would you like your code inside a `src/` directory? Yes
+Would you like to use App Router? (recommended) Yes
+Would you like to use Turbopack for `next dev`?  No
+Would you like to customize the import alias (`@/*` by default)? Yes
+What import alias would you like configured? @/*
+```
+
+설치 및 설정 후, `app` 폴더 하위에 게시글 상세 페이지 `post/[slug]/page.tsx`와
+게시글 목록 페이지 `post/page.tsx`를 생성해줍니다.
+
+```
+📦 app/
+└─ post
+   ├─ [slug]
+   │  └─ page.tsx
+   └─ page.tsx
+```
+
+다음은 MDX와 관련된 패키지들을 설치해줍니다.
+
+```bash
+npm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+```
+
+설치 후, `next.config.ts` Next.js가 MDX를 지원하도록 설정해줍니다.
+
+```ts
+import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
+
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+});
+
+const nextConfig: NextConfig = {
+  pageExtensions: ["ts", "tsx", "mdx"],
+};
+
+export default withMDX(nextConfig);
+```
+
+### 2. `MDX` 파일 보관 폴더 생성 및 MDX 파일 생성
+
+`src` 폴더 아래에 MDX 파일을 담을 `contents` 폴더를 생성 후,
+임의의 파일 `first-post.mdx` 라는 파일을 생성해줍니다.
+
+그 다음, `first-post.mdx` 파일 안에 게시글의 정보를 `---`에 작성하고
+게시글의 본문 내용을 markdown 형식으로 작성해줍니다.
+
+```md
+---
+title: "first-post"
+description: "description about first-post"
+date: "2025-04-27"
+tags: ["blog"]
+---
+
+## 첫번째 게시글의 첫번째 제목
+
+첫번째 게시글의 첫번째 내용
+```
+
+### 3. MDX 파싱 함수 작성
+
+`gray-matter`의 `matter` 메서드를 이용해 `src/contents` 폴더 하위에 존재하는 `.mdx` 파일의
+내용을 읽어들이고, 해당 파일의 콘텐츠와 메타데이터를 분리해 반환하는 함수를 작성해줍니다.
+
+```ts
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+
+export const getPostDetailData = (slug: string) => {
+  const mdxFilePath = path.join(
+    path.join(process.cwd(), "src/contents"),
+    `${slug}.mdx`,
+  );
+  const mdxFileContents = fs.readFileSync(mdxFilePath, "utf-8");
+  const { content: mdxContent, data: mdxMetaData } = matter(mdxFileContents);
+
+  return { mdxContent, mdxMetaData };
+};
+```
+
+해당 코드는 다음과 같은 동작을 수행합니다.
+
+- slug를 기반으로 파일 경로를 지정합니다.
+- 해당 경로의 `.mdx` 파일을 읽어 문자열로 변환합니다.
+- `gray-matter`를 사용해 파일의 Front Matter와 본문 콘텐츠를 분리합니다.
+
+이후 `src/contents` 폴더 하위에 존재하는 모든 `.mdx` 파일들을 읽어
+slug와 메타데이터를 추출하는 함수를 구현해줍니다.
+
+```ts
+export const getAllPostData = () => {
+  const mdxFiles = fs
+    .readdirSync(path.join(process.cwd(), "src/contents"))
+    .filter((file) => file.endsWith(".mdx"));
+
+  return mdxFiles.map((file) => {
+    const slug = file.replace(/\.mdx$/, "");
+    const { mdxMetaData } = getPostDetailData(slug);
+    return { mdxMetaData, slug };
+  });
+};
+```
+
+해당 코드는 다음과 같은 동작을 수행합니다.
+
+- src/contents 폴더 내 모든 파일을 읽어 .mdx 확장자를 가진 파일만 필터링합니다.
+- 각 파일명에서 확장자를 제거하여 slug를 생성합니다.
+- `getPostDetailData` 함수를 이용해 해당 파일의 메타데이터를 가져옵니다.
+- `{ slug, mdxMetaData }` 객체 배열을 반환합니다.
+
+### 4. 게시글 목록 페이지 작성
+
+`app/post/page.tsx`에서 `getAllPostData` 메서드를 통해
+`src/contents` 폴더 하위에 있는 모든 `.mdx` 파일들의 메타 데이터와 slug와 메타데이터를 반환하여,
+slug에 해당하는 동적 페이지를 접속할 수 있게 해줍니다.
+
+```tsx
+import { getAllPostData } from "@/lib/parseMdx";
+import Link from "next/link";
+
+export default function PostPage() {
+  const posts = getAllPostData();
+
+  return (
+    <div>
+      <ul className="flex flex-col items-center">
+        {posts.map((post) => (
+          <li key={post.slug} className="border border-black p-6">
+            <Link href={`/post/${post.slug}`}>
+              <div>{post.mdxMetaData.title}</div>
+              <div>{post.mdxMetaData.description}</div>
+              <div>{post.mdxMetaData.date}</div>
+              <div>{post.mdxMetaData.tags}</div>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+![postlist-render](/images/postlist-render.png)
+
+### 5. 게시글 상세 페이지 작성
+
+`app/post/[slug]/page.tsx` 파일에서 Next.js의 `generateStaticParams`를 사용해줍니다.
+
+`generateStaticParams`를 사용하면, 빌드 시점에 `src/contents` 폴더 하위에 존재하는
+모든 `.mdx` 파일들의 slug를 미리 가져오고
+각 경로에 해당하는 페이지를 정적 파일로 미리 생성해 놓습니다.
+
+그렇기에 동적 라우팅을 통해 페이지를 렌더링할 때,
+페이지를 요청할때마다 서버에서 MDX 파일을 읽어들일 필요없이 빠르게 페이지를 요청할 수 있습니다.
+
+```tsx
+import { getPostDetailData } from "@/lib/parseMdx";
+import { MDXRemote } from "next-mdx-remote/rsc";
+
+export async function generateStaticParams() {
+  const { getAllPostData: getAllMdxMetadataAndSlug } = await import(
+    "@/lib/parseMdx"
+  );
+  const mdxMetadataAndSlugs = getAllMdxMetadataAndSlug();
+
+  return mdxMetadataAndSlugs.map(({ slug }) => ({
+    slug,
+  }));
+}
+```
+
+그 후, `getPostDetailData`에 slug 인자로 할당하여,
+해당하는 게시글의 내용을 `data`와 `content`를 반환합니다.
+
+반환받은 `content`객체를 `next-mdx-remote`의 `<MDXRemote />`컴포넌트에 props로 할당해줍니다.
+
+```tsx
+export default async function PostDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const { mdxContent, mdxMetaData } = getPostDetailData(slug);
+
+  return (
+    <article className="flex flex-col items-center">
+      <h1>{mdxMetaData.title}</h1>
+      <p>{mdxMetaData.date}</p>
+      <MDXRemote source={mdxContent} />
+    </article>
+  );
+}
+```
+
+![before-typography-posting](/images/before-typography-post.png)
+
+하지만 위 이미지를 보시다시피 텍스트만 나열된 형태로 렌더링이 됩니다.
+TailwindCSS를 사용하면 기본적으로 브라우저의 모든 기본 스타일을 제거하기 때문입니다.
+
+### 6. `tailwindcss-typography` 적용
+
+`tailwindcss-typography`를 사용하면 별다른 작업 없이,
+Markdown 같은 스타일을 쉽게 적용할 수 있습니다.
+
+`tailwindcss-typography`를 설치해줍니다.
+
+```
+pnpm install -D @tailwindcss/typography
+```
+
+그 다음 `tailwind.config.ts`에 플러그인을 추가해줍니다.
+
+```ts
+import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
+
+export default {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+      },
+    },
+  },
+  plugins: [typography],
+} satisfies Config;
+```
+
+이후는 게시글을 렌더링하는 태그에 `prose` 클래스를 추가해주면 됩니다.
+
+```tsx
+return (
+  <article className="prose flex flex-col items-center">
+    <h1>{mdxMetaData.title}</h1>
+    <p>{mdxMetaData.date}</p>
+    <MDXRemote source={mdxContent} />
+  </article>
+);
+```
+
+그러면 다음과 같이 Markdown 문서 형태로 렌더링됩니다.
+
+![after-typography-posting](/images/after-typography-post.png)
+
+## 글을 마치며
+
+글을 작성하는 데 꽤 많은 시간이 들었던 것 같습니다.
+단순히 제가 블로그 포스팅 기능을 어떻게 구현했는지 뿐만 아니라,
+이 글을 읽는 여러분께서도 직접 블로그를 만들어보고 싶다는 생각이 들수 있도록
+제 나름대로 최대한 쉽게 풀어내고자 노력했습니다.
+
+비록 서툴렀을지 모르지만, 이 글을 통해 여러분만의 블로그를
+직접 구현해보는 경험도 꼭 한 번 해보셨으면 좋겠습니다.
+
+긴 글 읽어주셔서 감사합니다.
