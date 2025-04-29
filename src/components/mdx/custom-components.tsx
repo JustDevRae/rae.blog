@@ -16,12 +16,26 @@ const components = {
     </a>
   ),
 
-  h2: ({ children }: { children: React.ReactNode }) => (
-    <h2 className="text-3xl font-bold [&_a]:text-inherit">{children}</h2>
+  h2: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+  } & React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h2 {...props} className="text-3xl font-bold [&_a]:text-inherit">
+      {children}
+    </h2>
   ),
 
-  h3: ({ children }: { children: React.ReactNode }) => (
-    <h3 className="text-xl font-semibold [&_a]:text-inherit">{children}</h3>
+  h3: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+  } & React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h3 {...props} className="text-xl font-semibold [&_a]:text-inherit">
+      {children}
+    </h3>
   ),
 
   p: ({ children }: { children: React.ReactNode }) => <p>{children}</p>,
