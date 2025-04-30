@@ -47,10 +47,8 @@ export default async function PostDetailPage({
 
   return (
     <article className="relative mt-[50px] px-4">
-      <section className="flex flex-col items-center border-b pb-16">
-        <h1 className="text-2xl font-bold tracking-tight">
-          {mdxMetaData.title}
-        </h1>
+      <section className="flex flex-col items-center gap-5 border-b pb-16">
+        <h1 className="text-2xl font-bold">{mdxMetaData.title}</h1>
         <p className="mt-1 text-sm text-gray-500">{mdxMetaData.date}</p>
       </section>
       <TableOfContent toc={toc} />
