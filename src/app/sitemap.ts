@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllPostMeta } from "@/lib/parseMdx";
+import { getAllPostMeta } from "@/lib/mdx";
 import { baseURL } from "@/constants/path";
 
 export default function sitemap(): MetadataRoute.Sitemap {

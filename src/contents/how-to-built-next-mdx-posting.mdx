@@ -201,7 +201,7 @@ export const getAllPostData = () => {
 slug에 해당하는 동적 페이지를 접속할 수 있게 해줍니다.
 
 ```tsx
-import { getAllPostData } from "@/lib/parseMdx";
+import { getAllPostData } from "@/lib/mdx";
 import Link from "next/link";
 
 export default function PostPage() {
@@ -240,12 +240,12 @@ export default function PostPage() {
 페이지를 요청할때마다 서버에서 MDX 파일을 읽어들일 필요없이 빠르게 페이지를 요청할 수 있습니다.
 
 ```tsx
-import { getPostDetailData } from "@/lib/parseMdx";
+import { getPostDetailData } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
 export async function generateStaticParams() {
   const { getAllPostData: getAllMdxMetadataAndSlug } = await import(
-    "@/lib/parseMdx"
+    "@/lib/mdx"
   );
   const mdxMetadataAndSlugs = getAllMdxMetadataAndSlug();
 
