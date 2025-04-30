@@ -2,7 +2,7 @@ import { getPostDetailData, parseToc } from "@/lib/parseMdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Comments from "@/components/giscus-comments";
 import TableOfContent from "@/components/SideTableOfContents";
-import TopTableOfContent from "@/components/TopTableOfContents";
+import TopTableOfContent from "@/components/top-table-of-content";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
@@ -54,9 +54,7 @@ export default async function PostDetailPage({
         </h1>
         <p className="mt-1 text-sm text-gray-500">{mdxMetaData.date}</p>
       </section>
-      <aside className="block desktop:hidden">
-        <TopTableOfContent toc={toc} />
-      </aside>
+      <TopTableOfContent toc={toc} />
       <aside className="not-prose absolute left-full top-0 hidden h-full desktop:block">
         <TableOfContent
           className={cn(

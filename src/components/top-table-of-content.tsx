@@ -2,7 +2,7 @@ import { TOCSection } from "@/types/type";
 
 export default function TopTableOfContent({ toc }: { toc: TOCSection[] }) {
   return (
-    <div>
+    <aside className="block desktop:hidden">
       <h4 className="text-lg font-semibold">On This Page</h4>
       <ul>
         {toc.map((section) => (
@@ -16,6 +16,6 @@ export default function TopTableOfContent({ toc }: { toc: TOCSection[] }) {
           </li>
         ))}
       </ul>
-    </div>
+    </aside>
   );
 }
