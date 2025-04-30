@@ -1,12 +1,10 @@
 import { getPostDetailData, parseToc } from "@/lib/parseMdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Comments from "@/components/giscus-comments";
-import TableOfContent from "@/components/side-table-of-content";
-import TopTableOfContent from "@/components/top-table-of-content";
+import TableOfContent from "@/components/top-table-of-content";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
-import { cn } from "@/lib/utils";
 
 export async function generateMetadata({
   params,
@@ -54,7 +52,6 @@ export default async function PostDetailPage({
         </h1>
         <p className="mt-1 text-sm text-gray-500">{mdxMetaData.date}</p>
       </section>
-      <TopTableOfContent toc={toc} />
       <TableOfContent toc={toc} />
 
       <section className="border-b pb-4">
