@@ -55,7 +55,9 @@ export default async function PostDetailPage({
       </section>
       <TableOfContent toc={toc} />
 
-      <section className={cn("prose dark:prose-invert", "border-b pb-4")}>
+      <section
+        className={cn("prose dark:prose-invert", "my-10 border-b pb-10")}
+      >
         <MDXRemote
           source={mdxContent}
           options={{
