@@ -16,6 +16,14 @@ export default {
       desktop: { min: "1001px" },
     },
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            "code::before": { content: "none" },
+            "code::after": { content: "none" },
+          },
+        },
+      },
       fontFamily: {
         inter: "var(--font-inter)",
         noto: "var(--font-noto-sans-kr)",
