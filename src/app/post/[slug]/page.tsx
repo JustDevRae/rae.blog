@@ -6,7 +6,6 @@ import TopTableOfContent from "@/components/TopTableOfContents";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
-import components from "@/components/mdx/custom-components";
 import { cn } from "@/lib/utils";
 
 export async function generateMetadata({
@@ -71,7 +70,6 @@ export default async function PostDetailPage({
       <section className="border-b pb-4">
         <MDXRemote
           source={mdxContent}
-          components={components}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm],
