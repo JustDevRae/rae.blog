@@ -10,7 +10,13 @@ export default function PostPage() {
   const uniqueTagArray = getAllUniqueTags();
 
   return (
-    <Suspense fallback={<div>게시글 페이지 로딩 중...</div>}>
+    <Suspense
+      fallback={
+        <div className="flex flex-col items-center">
+          게시글 페이지 로딩 중...
+        </div>
+      }
+    >
       <SearchBar />
       <TagList tagArray={uniqueTagArray} />
       <PostListContainer posts={posts} />
