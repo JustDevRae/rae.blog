@@ -5,6 +5,7 @@ import TableOfContent from "@/components/top-table-of-content";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
+import { cn } from "@/lib/utils";
 
 export async function generateMetadata({
   params,
@@ -45,7 +46,7 @@ export default async function PostDetailPage({
   const toc = parseToc(mdxContent);
 
   return (
-    <article className="prose relative mt-[50px] px-4 dark:prose-invert">
+    <article className="relative mt-[50px] px-4">
       <section className="flex flex-col items-center border-b pb-16">
         <h1 className="text-2xl font-bold tracking-tight">
           {mdxMetaData.title}
@@ -54,7 +55,7 @@ export default async function PostDetailPage({
       </section>
       <TableOfContent toc={toc} />
 
-      <section className="border-b pb-4">
+      <section className={cn("prose dark:prose-invert", "border-b pb-4")}>
         <MDXRemote
           source={mdxContent}
           options={{
