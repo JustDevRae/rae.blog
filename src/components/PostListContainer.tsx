@@ -6,7 +6,7 @@ import CustomPagination from "./custom-pagination";
 
 interface Post {
   slug: string;
-  mdxMetaData: {
+  postMetaData: {
     title: string;
     description: string;
     tags: string[];
@@ -29,10 +29,12 @@ export default function PostListContainer({ posts }: PostListProps) {
 
   const filteredPosts = posts.filter((post) => {
     const matchesTag = selectedTags.length
-      ? selectedTags.every((tag) => post.mdxMetaData.tags.includes(tag))
+      ? selectedTags.every((tag) => post.postMetaData.tags.includes(tag))
       : true;
     const matchesKeyword = searchQuery
-      ? post.mdxMetaData.title.toLowerCase().includes(searchQuery.toLowerCase())
+      ? post.postMetaData.title
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase())
       : true;
 
     return matchesTag && matchesKeyword;

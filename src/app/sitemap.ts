@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
-import { getAllPostData } from "@/lib/parseMdx";
+import { getAllPostMeta } from "@/lib/parseMdx";
 import { baseURL } from "@/constants/path";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getAllPostData().map((post) => ({
+  const posts = getAllPostMeta().map((post) => ({
     url: `${baseURL}/post/${post.slug}`,
-    lastModified: new Date(post.mdxMetaData.date),
+    lastModified: new Date(post.postMetaData.date),
   }));
 
   const routes: MetadataRoute.Sitemap = ["/", "/about", "/post"].map(

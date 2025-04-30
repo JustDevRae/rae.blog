@@ -1,4 +1,4 @@
-import { getAllPostData, getAllUniqueTags } from "@/lib/parseMdx";
+import { getAllPostMeta, getAllUniqueTags } from "@/lib/mdx";
 import SearchBar from "@/components/SearchBar";
 import PostListContainer from "@/components/PostListContainer";
 
@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import TagList from "@/components/TagList";
 
 export default function PostPage() {
-  const posts = getAllPostData();
+  const posts = getAllPostMeta();
   const uniqueTagArray = getAllUniqueTags();
 
   return (

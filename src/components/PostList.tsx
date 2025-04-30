@@ -3,7 +3,7 @@ import { AlertCircle } from "lucide-react";
 
 interface Post {
   slug: string;
-  mdxMetaData: {
+  postMetaData: {
     title: string;
     description: string;
     tags: string[];
@@ -24,10 +24,10 @@ export default function PostList({ posts }: PostListProps) {
             <li key={post.slug}>
               <PostCard
                 slug={post.slug}
-                title={post.mdxMetaData.title}
-                description={post.mdxMetaData.description}
-                tags={post.mdxMetaData.tags}
-                date={post.mdxMetaData.date}
+                title={post.postMetaData.title}
+                description={post.postMetaData.description}
+                tags={post.postMetaData.tags}
+                date={post.postMetaData.date}
               />
             </li>
           ))
