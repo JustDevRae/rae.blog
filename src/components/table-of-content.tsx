@@ -10,9 +10,9 @@ export default function TableOfContent({ toc }: { toc: TOCSection[] }) {
   return (
     <>
       {/* top-table-of-content */}
-      <aside className="mb-6 block desktop:hidden">
-        <h4 className="text-lg font-semibold">On This Page</h4>
-        <ul>
+      <aside className="my-10 block border-b-2 desktop:hidden">
+        <h4 className="text-2xl font-semibold">On This Page</h4>
+        <ul className="ml-10 list-disc space-y-3 py-10">
           {toc.map((section) => (
             <li key={section.text}>
               <a
