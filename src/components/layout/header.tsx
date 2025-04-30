@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useShowAndHideHeader } from "@/hooks/useShowAndHideHeader";
-import Logo from "@/components/Logo";
-import ProgressBar from "@/components/ProgressBar";
+import Logo from "@/components/logo";
+import ProgressBar from "@/components/progress-bar";
 import ThemeDropdown from "@/components/theme-button";
 import HeaderWrapper from "@/components/layout/header-wrapper";
 

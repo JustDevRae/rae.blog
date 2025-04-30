@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import PostList from "@/components/PostList";
+import PostList from "@/components/post-list";
 import CustomPagination from "./custom-pagination";
 
 interface Post {
