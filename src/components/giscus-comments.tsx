@@ -51,5 +51,5 @@ export default function GiscusComments() {
     );
   }, [theme]);
 
-  return <section ref={giscusRef} className="pt-12" />;
+  return <section ref={giscusRef} />;
 }
