@@ -89,3 +89,21 @@ body {
     scroll-margin-top: 50px;
   }
 }
+
+/* pre & code theme */
+@layer base {
+  :root {
+    --code-bg: #ebebeb;
+    --code-text: #4d4d4d;
+    --pre-bg: #000;
+
+    --pre-text: #f8fafc;
+  }
+
+  .dark {
+    --code-bg: #1e293b;
+    --code-text: #d9d9d9;
+    --pre-bg: #1e293b;
+    --pre-text: #f8fafc;
+  }
+}
