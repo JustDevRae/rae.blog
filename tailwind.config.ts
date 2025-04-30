@@ -19,6 +19,11 @@ export default {
       typography: {
         DEFAULT: {
           css: {
+            "h2 > a, h3 > a": {
+              textDecoration: "none",
+              color: "inherit",
+              fontWeight: "inherit",
+            },
             "code::before": { content: "none" },
             "code::after": { content: "none" },
           },
