@@ -1,4 +1,4 @@
-import { getAllPostMeta, getAllUniqueTags } from "@/lib/mdx";
+import { getAllPostMeta, extractUniqueTagsFromMDX } from "@/lib/mdx";
 import SearchBar from "@/components/search-bar";
 import PostListContainer from "@/components/post-list-container";
 
@@ -7,7 +7,7 @@ import TagList from "@/components/tag-list";
 
 export default function PostPage() {
   const posts = getAllPostMeta();
-  const uniqueTagArray = getAllUniqueTags();
+  const uniqueTagArray = extractUniqueTagsFromMDX();
 
   return (
     <Suspense

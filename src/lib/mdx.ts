@@ -46,23 +46,23 @@ export const getAllPostMeta = () => {
   return sortedPostMeta;
 };
 
-export const getAllUniqueTags = () => {
-  const mdxFiles = fs
+export const extractUniqueTagsFromMDX = () => {
+  const uniqueTags = new Set<string>();
+
+  const allMDXFiles = fs
     .readdirSync(MDX_DIRECTORY)
     .filter((file) => file.endsWith(".mdx"));
 
-  const allTags = new Set<string>();
-
-  mdxFiles.forEach((file) => {
+  allMDXFiles.forEach((file) => {
     const slug = file.replace(/\.mdx$/, "");
     const { postMetaData } = parsePostDataBySlug(slug);
 
     if (postMetaData.tags && Array.isArray(postMetaData.tags)) {
       postMetaData.tags.forEach((tag: string) => {
-        allTags.add(tag.trim());
+        uniqueTags.add(tag.trim());
       });
     }
   });
 
-  return Array.from(allTags);
+  return Array.from(uniqueTags);
 };
