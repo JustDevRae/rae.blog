@@ -1,15 +1,15 @@
 import TagButton from "@/components/tag-button";
 
-interface TagListProps {
-  tagArray: string[];
+interface UniqueTagListProps {
+  uniqueTagArray: string[];
 }
 
-export default function TagList({ tagArray }: TagListProps) {
+export default function TagList({ uniqueTagArray }: UniqueTagListProps) {
   return (
     <ul className="flex flex-wrap gap-3">
-      {tagArray.map((tag) => (
-        <li key={tag}>
-          <TagButton tag={tag} />
+      {uniqueTagArray.map((uniqueTag) => (
+        <li key={uniqueTag}>
+          <TagButton uniqueTag={uniqueTag} />
         </li>
       ))}
     </ul>

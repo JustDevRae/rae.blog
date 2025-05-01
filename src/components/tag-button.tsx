@@ -4,21 +4,21 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 interface TagButtonProps {
-  tag: string;
+  uniqueTag: string;
 }
 
-export default function TagButton({ tag }: TagButtonProps) {
+export default function TagButton({ uniqueTag }: TagButtonProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
   const currentTags = searchParams.get("tag")?.split(",") || [];
-  const isSelected = currentTags.includes(tag);
+  const isSelected = currentTags.includes(uniqueTag);
 
   const handleTagClick = () => {
     const params = new URLSearchParams(searchParams.toString());
-    const updatedTags = currentTags.includes(tag)
-      ? currentTags.filter((t) => t !== tag)
-      : [...currentTags, tag];
+    const updatedTags = currentTags.includes(uniqueTag)
+      ? currentTags.filter((t) => t !== uniqueTag)
+      : [...currentTags, uniqueTag];
 
     if (updatedTags.length) {
       params.set("tag", updatedTags.join(","));
@@ -40,7 +40,7 @@ export default function TagButton({ tag }: TagButtonProps) {
         "": !isSelected,
       })}
     >
-      {tag}
+      {uniqueTag}
     </button>
   );
 }

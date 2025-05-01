@@ -1,12 +1,11 @@
 import { getAllPostMeta, extractUniqueTagsFromMDX } from "@/lib/mdx";
 import SearchBar from "@/components/search-bar";
-import PostListContainer from "@/components/post-list-container";
-
-import { Suspense } from "react";
 import TagList from "@/components/tag-list";
+import PostListContainer from "@/components/post-list-container";
+import { Suspense } from "react";
 
 export default function PostPage() {
-  const posts = getAllPostMeta();
+  const postArray = getAllPostMeta();
   const uniqueTagArray = extractUniqueTagsFromMDX();
 
   return (
@@ -18,8 +17,8 @@ export default function PostPage() {
       }
     >
       <SearchBar />
-      <TagList tagArray={uniqueTagArray} />
-      <PostListContainer posts={posts} />
+      <TagList uniqueTagArray={uniqueTagArray} />
+      <PostListContainer postArray={postArray} />
     </Suspense>
   );
 }

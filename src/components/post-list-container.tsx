@@ -14,11 +14,11 @@ interface Post {
   };
 }
 
-interface PostListProps {
-  posts: Post[];
+interface PostArrayProps {
+  postArray: Post[];
 }
 
-export default function PostListContainer({ posts }: PostListProps) {
+export default function PostListContainer({ postArray }: PostArrayProps) {
   const searchParams = useSearchParams();
 
   const selectedTags = searchParams.get("tag")?.split(",") || [];
@@ -27,7 +27,7 @@ export default function PostListContainer({ posts }: PostListProps) {
   const currentPage = Number(searchParams.get("page")) || 1;
   const postsPerPage = 3;
 
-  const filteredPosts = posts.filter((post) => {
+  const filteredPostArray = postArray.filter((post) => {
     const matchesTag = selectedTags.length
       ? selectedTags.every((tag) => post.postMetaData.tags.includes(tag))
       : true;
@@ -40,10 +40,10 @@ export default function PostListContainer({ posts }: PostListProps) {
     return matchesTag && matchesKeyword;
   });
 
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  const totalPages = Math.ceil(filteredPostArray.length / postsPerPage);
   const startIndex = (currentPage - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
-  const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
+  const paginatedPosts = filteredPostArray.slice(startIndex, endIndex);
 
   return (
     <div>
