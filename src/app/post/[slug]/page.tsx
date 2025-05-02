@@ -7,13 +7,12 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
 import { cn } from "@/lib/utils";
-import { Metadata } from "next";
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Promise<Metadata> {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const { postMetaData } = parsePostDataBySlug(slug);
 
