@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
   const { slug } = await params;
   const { postMetaData } = parsePostDataBySlug(slug);
