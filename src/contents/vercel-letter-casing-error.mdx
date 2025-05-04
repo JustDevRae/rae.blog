@@ -1,0 +1,101 @@
+---
+title: "Vercel 'Module not found' 빌드 에러 해결"
+description: "Vercel 배포 중 발생한 'Module not found' 에러 해결 과정에 대해 정리합니다"
+date: "2025-05-04"
+tags: ["vercel", "git", "troubleshooting"]
+---
+
+## 개요
+
+블로그 프로젝트를 구현하던 중, 카멜케이스보다 케밥 케이스가 파일을 읽기에 더 좋다고 생각했습니다.
+그래서 카멜 케이스로 되어 있는 파일명들을 케밥 케이스로 수정을 해줬습니다.
+
+이후, 커밋하여 vercel에 배포를 하였는데, vercel에서 빌드 에러가 발생했습니다.
+vercel의 build log를 확인해보니 다음과 같이 에러에 대해 출력했습니다.
+
+```
+Failed to compile.
+./src/app/layout.tsx Module not found:
+Can't resolve '@/components/layout/footer'
+https://nextjs.org/docs/messages/module-not-found
+> Build failed because of webpack errors ELIFECYCLE Command failed with exit code 1.
+Error: Command "pnpm run build" exited with 1
+```
+
+## 원인
+
+구글링해보니 vercel의 [How do I resolve a 'module not found' error?](https://vercel.com/guides/how-do-i-resolve-a-module-not-found-error)에서 원인을 다음과 같이 설명합니다.
+
+> The 'module not found' error is a syntax error that appears when the static
+> [**import**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+> statement cannot find the file at the declared path.
+> This common syntax error is caused by letter-casing inconsistencies that are present in your filename(s) between your repository and local machine, or both.
+>
+> #### Why this Happens
+>
+> One possible cause for this issue is the fact that some filesystems are case-insensitive,
+> however Vercel deployments use a case-sensitive filesystem.
+> Because of this, it is possible that when you change the letter-casing in filenames on your local machine,
+> Git will only pick up changes in your respective static
+> [**import**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) statements.
+> This would mean that your repository is now syntactically incorrect, resulting in a build error when deploying the repository on the Vercel platform.
+
+위 내용을 정리하자면, 저희가 사용하는 개발 환경의 파일 시스템은 대소문자를 구분하지 않는다고 합니다.
+
+더 정확한 이해를 위해 위키피디아의
+[Case preservation](https://en.wikipedia.org/wiki/Case_preservation)의 본문을 발췌하자면,
+저희가 주로 사용하는 컴퓨터나 노트북들의 운영체제인 macOS와 Windows에서 사용되는
+대부분의 파일 시스템은 대소문자를 구분하지 않고 유지한다고 합니다.
+
+그렇기에 로컬에서 파일 이름의 대소문자만 변경했을 경우, Git은 해당 파일의 실제 이름 변경은 인식하지 못한 채, 해당 파일을 참조하는 import 문만 변경된 것으로 판단한다고 합니다.
+
+하지만 Vercel은 대소문자를 구분하는 파일 시스템을 사용하기 때문에 Vercel에서 배포 시 빌드 에러가 발생하게 된다고 합니다.
+
+## 해결 방법
+
+글에서는 해결 방법에 대해 다음과 같이 설명합니다.
+
+> #### How to Resolve
+>
+> The [build logs](https://vercel.com/knowledge/where-are-vercel-logs) will indirectly point to the file that is the causing the issue.
+> Make sure that your file's letter-casing correctly matches with its respective static
+> [**imports**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
+> Also make sure that your letter-casing in your filenames and imports are identical between your repository and local machine.
+> If you are using `git`, make sure `git config core.ignorecase false` is set in your environment.
+
+git을 사용한다면 config에서 `git config core.ignorecase false` 로 설정되어 있는지 확인하라고 합니다. 왜 이걸 확인해야 할까요?
+
+git 공식문서의 [git-config core.ignoreCase](https://git-scm.com/docs/git-config/2.14.6#Documentation/git-config.txt-coreignoreCase)에 해당하는 내용에서 이렇게 설명합니다.
+
+> git의 `core.ignoreCase`의 기본 설정은 false입니다.
+> 다만, `git clone`이나 `git init`을 사용할 때 저장소를 생성하면서 시스템 환경에 맞게 자동으로 `core.ignoreCase`를 `true`로 설정할 수 있습니다.
+
+즉, 저희가 프로젝트를 위해 처음 Git 저장소를 최초 생성할 때,
+git이 우리의 로컬 환경이 Windows나 macOS인 경우 시스템 환경에 맞춰 `core.ignoreCase`를 자동으로 true로 변경한다는 것입니다.
+
+### 주의할 점
+
+`git config core.ignorecase false` 명령어를 통해 git의 `core.ignoreCase` 옵션을 tue에서 false로 변경하더라도,
+기존 Git 인덱스(cache)에는 이전 상태가 그대로 남아 있습니다.
+
+그래서 git push를 할 경우, Git 원격 저장소에는 소문자로 변경한 파일 뿐만 아니라, 기존의 대문자였던 파일명도 그대로 남아있게 됩니다.
+
+그렇기에 `git rm -r --cached .` 명령어를 통해 원격 저장소의 캐시를 지워줘야 합니다.
+
+최종적으로 다음과 같이 명령어들을 입력해주시면 vercel에 정상적으로 배포가 됩니다.
+
+```bash
+git config core.ignorecase false
+git rm -r --cached .
+git add .
+git commit
+git push
+```
+
+## 마무리
+
+해당 문제를 해결하면서 단순히 vecel 뿐만 아니라,
+개발하면서 사용하고 있는 git과 나의 개발환경이 어떤 식으로
+파일을 처리하는지에 대해서 더 깊게 배울 수 있었던 것 같습니다.
+
+긴글 읽어주셔서 감사합니다.
