@@ -107,3 +107,33 @@ body {
     --pre-text: #f8fafc;
   }
 }
+
+/* snake-game-animation */
+@layer utilities {
+  @keyframes moveAround {
+    0% {
+      top: 10px;
+      left: 10px;
+    }
+    25% {
+      top: 10px;
+      left: calc(100% - 20px);
+    }
+    50% {
+      top: calc(100% - 20px);
+      left: calc(100% - 20px);
+    }
+    75% {
+      top: calc(100% - 20px);
+      left: 10px;
+    }
+    100% {
+      top: 10px;
+      left: 10px;
+    }
+  }
+
+  .animate-snake {
+    animation: moveAround 4s linear infinite;
+  }
+}
