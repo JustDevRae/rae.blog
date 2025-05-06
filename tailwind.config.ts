@@ -121,10 +121,15 @@ export default {
             transform: "rotate(540deg) translateX(55px) rotate(-540deg)",
           },
         },
+        fadeInOut: {
+          "0%, 130%": { opacity: "0" },
+          "50%": { opacity: "1" },
+        },
       },
       animation: {
         orbit: "orbit 5s linear infinite",
         orbitReverse: "orbitReverse 5s linear infinite",
+        stripe: "fadeInOut 2s linear infinite",
       },
     },
   },

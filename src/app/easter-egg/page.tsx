@@ -1,4 +1,5 @@
 import GameCard from "@/components/game-card";
+import Netflix from "@/components/thumbnail/netflix";
 import { cn } from "@/lib/utils";
 
 export default function EasterEgg() {
@@ -28,6 +29,11 @@ export default function EasterEgg() {
             ))}
           </div>
         </GameCard>
+      </section>
+
+      <section className="my-20 flex flex-grow flex-col items-center gap-10">
+        <h1 className="text-2xl font-bold">Do you want to watch an OTT?</h1>
+        <Netflix />
       </section>
     </div>
   );
