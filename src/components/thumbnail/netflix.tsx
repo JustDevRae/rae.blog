@@ -45,7 +45,7 @@ export default function NetflixBox() {
         {stripes.map((stripe) => (
           <div
             key={stripe.id}
-            className="animate-stripe absolute top-0 z-0 h-full opacity-0 mix-blend-color-dodge"
+            className="absolute top-0 z-0 h-full animate-stripe opacity-0 mix-blend-color-dodge"
             style={{
               left: `${stripe.left}px`,
               width: `${stripe.width}px`,
