@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export const components = {
-  Image: ({ src, alt }: React.ComponentProps<typeof Image>) => {
+  MDXImage: ({ src, alt }: React.ComponentProps<typeof Image>) => {
     return (
       <Image src={src} alt={alt} width={1000} height={600} className="m-0" />
     );
