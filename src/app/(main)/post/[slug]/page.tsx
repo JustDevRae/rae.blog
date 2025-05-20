@@ -8,6 +8,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
+import { components } from "@/components/mdx-custom-components";
 
 export async function generateMetadata({
   params,
@@ -58,6 +59,7 @@ export default async function PostDetailPage({
       >
         <MDXRemote
           source={postContent}
+          components={components}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm],
