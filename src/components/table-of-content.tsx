@@ -9,7 +9,7 @@ export default function TableOfContent({ toc }: { toc: TOCSection[] }) {
       {/* top-table-of-content */}
       <aside className="my-10 block border-b-2 desktop:hidden">
         <h4 className="text-2xl font-semibold">On This Page</h4>
-        <ul className="ml-10 list-disc space-y-3 py-10">
+        <ul className="ml-10 space-y-3 py-10">
           {toc.map((section) => (
             <li key={section.text}>
               <a
@@ -19,7 +19,7 @@ export default function TableOfContent({ toc }: { toc: TOCSection[] }) {
                 {section.text}
               </a>
               {section.subSections.length > 0 && (
-                <ul className="ml-6 list-disc space-y-2">
+                <ul className="ml-6 mt-3 space-y-2">
                   {section.subSections.map((sub) => (
                     <li key={sub.text}>
                       <a
@@ -49,7 +49,9 @@ export default function TableOfContent({ toc }: { toc: TOCSection[] }) {
           <ul className="pl-4">
             {toc.map((section) => (
               <li key={section.text} className="mb-1">
-                <a href={`#${section.slug}`}>{section.text}</a>
+                <a className="text-zinc-400" href={`#${section.slug}`}>
+                  {section.text}
+                </a>
                 {section.subSections.length > 0 && (
                   <ul className="ml-4 mt-1 space-y-1">
                     {section.subSections.map((sub) => (
