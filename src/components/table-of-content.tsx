@@ -1,12 +1,9 @@
 "use client";
 
-import { TOCSection } from "@/types/type";
+import { TOCSection } from "@/lib/toc";
 import { cn } from "@/lib/utils";
-import { useTocScroll } from "@/hooks/useToScroll";
 
 export default function TableOfContent({ toc }: { toc: TOCSection[] }) {
-  const { currentSectionSlug } = useTocScroll(toc);
-
   return (
     <>
       {/* top-table-of-content */}
@@ -21,6 +18,20 @@ export default function TableOfContent({ toc }: { toc: TOCSection[] }) {
               >
                 {section.text}
               </a>
+              {section.subSections.length > 0 && (
+                <ul className="ml-6 list-disc space-y-2">
+                  {section.subSections.map((sub) => (
+                    <li key={sub.text}>
+                      <a
+                        className="text-sm text-zinc-400 no-underline"
+                        href={`#${sub.slug}`}
+                      >
+                        {sub.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
@@ -37,17 +48,19 @@ export default function TableOfContent({ toc }: { toc: TOCSection[] }) {
           <h4 className="text-lg font-semibold">On This Page</h4>
           <ul className="pl-4">
             {toc.map((section) => (
-              <li key={section.text} className="mb-1 flex">
-                <a
-                  className={cn(
-                    "text-base font-medium text-zinc-400 no-underline",
-                    currentSectionSlug === section.slug &&
-                      "text-black dark:text-white",
-                  )}
-                  href={`#${section.slug}`}
-                >
-                  {section.text}
-                </a>
+              <li key={section.text} className="mb-1">
+                <a href={`#${section.slug}`}>{section.text}</a>
+                {section.subSections.length > 0 && (
+                  <ul className="ml-4 mt-1 space-y-1">
+                    {section.subSections.map((sub) => (
+                      <li key={sub.text}>
+                        <a className="text-zinc-400" href={`#${sub.slug}`}>
+                          {sub.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
