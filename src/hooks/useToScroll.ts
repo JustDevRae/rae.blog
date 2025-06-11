@@ -11,12 +11,12 @@ export const useTocScroll = (tableOfContents: TOCSection[]) => {
     let headings: { id: string; top: number }[];
 
     const onResize = () => {
-      headings = Array.from(document.querySelectorAll<HTMLElement>("h2")).map(
-        (element) => ({
-          id: element.id,
-          top: element.offsetTop,
-        }),
-      );
+      headings = Array.from(
+        document.querySelectorAll<HTMLElement>("h2, h3"),
+      ).map((element) => ({
+        id: element.id,
+        top: element.offsetTop,
+      }));
     };
 
     const onScroll = throttle(() => {
