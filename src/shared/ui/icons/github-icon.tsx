@@ -1,4 +1,4 @@
-export default function Github() {
+export default function GithubIcon() {
   return (
     <a
       href="https://github.com/JustDevRae"

@@ -1,5 +1,5 @@
-import Github from "@/components/icons/github";
-import Gmail from "@/components/icons/gmai";
+import Github from "@/shared/ui/icons/github-icon";
+import Gmail from "@/shared/ui/icons/gmail-icon";
 
 export default function Footer() {
   return (
