@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useShowAndHideHeader } from "@/hooks/useShowAndHideHeader";
-import Logo from "@/components/logo";
 import ProgressBar from "@/components/progress-bar";
 import ThemeDropdown from "@/features/toggle-theme/ui/theme-button";
 import HeaderWrapper from "@/components/layout/header-wrapper";
+import { EasterEggTrigger } from "@/features/trigger-easter-egg";
+import { Logo } from "@/entities/brand";
 
 export default function Header() {
   const pathname = usePathname();
@@ -17,7 +18,9 @@ export default function Header() {
 
   return (
     <HeaderWrapper isVisible={showHeader}>
-      <Logo />
+      <EasterEggTrigger>
+        <Logo />
+      </EasterEggTrigger>
 
       <nav className="flex items-center gap-4">
         <Link href="/about">About</Link>
