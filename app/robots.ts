@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { baseURL } from "@/shared/config/path";
+import { BASE_URL } from "@/shared/config/path";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${baseURL}/sitemap.xml`,
+    sitemap: `${BASE_URL}/sitemap.xml`,
   };
 }

@@ -1,16 +1,16 @@
 import type { MetadataRoute } from "next";
 import { getAllPostMeta } from "@/lib/mdx";
-import { baseURL } from "@/shared/config/path";
+import { BASE_URL } from "@/shared/config/path";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPostMeta().map((post) => ({
-    url: `${baseURL}/post/${post.slug}`,
+    url: `${BASE_URL}/post/${post.slug}`,
     lastModified: new Date(post.postMetaData.date),
   }));
 
   const routes: MetadataRoute.Sitemap = ["/", "/about", "/post"].map(
     (route) => ({
-      url: `${baseURL}${route}`,
+      url: `${BASE_URL}${route}`,
       lastModified: new Date().toISOString(),
     }),
   );
