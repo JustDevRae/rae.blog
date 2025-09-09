@@ -1,4 +1,4 @@
-import { parsePostDataBySlug } from "@/lib/mdx";
+import { parsePostDataBySlug } from "@/entities/post/api/mdx";
 import { parseToc } from "@/lib/toc";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Comments from "@/components/giscus-comments";
@@ -29,7 +29,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const { extractSlugsFromMDXFiles } = await import("@/lib/mdx");
+  const { extractSlugsFromMDXFiles } = await import("@/entities/post/api/mdx");
   const mdxMetadataAndSlugs = extractSlugsFromMDXFiles();
 
   return mdxMetadataAndSlugs.map((slug) => ({

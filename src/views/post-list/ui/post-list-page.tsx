@@ -1,4 +1,7 @@
-import { getAllPostMeta, extractUniqueTagsFromMDX } from "@/lib/mdx";
+import {
+  getAllPostMeta,
+  extractUniqueTagsFromMDX,
+} from "@/entities/post/api/mdx";
 import SearchBar from "@/components/search-bar";
 import TagList from "@/components/tag-list";
 import PostListContainer from "@/components/post-list-container";
