@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPostMeta } from "@/lib/mdx";
-import { baseURL } from "@/constants/path";
+import { baseURL } from "@/shared/config/path";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPostMeta().map((post) => ({
