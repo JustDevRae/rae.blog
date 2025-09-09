@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils/utils";
 import { ReactNode } from "react";
 
 type HeaderWrapperProps = {

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useMounted } from "@/shared/lib/hooks/useMounted";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils/utils";
 
 export default function ProgressBar() {
   const mounted = useMounted();

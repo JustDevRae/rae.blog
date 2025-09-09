@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils/utils";
 import { ReactNode } from "react";
 
 interface GameCardProps {

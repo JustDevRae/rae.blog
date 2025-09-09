@@ -1,6 +1,6 @@
 import GameCard from "@/components/game-card";
 import Netflix from "@/components/thumbnail/netflix";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils/utils";
 
 export default function EasterEgg() {
   return (

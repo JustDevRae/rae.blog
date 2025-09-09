@@ -6,7 +6,7 @@ import TableOfContent from "@/components/table-of-content";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils/utils";
 import { Metadata } from "next";
 import { components } from "@/components/mdx-custom-components";
 
