@@ -11,7 +11,7 @@ interface Stripe {
   color: string;
 }
 
-export default function NetflixBox() {
+export function NetflixBox() {
   const [stripes, setStripes] = useState<Stripe[]>([]);
   const counter = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Card, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardTitle } from "@/shared/ui/card";
+import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/lib/utils/utils";
 import { ReactNode } from "react";
 
@@ -10,7 +10,7 @@ interface GameCardProps {
   children?: ReactNode;
 }
 
-export default function GameCard({ href, title, children }: GameCardProps) {
+export function GameCard({ href, title, children }: GameCardProps) {
   return (
     <Link href={href}>
       <Card className={cn("group relative", "h-[300px] w-[300px]")}>
