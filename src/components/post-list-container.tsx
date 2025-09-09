@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import PostList from "@/components/post-list";
-import CustomPagination from "./custom-pagination";
+import { PostListPagination } from "@/features/paginate-posts";
 
 interface Post {
   slug: string;
@@ -48,7 +48,7 @@ export default function PostListContainer({ postArray }: PostArrayProps) {
   return (
     <div>
       <PostList posts={paginatedPosts} />
-      {totalPages > 0 && <CustomPagination totalPages={totalPages} />}
+      {totalPages > 0 && <PostListPagination totalPages={totalPages} />}
     </div>
   );
 }

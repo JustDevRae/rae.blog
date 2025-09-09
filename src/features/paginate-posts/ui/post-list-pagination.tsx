@@ -8,13 +8,9 @@ import {
   PaginationPrevious,
   PaginationNext,
   PaginationLink,
-} from "@/components/ui/pagination";
+} from "@/shared/ui/pagination";
 
-export default function CustomPagination({
-  totalPages,
-}: {
-  totalPages: number;
-}) {
+export function PostListPagination({ totalPages }: { totalPages: number }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
@@ -38,6 +34,7 @@ export default function CustomPagination({
               changePage(currentPage - 1);
             }}
             className={currentPage <= 1 ? "pointer-events-none opacity-50" : ""}
+            size={undefined}
           />
         </PaginationItem>
 
@@ -50,6 +47,7 @@ export default function CustomPagination({
                 e.preventDefault();
                 changePage(page);
               }}
+              size={undefined}
             >
               {page}
             </PaginationLink>
@@ -66,6 +64,7 @@ export default function CustomPagination({
             className={
               currentPage >= totalPages ? "pointer-events-none opacity-50" : ""
             }
+            size={undefined}
           />
         </PaginationItem>
       </PaginationContent>
