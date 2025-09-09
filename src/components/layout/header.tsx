@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useShowAndHideHeader } from "@/hooks/useShowAndHideHeader";
 import Logo from "@/components/logo";
 import ProgressBar from "@/components/progress-bar";
-import ThemeDropdown from "@/components/theme-button";
+import ThemeDropdown from "@/features/toggle-theme/ui/theme-button";
 import HeaderWrapper from "@/components/layout/header-wrapper";
 
 export default function Header() {
