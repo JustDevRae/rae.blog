@@ -4,7 +4,7 @@ import {
 } from "@/entities/post/api/mdx";
 import { SearchBar } from "@/features/search-posts-by-keword";
 import { TagList } from "@/widgets/tag-list";
-import PostListContainer from "@/components/post-list-container";
+import PostListContainer from "@/widgets/post-list-container/ui/post-list-container";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 

@@ -18,7 +18,7 @@ interface PostArrayProps {
   postArray: Post[];
 }
 
-export default function PostListContainer({ postArray }: PostArrayProps) {
+export function PostListContainer({ postArray }: PostArrayProps) {
   const searchParams = useSearchParams();
 
   const selectedTags = searchParams.get("tag")?.split(",") || [];
