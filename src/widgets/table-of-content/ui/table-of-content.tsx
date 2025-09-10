@@ -1,8 +1,8 @@
 "use client";
 
-import { useTocScroll } from "@/hooks/useToScroll";
 import { TOCSection } from "@/lib/toc";
 import { cn } from "@/shared/lib/utils/utils";
+import { useTocScroll } from "../lib/useToScroll";
 
 export function TableOfContent({ toc }: { toc: TOCSection[] }) {
   const { currentSectionSlug } = useTocScroll(toc);

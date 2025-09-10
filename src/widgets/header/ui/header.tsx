@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useShowAndHideHeader } from "@/hooks/useShowAndHideHeader";
 import ThemeDropdown from "@/features/toggle-theme/ui/theme-button";
 import { EasterEggTrigger } from "@/features/trigger-easter-egg";
 import { Logo } from "@/entities/brand";
 import { ProgressBar } from "@/features/track-scroll-progress";
 import { HeaderWrapper } from "@/shared/ui";
+import { useShowAndHideHeader } from "../lib/useShowAndHideHeader";
 
 export function Header() {
   const pathname = usePathname();
