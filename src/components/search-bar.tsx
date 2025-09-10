@@ -1,9 +1,8 @@
 "use client";
 
+import { Button, Input } from "@/shared/ui";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRef } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 
 export default function SearchBar() {
   const inputRef = useRef<HTMLInputElement>(null);
