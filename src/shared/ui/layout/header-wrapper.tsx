@@ -6,10 +6,7 @@ type HeaderWrapperProps = {
   children: ReactNode;
 };
 
-export default function HeaderWrapper({
-  isVisible,
-  children,
-}: HeaderWrapperProps) {
+export function HeaderWrapper({ isVisible, children }: HeaderWrapperProps) {
   return (
     <header
       className={cn(
