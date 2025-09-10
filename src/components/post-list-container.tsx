@@ -1,8 +1,8 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import PostList from "@/components/post-list";
 import { PostListPagination } from "@/features/paginate-posts";
+import { PostList } from "@/widgets/post-list";
 
 interface Post {
   slug: string;

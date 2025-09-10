@@ -15,7 +15,7 @@ interface PostListProps {
   posts: Post[];
 }
 
-export default function PostList({ posts }: PostListProps) {
+export function PostList({ posts }: PostListProps) {
   return (
     <div className="mt-6">
       <ul className="grid grid-cols-1 gap-4">
