@@ -1,7 +1,6 @@
 import { parsePostDataBySlug } from "@/entities/post/api/mdx";
 import { parseToc } from "@/lib/toc";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import TableOfContent from "@/components/table-of-content";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
@@ -9,6 +8,7 @@ import { cn } from "@/shared/lib/utils/utils";
 import { Metadata } from "next";
 import { components } from "@/components/mdx-custom-components";
 import { PostGiscusComments } from "@/widgets/post-comment";
+import { TableOfContent } from "@/widgets/table-of-content";
 
 export async function generateMetadata({
   params,
