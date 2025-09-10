@@ -4,7 +4,7 @@ import { Button, Input } from "@/shared/ui";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRef } from "react";
 
-export default function SearchBar() {
+export function SearchBar() {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const searchParams = useSearchParams();

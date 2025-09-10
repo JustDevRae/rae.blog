@@ -2,7 +2,7 @@ import {
   getAllPostMeta,
   extractUniqueTagsFromMDX,
 } from "@/entities/post/api/mdx";
-import SearchBar from "@/components/search-bar";
+import { SearchBar } from "@/features/search-posts-by-keword";
 import { TagList } from "@/widgets/tag-list";
 import PostListContainer from "@/components/post-list-container";
 import { Suspense } from "react";
