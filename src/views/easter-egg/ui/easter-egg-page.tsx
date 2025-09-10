@@ -1,6 +1,5 @@
-import GameCard from "@/entities/easter-egg/ui/game-card";
-import Netflix from "@/entities/easter-egg/ui/netflix";
-import { cn } from "@/shared/lib/utils/utils";
+import { GameCard, NetflixBox } from "@/entities/easter-egg";
+import { cn } from "@/shared/lib";
 
 export default function EasterEgg() {
   return (
@@ -33,7 +32,7 @@ export default function EasterEgg() {
 
       <section className="my-20 flex flex-grow flex-col items-center gap-10">
         <h1 className="text-2xl font-bold">Do you want to watch an OTT?</h1>
-        <Netflix />
+        <NetflixBox />
       </section>
     </div>
   );

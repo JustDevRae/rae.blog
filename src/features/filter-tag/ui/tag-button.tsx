@@ -1,7 +1,7 @@
 "use client";
 
+import { cn } from "@/shared/lib";
 import { useRouter, useSearchParams } from "next/navigation";
-import { cn } from "@/shared/lib/utils/utils";
 
 interface TagButtonProps {
   uniqueTag: string;

@@ -1,14 +1,14 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
 import {
   Pagination,
   PaginationContent,
   PaginationItem,
-  PaginationPrevious,
-  PaginationNext,
   PaginationLink,
-} from "@/shared/ui/pagination";
+  PaginationNext,
+  PaginationPrevious,
+} from "@/shared/ui";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export function PostListPagination({ totalPages }: { totalPages: number }) {
   const router = useRouter();

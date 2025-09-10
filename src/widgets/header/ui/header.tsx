@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ThemeDropdown from "@/features/toggle-theme/ui/theme-button";
-import { EasterEggTrigger } from "@/features/trigger-easter-egg";
-import { Logo } from "@/entities/brand";
-import { ProgressBar } from "@/features/track-scroll-progress";
 import { HeaderWrapper } from "@/shared/ui";
+import { Logo } from "@/entities/brand";
+import { EasterEggTrigger } from "@/features/trigger-easter-egg";
+import { ThemeButton } from "@/features/toggle-theme";
+import { ProgressBar } from "@/features/track-scroll-progress";
 import { useShowAndHideHeader } from "../lib/useShowAndHideHeader";
 
 export function Header() {
@@ -24,7 +24,7 @@ export function Header() {
 
       <nav className="flex items-center gap-4">
         <Link href="/about">About</Link>
-        <ThemeDropdown />
+        <ThemeButton />
       </nav>
 
       {isScrollAblePage && <ProgressBar />}

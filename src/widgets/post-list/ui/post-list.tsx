@@ -1,4 +1,4 @@
-import PostCard from "@/entities/post/ui/post-card";
+import { PostCard } from "@/entities/post";
 import { AlertCircle } from "lucide-react";
 
 interface Post {

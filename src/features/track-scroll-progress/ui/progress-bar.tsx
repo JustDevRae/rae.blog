@@ -1,8 +1,7 @@
 "use client";
 
+import { cn, useMounted } from "@/shared/lib";
 import { useEffect, useState } from "react";
-import { useMounted } from "@/shared/lib/hooks/useMounted";
-import { cn } from "@/shared/lib/utils/utils";
 
 export function ProgressBar() {
   const mounted = useMounted();

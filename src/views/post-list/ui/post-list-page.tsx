@@ -1,12 +1,9 @@
-import {
-  getAllPostMeta,
-  extractUniqueTagsFromMDX,
-} from "@/entities/post/api/mdx";
-import { SearchBar } from "@/features/search-posts-by-keword";
-import { TagList } from "@/widgets/tag-list";
-import PostListContainer from "@/widgets/post-list-container/ui/post-list-container";
 import { Suspense } from "react";
 import type { Metadata } from "next";
+import { extractUniqueTagsFromMDX, getAllPostMeta } from "@/entities/post";
+import { SearchBar } from "@/features/search-posts-by-keword";
+import { TagList } from "@/widgets/tag-list";
+import { PostListContainer } from "@/widgets/post-list-container";
 
 export const metadata: Metadata = {
   title: "Posts",

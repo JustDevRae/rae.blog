@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { cn } from "@/shared/lib/utils/utils";
 import Link from "next/link";
+import { cn } from "@/shared/lib";
 
 interface Stripe {
   id: number;
