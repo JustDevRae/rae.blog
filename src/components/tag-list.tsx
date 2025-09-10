@@ -1,4 +1,4 @@
-import TagButton from "@/components/tag-button";
+import { TagButton } from "@/features/filter-tag";
 
 interface UniqueTagListProps {
   uniqueTagArray: string[];
