@@ -3,7 +3,7 @@ import {
   extractUniqueTagsFromMDX,
 } from "@/entities/post/api/mdx";
 import SearchBar from "@/components/search-bar";
-import TagList from "@/components/tag-list";
+import { TagList } from "@/widgets/tag-list";
 import PostListContainer from "@/components/post-list-container";
 import { Suspense } from "react";
 import type { Metadata } from "next";
