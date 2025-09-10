@@ -1,7 +1,7 @@
 "use client";
 
-import { TOCSection } from "@/lib/toc";
 import { cn } from "@/shared/lib/utils/utils";
+import { TOCSection } from "@/entities/post";
 import { useTocScroll } from "../lib/useToScroll";
 
 export function TableOfContent({ toc }: { toc: TOCSection[] }) {

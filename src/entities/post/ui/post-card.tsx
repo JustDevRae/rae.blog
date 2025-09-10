@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui";
 
 interface PostCardProps {
   slug: string;
@@ -9,7 +9,7 @@ interface PostCardProps {
   date: string;
 }
 
-export default function PostCard({
+export function PostCard({
   slug,
   title,
   description,

@@ -1,14 +1,13 @@
-import { parsePostDataBySlug } from "@/entities/post/api/mdx";
-import { parseToc } from "@/lib/toc";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
-import { cn } from "@/shared/lib/utils/utils";
 import { Metadata } from "next";
-import { PostGiscusComments } from "@/widgets/post-comment";
+import { parsePostDataBySlug, parseToc } from "@/entities/post";
 import { TableOfContent } from "@/widgets/table-of-content";
+import { cn } from "@/shared/lib";
 import { components } from "@/shared/ui";
+import { PostGiscusComments } from "@/widgets/post-comment";
 
 export async function generateMetadata({
   params,

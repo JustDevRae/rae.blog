@@ -1,6 +1,6 @@
+import { TOCSection } from "@/entities/post";
 import { throttle } from "es-toolkit";
 import { useEffect, useState } from "react";
-import { TOCSection } from "@/types/type";
 
 export const useTocScroll = (tableOfContents: TOCSection[]) => {
   const [currentSectionSlug, setCurrentSectionSlug] = useState<string>();
