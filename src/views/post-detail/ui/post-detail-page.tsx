@@ -6,9 +6,9 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
 import { cn } from "@/shared/lib/utils/utils";
 import { Metadata } from "next";
-import { components } from "@/components/mdx-custom-components";
 import { PostGiscusComments } from "@/widgets/post-comment";
 import { TableOfContent } from "@/widgets/table-of-content";
+import { components } from "@/shared/ui";
 
 export async function generateMetadata({
   params,

@@ -4,3 +4,4 @@ export * from "./input";
 export * from "./pagination";
 export { GithubIcon } from "./icons/github-icon";
 export { GmailIcon } from "./icons/gmail-icon";
+export { components } from "./mdx-custom-components";
