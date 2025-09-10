@@ -1,12 +1,11 @@
-import Github from "@/shared/ui/icons/github-icon";
-import Gmail from "@/shared/ui/icons/gmail-icon";
+import { GithubIcon, GmailIcon } from "@/shared/ui";
 
-export default function Footer() {
+export function Footer() {
   return (
     <footer className="flex flex-col items-center justify-center gap-3 border-t py-6">
       <div className="flex items-center justify-center gap-3">
-        <Github />
-        <Gmail />
+        <GithubIcon />
+        <GmailIcon />
       </div>
       <p className="text-sm font-semibold">
         &copy;2025. JustDevRae. All rights reserved.
