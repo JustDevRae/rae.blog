@@ -7,7 +7,7 @@ import { Logo } from "@/entities/brand";
 import { EasterEggTrigger } from "@/features/trigger-easter-egg";
 import { ThemeButton } from "@/features/toggle-theme";
 import { ProgressBar } from "@/features/track-scroll-progress";
-import { useShowAndHideHeader } from "../lib/useShowAndHideHeader";
+import { useShowAndHideHeader } from "../lib/hooks/useShowAndHideHeader";
 
 export function Header() {
   const pathname = usePathname();

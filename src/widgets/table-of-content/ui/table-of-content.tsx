@@ -2,7 +2,7 @@
 
 import { cn } from "@/shared/lib/utils/utils";
 import { TOCSection } from "@/entities/post";
-import { useTocScroll } from "../lib/useToScroll";
+import { useTocScroll } from "../lib/hooks/useToScroll";
 
 export function TableOfContent({ toc }: { toc: TOCSection[] }) {
   const { currentSectionSlug } = useTocScroll(toc);
