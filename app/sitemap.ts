@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPostMeta } from "@/entities/post/api/mdx";
-import { BASE_URL } from "@/shared/config";
+import { BASE_URL } from "@/shared/config/path";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPostMeta().map((post) => ({

@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { MDX_DIRECTORY } from "@/shared/config";
+import { MDX_DIRECTORY } from "@/shared/config/path";
 
 type PostMetaData = {
   title: string;
