@@ -1,5 +1,6 @@
-import { cn } from "@/shared/lib";
-import { Button, Card, CardTitle } from "@/shared/ui";
+import { cn } from "@/shared/lib/utils/utils";
+import { Button } from "@/shared/ui/button";
+import { Card, CardTitle } from "@/shared/ui/card";
 import Link from "next/link";
 import { ReactNode } from "react";
 

@@ -1,6 +1,7 @@
 "use client";
 
-import { Button, Input } from "@/shared/ui";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRef } from "react";
 

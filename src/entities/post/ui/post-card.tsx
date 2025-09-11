@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 
 interface PostCardProps {
   slug: string;

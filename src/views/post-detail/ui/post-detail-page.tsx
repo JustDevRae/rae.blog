@@ -3,11 +3,12 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
 import { Metadata } from "next";
-import { parsePostDataBySlug, parseToc } from "@/entities/post";
-import { TableOfContent } from "@/widgets/table-of-content";
-import { cn } from "@/shared/lib";
-import { components } from "@/shared/ui";
-import { PostGiscusComments } from "@/widgets/post-comment";
+import { parsePostDataBySlug } from "@/entities/post/api/mdx";
+import { parseToc } from "@/entities/post/lib/parseToc";
+import { TableOfContent } from "@/widgets/table-of-content/ui/table-of-content";
+import { cn } from "@/shared/lib/utils/utils";
+import { components } from "@/shared/ui/mdx-custom-components";
+import { PostGiscusComments } from "@/widgets/post-comment/ui/post-giscus-comment";
 
 export async function generateMetadata({
   params,

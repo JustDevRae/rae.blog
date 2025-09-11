@@ -2,8 +2,8 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Button } from "@/shared/ui";
-import { useMounted } from "@/shared/lib";
+import { Button } from "@/shared/ui/button";
+import { useMounted } from "@/shared/lib/hooks/useMounted";
 
 export function ThemeButton() {
   const mounted = useMounted();

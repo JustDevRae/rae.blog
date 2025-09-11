@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/shared/lib";
+import { cn } from "@/shared/lib/utils/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 
 interface TagButtonProps {

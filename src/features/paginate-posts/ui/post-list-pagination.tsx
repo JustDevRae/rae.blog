@@ -7,7 +7,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/shared/ui";
+} from "@/shared/ui/pagination";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export function PostListPagination({ totalPages }: { totalPages: number }) {
