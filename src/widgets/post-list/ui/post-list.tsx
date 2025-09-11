@@ -1,15 +1,6 @@
+import { Post } from "@/entities/post/model/type";
 import { PostCard } from "@/entities/post/ui/post-card";
 import { AlertCircle } from "lucide-react";
-
-interface Post {
-  slug: string;
-  postMetaData: {
-    title: string;
-    description: string;
-    tags: string[];
-    date: string;
-  };
-}
 
 interface PostListProps {
   posts: Post[];

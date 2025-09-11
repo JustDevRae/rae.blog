@@ -2,23 +2,14 @@
 
 import { useSearchParams } from "next/navigation";
 import { PostListPagination } from "@/features/paginate-posts/ui/post-list-pagination";
-import PostList from "@/views/post-list/ui/post-list-page";
+import { Post } from "@/entities/post/model/type";
+import { PostList } from "@/widgets/post-list/ui/post-list";
 
-interface Post {
-  slug: string;
-  postMetaData: {
-    title: string;
-    description: string;
-    tags: string[];
-    date: string;
-  };
-}
-
-interface PostArrayProps {
+interface PostListContainerProps {
   postArray: Post[];
 }
 
-export function PostListContainer({ postArray }: PostArrayProps) {
+export function PostListContainer({ postArray }: PostListContainerProps) {
   const searchParams = useSearchParams();
 
   const selectedTags = searchParams.get("tag")?.split(",") || [];

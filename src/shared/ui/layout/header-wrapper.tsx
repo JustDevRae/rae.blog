@@ -1,10 +1,10 @@
 import { cn } from "@/shared/lib/utils/utils";
 import { ReactNode } from "react";
 
-type HeaderWrapperProps = {
+interface HeaderWrapperProps {
   isVisible: boolean;
   children: ReactNode;
-};
+}
 
 export function HeaderWrapper({ isVisible, children }: HeaderWrapperProps) {
   return (

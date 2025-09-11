@@ -10,7 +10,11 @@ import {
 } from "@/shared/ui/pagination";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export function PostListPagination({ totalPages }: { totalPages: number }) {
+interface PostListPaginationProps {
+  totalPages: number;
+}
+
+export function PostListPagination({ totalPages }: PostListPaginationProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;

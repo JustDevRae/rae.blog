@@ -3,9 +3,9 @@
 import { useState, useEffect, ReactNode } from "react";
 import { useRouter } from "next/navigation";
 
-type EasterEggTriggerProps = {
+interface EasterEggTriggerProps {
   children: ReactNode;
-};
+}
 
 export function EasterEggTrigger({ children }: EasterEggTriggerProps) {
   const [clickCount, setClickCount] = useState<number>(0);

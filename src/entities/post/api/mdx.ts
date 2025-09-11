@@ -2,13 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { MDX_DIRECTORY } from "@/shared/config/path";
-
-type PostMetaData = {
-  title: string;
-  description: string;
-  tags: string[];
-  date: string;
-};
+import { PostMetaData } from "../model/type";
 
 export const parsePostDataBySlug = (slug: string) => {
   const mdxFilePath = path.join(MDX_DIRECTORY, `${slug}.mdx`);

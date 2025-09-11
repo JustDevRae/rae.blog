@@ -1,11 +1,4 @@
-export type TOCSubSection = {
-  slug: string;
-  text: string;
-};
-
-export type TOCSection = TOCSubSection & {
-  subSections: TOCSubSection[];
-};
+import { TOCSection } from "../model/type";
 
 export const parseToc = (source: string) => {
   return source
