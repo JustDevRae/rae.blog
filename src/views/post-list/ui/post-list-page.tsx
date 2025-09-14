@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { SearchBar } from "@/features/search-posts-by-keword/ui/search-bar";
-import { PostListContainer } from "@/widgets/post-list-container/ui/post-list-container";
+import { PostList } from "@/widgets/post-list/ui/post-list";
 import {
   extractUniqueTagsFromMDX,
   getAllPostMeta,
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "프론트엔드 개발에 관해서 제가 공부하고 정리한 게시글을 확인할 수 있습니다.",
 };
 
-export default function PostList() {
+export default function PostListPage() {
   const postArray = getAllPostMeta();
   const uniqueTagArray = extractUniqueTagsFromMDX();
 
@@ -28,7 +28,7 @@ export default function PostList() {
     >
       <SearchBar />
       <TagList uniqueTagArray={uniqueTagArray} />
-      <PostListContainer postArray={postArray} />
+      <PostList postArray={postArray} />
     </Suspense>
   );
 }

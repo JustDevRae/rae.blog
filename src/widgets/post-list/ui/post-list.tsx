@@ -6,11 +6,11 @@ import { Post } from "@/entities/post/model/type";
 import { PostCard } from "@/entities/post/ui/post-card";
 import { AlertCircle } from "lucide-react";
 
-interface PostListContainerProps {
+interface PostListProps {
   postArray: Post[];
 }
 
-export function PostListContainer({ postArray }: PostListContainerProps) {
+export function PostList({ postArray }: PostListProps) {
   const searchParams = useSearchParams();
 
   const selectedTags = searchParams.get("tag")?.split(",") || [];

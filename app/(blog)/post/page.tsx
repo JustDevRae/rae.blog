@@ -1,5 +1,5 @@
-import PostList from "@/views/post-list/ui/post-list-page";
+import PostListPage from "@/views/post-list/ui/post-list-page";
 
-export default function PostListPage() {
-  return <PostList />;
+export default function Page() {
+  return <PostListPage />;
 }
