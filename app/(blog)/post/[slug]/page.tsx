@@ -1,9 +1,9 @@
-import PostDetail from "@/views/post-detail/ui/post-detail-page";
+import PostDetailPage from "@/views/post-detail/ui/post-detail-page";
 
-export default async function PostDetailPage({
+export default async function Page({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  return <PostDetail params={params} />;
+  return <PostDetailPage params={params} />;
 }

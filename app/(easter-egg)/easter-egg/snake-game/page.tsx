@@ -1,5 +1,5 @@
-import SnakeGame from "@/views/snake-game/ui/snake-game-page";
+import SnakeGamePage from "@/views/snake-game/ui/snake-game-page";
 
-export default function SnakeGamePage() {
-  return <SnakeGame />;
+export default function Page() {
+  return <SnakeGamePage />;
 }

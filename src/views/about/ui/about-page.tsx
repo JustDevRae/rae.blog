@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "개발자 김승래에 대해 소개합니다.",
 };
 
-export default function About() {
+export default function AboutPage() {
   return (
     <main>
       <div className="flex items-center gap-5 mobile:flex-col">

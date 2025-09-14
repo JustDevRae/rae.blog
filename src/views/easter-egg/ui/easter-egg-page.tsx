@@ -2,7 +2,7 @@ import { GameCard } from "@/entities/easter-egg/ui/game-card";
 import { NetflixBox } from "@/entities/easter-egg/ui/netflix";
 import { cn } from "@/shared/lib/utils/utils";
 
-export default function EasterEgg() {
+export default function EasterEggPage() {
   return (
     <div className="my-20 flex flex-col items-center">
       <section className="flex flex-col items-center text-9xl font-bold mobile:text-6xl">

@@ -33,7 +33,7 @@ const VALID_KEYS = [
   "d",
 ];
 
-export default function SnakeGame() {
+export default function SnakeGamePage() {
   const [snake, setSnake] = useState([...INITIAL_SNAKE]);
   const [apple, setApple] = useState({ ...INITIAL_APPLE });
   const [direction, setDirection] = useState(INITIAL_DIRECTION);

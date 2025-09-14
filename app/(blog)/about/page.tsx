@@ -1,5 +1,5 @@
-import About from "@/views/about/ui/about-page";
+import AboutPage from "@/views/about/ui/about-page";
 
-export default function AboutPage() {
-  return <About />;
+export default function Page() {
+  return <AboutPage />;
 }
