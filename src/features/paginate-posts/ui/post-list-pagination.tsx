@@ -14,7 +14,9 @@ interface PostListPaginationProps {
   totalPages: number;
 }
 
-export function PostListPagination({ totalPages }: PostListPaginationProps) {
+export default function PostListPagination({
+  totalPages,
+}: PostListPaginationProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
@@ -38,7 +40,6 @@ export function PostListPagination({ totalPages }: PostListPaginationProps) {
               changePage(currentPage - 1);
             }}
             className={currentPage <= 1 ? "pointer-events-none opacity-50" : ""}
-            size={undefined}
           />
         </PaginationItem>
 
@@ -51,7 +52,6 @@ export function PostListPagination({ totalPages }: PostListPaginationProps) {
                 e.preventDefault();
                 changePage(page);
               }}
-              size={undefined}
             >
               {page}
             </PaginationLink>
@@ -68,7 +68,6 @@ export function PostListPagination({ totalPages }: PostListPaginationProps) {
             className={
               currentPage >= totalPages ? "pointer-events-none opacity-50" : ""
             }
-            size={undefined}
           />
         </PaginationItem>
       </PaginationContent>

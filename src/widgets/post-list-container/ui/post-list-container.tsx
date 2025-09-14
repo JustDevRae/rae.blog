@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { PostListPagination } from "@/features/paginate-posts/ui/post-list-pagination";
+import PostListPagination from "@/features/paginate-posts/ui/post-list-pagination";
 import { Post } from "@/entities/post/model/type";
 import { PostList } from "@/widgets/post-list/ui/post-list";
 
