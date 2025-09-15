@@ -32,7 +32,7 @@ export function ProgressBar() {
       className={cn(
         "fixed left-0 top-[50px]",
         "h-1 w-full",
-        "hidden mobile:block tablet:block",
+        "block desktop:hidden",
       )}
     >
       <div
