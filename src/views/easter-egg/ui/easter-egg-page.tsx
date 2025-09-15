@@ -1,5 +1,5 @@
-import { GameCard } from "@/entities/easter-egg/ui/game-card";
-import { NetflixBox } from "@/entities/easter-egg/ui/netflix";
+import GameCard from "@/entities/easter-egg/ui/game-card";
+import NetflixBox from "@/entities/easter-egg/ui/netflix";
 import { cn } from "@/shared/lib/utils/utils";
 
 export default function EasterEggPage() {

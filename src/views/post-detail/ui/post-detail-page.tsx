@@ -5,10 +5,10 @@ import remarkGfm from "remark-gfm";
 import { Metadata } from "next";
 import { parsePostDataBySlug } from "@/entities/post/api/mdx";
 import { parseToc } from "@/entities/post/lib/parseToc";
-import { TableOfContent } from "@/widgets/table-of-content/ui/table-of-content";
 import { cn } from "@/shared/lib/utils/utils";
 import { components } from "@/shared/ui/mdx-custom-components";
-import { PostGiscusComments } from "@/widgets/post-comment/ui/post-giscus-comment";
+import TableOfContent from "@/widgets/table-of-content/ui/table-of-content";
+import PostGiscusComments from "@/widgets/post-comment/ui/post-giscus-comment";
 
 export async function generateMetadata({
   params,
