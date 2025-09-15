@@ -7,9 +7,8 @@ export default {
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}", "./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     screens: {
-      mobile: { max: "450px" },
-      tablet: { min: "451px", max: "1000px" },
-      desktop: { min: "1001px" },
+      tablet: "451px",
+      desktop: "1001px",
     },
     extend: {
       typography: {
