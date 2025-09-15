@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/shared/ui/card";
 
 interface PostCardProps {
   slug: string;
@@ -18,17 +25,10 @@ export function PostCard({
 }: PostCardProps) {
   return (
     <Link href={`/post/${slug}`} className="block">
-      <Card className="w-full transition-all duration-300">
-        <CardHeader>
-          <CardTitle className="flex justify-between text-lg font-semibold">
-            <h1>{title}</h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400">{date}</p>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-2">
-          <p className="max-w-[400px] break-words text-gray-500">
-            {description}
-          </p>
+      <Card>
+        <CardHeader>{title}</CardHeader>
+        <CardDescription>{description}</CardDescription>
+        <CardFooter>
           <p className="flex flex-wrap">
             {tags.map((tag) => (
               <span key={tag} className="tag mr-2 text-yellow-500">
@@ -36,7 +36,8 @@ export function PostCard({
               </span>
             ))}
           </p>
-        </CardContent>
+          <p className="text-sm text-gray-500 dark:text-gray-400">{date}</p>
+        </CardFooter>
       </Card>
     </Link>
   );
