@@ -45,6 +45,9 @@ export default {
               marginTop: "1.5rem",
               marginBottom: "1.5rem",
             },
+            a: {
+              wordBreak: "break-all",
+            },
             "code::before": { content: "none" },
             "code::after": { content: "none" },
           },
