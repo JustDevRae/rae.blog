@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { HeaderWrapper } from "@/shared/ui/layout/header-wrapper";
+import { cn } from "@/shared/lib/utils/utils";
 import { Logo } from "@/entities/brand/ui/logo";
 import { EasterEggTrigger } from "@/features/trigger-easter-egg/ui/easter-egg-trigger";
 import { ThemeButton } from "@/features/toggle-theme/ui/theme-button";
@@ -17,7 +17,18 @@ export function Header() {
   const showHeader = isScrollAblePage ? visible : true;
 
   return (
-    <HeaderWrapper isVisible={showHeader}>
+    <header
+      className={cn(
+        "fixed left-1/2 top-0 z-50 w-full -translate-x-1/2",
+        "flex h-[50px] transform items-center",
+        "border-b font-semibold backdrop-blur-sm",
+        "transition-transform duration-300",
+        "justify-between px-[30px]",
+        "tablet:px-[50px]",
+        "desktop:justify-around desktop:px-[100px]",
+        showHeader ? "translate-y-0" : "-translate-y-full",
+      )}
+    >
       <EasterEggTrigger>
         <Logo />
       </EasterEggTrigger>
@@ -28,6 +39,6 @@ export function Header() {
       </nav>
 
       {isScrollAblePage && <ProgressBar />}
-    </HeaderWrapper>
+    </header>
   );
 }
