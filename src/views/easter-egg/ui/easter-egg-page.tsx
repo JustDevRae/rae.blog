@@ -5,7 +5,7 @@ import { cn } from "@/shared/lib/utils/utils";
 export default function EasterEggPage() {
   return (
     <div className="my-20 flex flex-col items-center">
-      <section className="flex flex-col items-center text-9xl font-bold mobile:text-6xl">
+      <section className="flex flex-col items-center text-6xl font-bold">
         <h1>Welcome!</h1>
         <h1>To The</h1>
         <h1>Easter Egg </h1>
