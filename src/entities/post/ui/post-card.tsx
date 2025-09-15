@@ -14,7 +14,7 @@ interface PostCardProps {
   date: string;
 }
 
-export function PostCard({
+export default function PostCard({
   slug,
   title,
   description,

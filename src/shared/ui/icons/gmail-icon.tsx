@@ -1,4 +1,4 @@
-export function GmailIcon() {
+export default function GmailIcon() {
   return (
     <a
       href="mailto:ksrae165@gamil.com"

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 
-export function PostGiscusComments() {
+export default function PostGiscusComments() {
   const giscusRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme } = useTheme();
   const theme = resolvedTheme === "dark" ? "dark" : "light";

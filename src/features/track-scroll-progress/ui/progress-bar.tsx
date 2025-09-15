@@ -4,7 +4,7 @@ import { useMounted } from "@/shared/lib/hooks/useMounted";
 import { cn } from "@/shared/lib/utils/utils";
 import { useEffect, useState } from "react";
 
-export function ProgressBar() {
+export default function ProgressBar() {
   const mounted = useMounted();
   const [scrollTop, setScrollTop] = useState(0);
 

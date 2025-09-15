@@ -1,5 +1,5 @@
 import Link from "next/link";
 
-export function Logo() {
+export default function Logo() {
   return <Link href="/">Rae.</Link>;
 }

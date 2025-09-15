@@ -7,7 +7,7 @@ interface TagButtonProps {
   uniqueTag: string;
 }
 
-export function TagButton({ uniqueTag }: TagButtonProps) {
+export default function TagButton({ uniqueTag }: TagButtonProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
 

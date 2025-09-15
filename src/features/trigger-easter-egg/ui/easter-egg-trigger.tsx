@@ -7,7 +7,7 @@ interface EasterEggTriggerProps {
   children: ReactNode;
 }
 
-export function EasterEggTrigger({ children }: EasterEggTriggerProps) {
+export default function EasterEggTrigger({ children }: EasterEggTriggerProps) {
   const [clickCount, setClickCount] = useState<number>(0);
   const router = useRouter();
 

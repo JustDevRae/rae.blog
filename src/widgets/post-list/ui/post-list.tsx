@@ -2,15 +2,15 @@
 
 import { useSearchParams } from "next/navigation";
 import PostListPagination from "@/features/paginate-posts/ui/post-list-pagination";
+import PostCard from "@/entities/post/ui/post-card";
 import { Post } from "@/entities/post/model/type";
-import { PostCard } from "@/entities/post/ui/post-card";
 import { AlertCircle } from "lucide-react";
 
 interface PostListProps {
   postArray: Post[];
 }
 
-export function PostList({ postArray }: PostListProps) {
+export default function PostList({ postArray }: PostListProps) {
   const searchParams = useSearchParams();
 
   const selectedTags = searchParams.get("tag")?.split(",") || [];

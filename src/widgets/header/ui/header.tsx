@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/shared/lib/utils/utils";
-import { Logo } from "@/entities/brand/ui/logo";
-import { EasterEggTrigger } from "@/features/trigger-easter-egg/ui/easter-egg-trigger";
-import { ThemeButton } from "@/features/toggle-theme/ui/theme-button";
-import { ProgressBar } from "@/features/track-scroll-progress/ui/progress-bar";
+import Logo from "@/entities/brand/ui/logo";
+import EasterEggTrigger from "@/features/trigger-easter-egg/ui/easter-egg-trigger";
+import ThemeButton from "@/features/toggle-theme/ui/theme-button";
+import ProgressBar from "@/features/track-scroll-progress/ui/progress-bar";
 import { useShowAndHideHeader } from "../lib/hooks/useShowAndHideHeader";
 
-export function Header() {
+export default function Header() {
   const pathname = usePathname();
   const isScrollAblePage = pathname.startsWith("/post/");
   const { visible } = useShowAndHideHeader();

@@ -10,7 +10,7 @@ interface GameCardProps {
   children?: ReactNode;
 }
 
-export function GameCard({ href, title, children }: GameCardProps) {
+export default function GameCard({ href, title, children }: GameCardProps) {
   return (
     <Link href={href}>
       <Card className={cn("group relative", "h-[300px] w-[300px]")}>

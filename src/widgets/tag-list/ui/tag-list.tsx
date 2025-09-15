@@ -1,10 +1,10 @@
-import { TagButton } from "@/features/filter-tag/ui/tag-button";
+import TagButton from "@/features/filter-tag/ui/tag-button";
 
 interface UniqueTagListProps {
   uniqueTagArray: string[];
 }
 
-export function TagList({ uniqueTagArray }: UniqueTagListProps) {
+export default function TagList({ uniqueTagArray }: UniqueTagListProps) {
   return (
     <ul className="flex flex-wrap gap-3">
       {uniqueTagArray.map((uniqueTag) => (
