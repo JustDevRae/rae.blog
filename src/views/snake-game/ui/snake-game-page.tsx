@@ -37,7 +37,7 @@ export default function SnakeGamePage() {
   const [snake, setSnake] = useState([...INITIAL_SNAKE]);
   const [apple, setApple] = useState({ ...INITIAL_APPLE });
   const [direction, setDirection] = useState(INITIAL_DIRECTION);
-  const [running, setRunning] = useState(false);
+  const [running, setRunning] = useState(false);mobile
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const directionRef = useRef(direction);

@@ -16,7 +16,7 @@ export function HeaderWrapper({ isVisible, children }: HeaderWrapperProps) {
         "transition-transform duration-300",
         "desktop:justify-around desktop:px-[100px]",
         "tablet:justify-between tablet:px-[50px]",
-        "mobile:justify-between mobile:px-[30px]",
+        "justify-between px-[30px]",
         isVisible ? "translate-y-0" : "-translate-y-full",
       )}
     >
