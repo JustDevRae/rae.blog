@@ -1,11 +1,9 @@
 import Link from "next/link";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/shared/ui/card";
 
 interface PostCardProps {
