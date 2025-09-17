@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { cn } from "@/shared/lib/utils/utils";
 import { useLongPress } from "@/shared/lib/hooks/useLongPress";
 
@@ -21,6 +21,18 @@ export default function BottomSheetLayout({
     reset();
   };
 
+  useEffect(() => {
+    if (isOpenBottomSheet) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpenBottomSheet]);
+
   return (
     <main {...longPressProps} className="relative min-h-screen">
       {children}
@@ -30,7 +42,7 @@ export default function BottomSheetLayout({
         <button
           type="button"
           aria-label="Close Bottom Sheet"
-          className="fixed inset-0 bg-black/40 transition-opacity duration-300"
+          className="fixed inset-0 z-10 bg-black/40 transition-opacity duration-300"
           onClick={handleCloseBottomSheet}
         />
       )}
@@ -38,7 +50,7 @@ export default function BottomSheetLayout({
       {/* Bottom Sheet */}
       <section
         className={cn(
-          "fixed bottom-0 left-0 w-full rounded-t-2xl bg-white p-4 shadow-lg transition-all duration-300",
+          "fixed bottom-0 left-0 z-20 w-full rounded-t-2xl bg-white p-4 shadow-lg transition-all duration-300",
           isOpenBottomSheet
             ? "translate-y-0 opacity-100"
             : "translate-y-full opacity-0",
