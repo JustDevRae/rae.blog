@@ -1,4 +1,4 @@
-import { TOCSection } from "@/entities/post/model/type";
+import { TOCSection } from "@/entities/post";
 import { throttle } from "es-toolkit";
 import { useEffect, useState } from "react";
 

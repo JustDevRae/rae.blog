@@ -7,7 +7,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/shared/ui/pagination";
+} from "@/shared/ui";
 import { useRouter, useSearchParams } from "next/navigation";
 
 interface PostListPaginationProps {

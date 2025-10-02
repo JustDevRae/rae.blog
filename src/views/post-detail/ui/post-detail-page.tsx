@@ -3,12 +3,12 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGfm from "remark-gfm";
 import { Metadata } from "next";
-import { parsePostDataBySlug } from "@/entities/post/api/mdx";
-import { parseToc } from "@/entities/post/lib/parseToc";
-import { cn } from "@/shared/lib/utils/utils";
-import { components } from "@/shared/ui/mdx-custom-components";
-import TableOfContent from "@/widgets/table-of-content/ui/table-of-content";
-import PostGiscusComments from "@/widgets/post-comment/ui/post-giscus-comment";
+import { parsePostDataBySlug, parseToc } from "@/entities/post";
+
+import { cn } from "@/shared/lib";
+import { components } from "@/shared/ui";
+import { TableOfContent } from "@/widgets/table-of-content";
+import { PostGiscusComments } from "@/widgets/post-comment";
 
 export async function generateMetadata({
   params,
@@ -29,7 +29,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const { extractSlugsFromMDXFiles } = await import("@/entities/post/api/mdx");
+  const { extractSlugsFromMDXFiles } = await import("@/entities/post");
   const mdxMetadataAndSlugs = extractSlugsFromMDXFiles();
 
   return mdxMetadataAndSlugs.map((slug) => ({
@@ -44,7 +44,7 @@ export default async function PostDetailPage({
 }) {
   const { slug } = await params;
   const { postContent, postMetaData } = parsePostDataBySlug(slug);
-  const toc = parseToc(postContent);
+  const toc = await parseToc(postContent);
 
   return (
     <article className="relative mt-[50px] px-4">

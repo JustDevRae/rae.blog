@@ -1,10 +1,14 @@
 "use client";
 
-import { cn } from "@/shared/lib/utils/utils";
-import { TOCSection } from "@/entities/post/model/type";
+import { cn } from "@/shared/lib";
+import { TOCSection } from "@/entities/post";
 import { useTocScroll } from "../lib/hooks/useToScroll";
 
-export default function TableOfContent({ toc }: { toc: TOCSection[] }) {
+export interface TableOfContentProps {
+  toc: TOCSection[];
+}
+
+export default function TableOfContent({ toc }: TableOfContentProps) {
   const { currentSectionSlug } = useTocScroll(toc);
   return (
     <>

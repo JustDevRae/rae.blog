@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { cn } from "@/shared/lib/utils/utils";
+import { cn } from "@/shared/lib";
 
 interface Stripe {
   id: number;

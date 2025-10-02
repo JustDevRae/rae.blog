@@ -1,6 +1,6 @@
 import { TOCSection } from "../model/type";
 
-export const parseToc = (source: string) => {
+export const parseToc = async (source: string) => {
   return source
     .split("\n")
     .filter((line) => line.match(/(^#{1,3})\s/))

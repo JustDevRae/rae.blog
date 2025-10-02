@@ -1,7 +1,7 @@
 "use client";
 
-import { useMounted } from "@/shared/lib/hooks/useMounted";
-import { cn } from "@/shared/lib/utils/utils";
+import { useMounted, cn } from "@/shared/lib";
+
 import { useEffect, useState } from "react";
 
 export default function ProgressBar() {
