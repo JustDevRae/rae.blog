@@ -2,8 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { PostListPagination } from "@/features/paginate-posts";
-import { Post } from "@/entities/post";
-import { PostCard } from "@/entities/post/client";
+import { Post, PostCard } from "@/entities/post";
 import { AlertCircle } from "lucide-react";
 
 interface PostListProps {
