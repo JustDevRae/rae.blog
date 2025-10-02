@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function PostListPage() {
-  const postArray = getAllPostMeta();
+  // const postArray = getAllPostMeta();
   const uniqueTagArray = extractUniqueTagsFromMDX();
 
   return (
@@ -25,7 +25,7 @@ export default function PostListPage() {
     >
       <SearchBar />
       <TagList uniqueTagArray={uniqueTagArray} />
-      <PostList postArray={postArray} />
+      {/* <PostList postArray={postArray} /> */}
     </Suspense>
   );
 }

@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { PostListPagination } from "@/features/paginate-posts";
 import { Post } from "@/entities/post";
-import { TempPostCard } from "@/entities/post/client";
+import { PostCard } from "@/entities/post/client";
 import { AlertCircle } from "lucide-react";
 
 interface PostListProps {
@@ -44,7 +44,13 @@ export default function PostList({ postArray }: PostListProps) {
           {paginatedPosts.length > 0 ? (
             paginatedPosts.map((post) => (
               <li key={post.slug}>
-                <TempPostCard />
+                <PostCard
+                  slug={post.slug}
+                  title={post.postMetaData.title}
+                  description={post.postMetaData.description}
+                  tags={post.postMetaData.tags}
+                  date={post.postMetaData.date}
+                />
               </li>
             ))
           ) : (
