@@ -1,0 +1,169 @@
+---
+title: "Lighthouse 사용법"
+description: "Lighthouse를 사용하여 웹 페이지 성능을 측정하는 방법에 대해 설명합니다"
+date: "2025-10-17"
+tags: ["faq", "lighthouse"]
+---
+
+## Lighthouse 개요
+
+[Lighthouse](https://github.com/GoogleChrome/lighthouse)는 웹페이지 품질을 개선하는 데 도움이 되는 오픈소스 자동화 도구이다.
+공개 웹페이지 또는 인증이 필요한 웹페이지에서 실행할 수 있으며, 성능, 접근성, SEO 등에 대한 검사 기능이 있다.
+
+## Lighthouse 검사 전 항목
+
+<MDXImage
+  src="/images/how-to-use-lighthouse/before-run-lighthouse.png"
+  alt="gsc_add_property"
+/>
+
+### Mode
+
+- Navigation: Lighthouse의 기본 값으로, 초기 페이지 로딩 시 발생하는 성능 문제를 분석
+- Timespan: 사용자가 정의한 시간 동안 발생한 성능 문제를 분석
+- Snapshop: 현재 상태의 성능 문제를 분석
+
+### Device
+
+- Desktop:
+  - 데스크톱 환경으로 검사 진행
+  - CPU throttling 1x(제한 없음) 적용
+  - 상대적으로 빠른 CPU 성능과 안정적인 네트워크 환경을 가정하여 측정
+- Mobile:
+  - 모바일 환경으로 검사 진행
+  - CPU throttling 4x(데스크톱보다 느린 CPU 성능으로 시뮬레이션) 적용
+  - 모바일 사이즈의 화면과 제한된 네트워크 환경에서 성능 측정
+
+### Categories
+
+- Perfomance: 웹 페이지의 로딩 과정에서 발생하는 성능 문제를 분석
+- Accessibility: 서비스의 사용자 접근성 문제를 분석
+- Best practices: 웹 사이트의 보안 측면과 웹 개발의 최신 표준에 중점을 두고 분석
+- SEO: 검색 엔진에서 얼마나 잘 크롤링되고 검색 결과에 표시되는지 분석
+- Progressive Web: 서비스 워커와 오프라인 동작 등, PWA 관련된 문제를 분석
+
+## Lighthouse 검사 후 항목
+
+<MDXImage
+  src="/images/how-to-use-lighthouse/after-run-lighthouse.png"
+  alt="gsc_add_property"
+/>
+
+가장 위에 보이는 숫자는 Lighthouse가 측정한 웹 페이지의 종합 성능 점수이다.
+이 점수는 6가지 지표(metrics)에 가중치를 적용해 평균 낸 점수이다. 이러한 지표를 웹 바이탈(Web Vitals)이라고 부른다.
+
+### Metrics
+
+#### First Contentful Paint(FCP)
+
+페이지가 로드될 때 브라우저가 DOM 콘텐츠의 첫 번째 부분을 렌더링하는데 걸리는 시간에 관한 지표.
+
+총점을 계산할 때, 10%의 가중치를 갖는다.
+
+#### Speed Index(SI)
+
+페이지 로드 중에 콘텐츠가 시각적으로 표시되는 속도를 나타내는 지표.
+
+<MDXImage
+  src="/images/how-to-use-lighthouse/speed-index.png"
+  alt="gsc_add_property"
+/>
+
+위 이미지 예시처럼 A 페이지와 B 페이지를 각각 로드했을 때, 두 페이지 모두 전체 화면이 표시되는 데 4초라는 동일한 시간이 걸렸지만,
+A 페이지는 일부 콘텐츠가 B 페이지보다 먼저 떴음을 알 수 있다. 이런 경우 A 페이지가 B 페이지보다 전체적으로 더 빨리 로드된 것으로 계산되며, 더 높은 점수를 받는다.
+
+총점을 계산할 때, 10%의 가중치를 갖는다.
+
+#### Largest Contentful Paint(LCP)
+
+페이지가 로드될 때 화면 내에 있는 가장 큰 이미지나 텍스트 요소가 렌더링되기까지 걸리는 시간을 나타내는 지표.
+
+총점을 계산할 때, 25%의 가중치를 갖는다.
+
+#### Time to Interactive(TTI)
+
+사용자가 페이지와 클릭 또는 키보드 누름 같은 사용자 입력에 해당하는 상호 작용이 가능한 시점까지 걸리는 시간을 측정한 지표.
+
+총점을 계산할 때, 10%의 가중치를 갖는다.
+
+#### Total Blocking Time(TBT)
+
+페이지가 클릭, 키보드 입력 등의 사용자 입력에 응답하지 않도록 차단된 시간을 총합한 지표.
+
+측정은 FCP와 TTI 사이의 시간 동안 일어나며 메인 스레드를 독점하여 다른 도작을 방해하는 작업에 걸린 시간을 총합한다.
+
+총점을 계산할 때, 30%의 가중치를 갖는다.
+
+#### Cumulative Layout Shift(CLS)
+
+페이지 로드 과정에서 발생하는 예기치 못한 레이아웃 이동(Layout Shift)을 측정한 지표.
+
+레이아웃 이동이란 화면상에서 요소의 위치나 크기가 순간적으로 변하는 것을 의미.
+
+총점을 계산할 때, 15%의 가중치를 갖는다.
+
+### Insights & Diagnostics
+
+이 두 섹션은 웹 페이지의 문제점과 해결 방안, 그리고 문제를 해결함으로써 얻을 수 있는 이점이 무엇인지 보여줌으로서,
+해당 서비스의 어느 부분을 개선해야 성능을 향상할 수 있는지 쉽게 파악할 수 있다.
+
+#### Insights
+
+페이지를 더욱 빨리 로드하는 데 잠재적으로 도움되는 제안을 나열.
+
+<MDXImage
+  src="/images/how-to-use-lighthouse/insights.png"
+  alt="gsc_add_property"
+/>
+
+#### Diagnostics
+
+로드 속도와 직접적인 관계는 없지만 성능과 관련된 기타 정보를 나열.
+
+<MDXImage
+  src="/images/how-to-use-lighthouse/diagnostics.png"
+  alt="gsc_add_property"
+/>
+
+### Passed audits
+
+페이지가 성공적으로 통과한 모든 검사 항목 나열.
+
+현재 웹 페이지가 어떤 모범 사례를 잘 따르고 있는지 확인할 수 있다.
+
+<MDXImage
+  src="/images/how-to-use-lighthouse/passed-audits.png"
+  alt="gsc_add_property"
+/>
+
+### Emulated DeskTop & Custom throttling
+
+#### Emulated DeskTop
+
+<MDXImage
+  src="/images/how-to-use-lighthouse/emulated-desktop.png"
+  alt="gsc_add_property"
+/>
+
+CPU throttling이라는 정보를 통해 기기(컴퓨터)의 CPU 성능을 어느 정도 제한하여
+검사를 진행했는지를 나타낸다.
+
+검사 전 Device 설정을 'Desktop'으로 선택하면 CPU throttling은 1x로 CPU 성능에 제한을 두지 않고 검사함을 알 수 있고, 'Mobile'을 선택했다면 4x로 표시된다.
+
+#### Custom throttling
+
+<MDXImage
+  src="/images/how-to-use-lighthouse/custom-throttling.png"
+  alt="gsc_add_property"
+/>
+
+Network throttling이라는 정보를 통해 네트워크 속도를 제한하여 어느 정도 고정된 네트워크 환경에서 성능을 측정했는지를 나타낸다.
+
+이 2가지 제한 때문에 Lighthouse 없이 그냥 페이지를 로드하는 속도보다 Lighthouse를 이용해 측정할 때 페이지 로드 속도가 더 느리다.
+
+그리고 Lighthouse 검사 시 선택했던 Device 환경을 'Mobile'로 설정하면 더욱 제한된 환경으로 검사한다.
+
+---
+
+- 참고:
+  - 프론트엔드 성능 최적화 가이드
