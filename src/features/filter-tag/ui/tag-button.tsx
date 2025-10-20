@@ -11,11 +11,11 @@ export default function TagButton({ uniqueTag }: TagButtonProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const currentTags = searchParams.get("tag")?.split(",") || [];
+  const currentTags = searchParams?.get("tag")?.split(",") || [];
   const isSelected = currentTags.includes(uniqueTag);
 
   const handleTagClick = () => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams?.toString());
     const updatedTags = currentTags.includes(uniqueTag)
       ? currentTags.filter((t) => t !== uniqueTag)
       : [...currentTags, uniqueTag];

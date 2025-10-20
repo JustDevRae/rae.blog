@@ -11,7 +11,7 @@ import { useShowAndHideHeader } from "../lib/hooks/useShowAndHideHeader";
 
 export default function Header() {
   const pathname = usePathname();
-  const isScrollAblePage = pathname.startsWith("/post/");
+  const isScrollAblePage = pathname?.startsWith("/post/");
   const { visible } = useShowAndHideHeader();
 
   const showHeader = isScrollAblePage ? visible : true;

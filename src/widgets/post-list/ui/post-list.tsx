@@ -13,10 +13,10 @@ interface PostListProps {
 export default function PostList({ postArray }: PostListProps) {
   const searchParams = useSearchParams();
 
-  const selectedTags = searchParams.get("tag")?.split(",") || [];
-  const searchQuery = searchParams.get("q") || "";
+  const selectedTags = searchParams?.get("tag")?.split(",") || [];
+  const searchQuery = searchParams?.get("q") || "";
 
-  const currentPage = Number(searchParams.get("page")) || 1;
+  const currentPage = Number(searchParams?.get("page")) || 1;
   const postsPerPage = 3;
 
   const filteredPostArray = postArray.filter((post) => {
