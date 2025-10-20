@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import AboutPage from "@/views/about/ui/about-page";
+import AboutPage from "@/pages/about/ui/about-page";
 
 export const metadata: Metadata = {
   title: "About",

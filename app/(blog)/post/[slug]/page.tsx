@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import PostDetailPage from "@/views/post-detail/ui/post-detail-page";
+import PostDetailPage from "@/pages/post-detail/ui/post-detail-page";
 import { parsePostDataBySlug } from "@/entities/post/api/mdx";
 
 export async function generateMetadata({
