@@ -1,4 +1,7 @@
 import Image from "next/image";
+import GithubIcon from "@/shared/ui/icons/github-icon";
+import GmailIcon from "@/shared/ui/icons/gmail-icon";
+import LinkedinIcon from "@/shared/ui/icons/linkedin-icon";
 
 export default function AboutPage() {
   return (
@@ -12,8 +15,17 @@ export default function AboutPage() {
               <p>let me introduce</p>
             </div>
 
-            {/* icons */}
-            <div>icons</div>
+            <ul className="flex gap-4 self-center tablet:self-start">
+              <li className="rounded-md border p-2">
+                <GithubIcon />
+              </li>
+              <li className="rounded-md border p-2">
+                <LinkedinIcon />
+              </li>
+              <li className="rounded-md border p-2">
+                <GmailIcon />
+              </li>
+            </ul>
           </div>
         </div>
         <div className="relative order-1 aspect-square w-full tablet:order-2 tablet:w-1/3">
