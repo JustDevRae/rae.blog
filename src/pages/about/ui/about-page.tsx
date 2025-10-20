@@ -16,13 +16,13 @@ export default function AboutPage() {
             </div>
 
             <ul className="flex gap-4 self-center tablet:self-start">
-              <li className="rounded-md border p-2">
+              <li>
                 <GithubIcon />
               </li>
-              <li className="rounded-md border p-2">
+              <li>
                 <LinkedinIcon />
               </li>
-              <li className="rounded-md border p-2">
+              <li>
                 <GmailIcon />
               </li>
             </ul>
