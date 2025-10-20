@@ -46,7 +46,7 @@ export default function AboutPage() {
         >
           <Image
             src="/profile2.jpg"
-            alt="profile alt"
+            alt="second profile"
             fill
             className="rounded-full object-fill"
             priority
@@ -59,7 +59,7 @@ export default function AboutPage() {
           >
             <Image
               src="/profile.png"
-              alt="profile"
+              alt="first profile"
               fill
               className="rounded-sm object-fill"
               priority
