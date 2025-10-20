@@ -30,8 +30,8 @@ export default function AboutPage() {
         </div>
         <div className="relative order-1 aspect-square w-full tablet:order-2 tablet:w-1/3">
           <Image
-            src="/logo.png"
-            alt="logo"
+            src="/profile.png"
+            alt="profile"
             fill
             className="object-fill"
             priority
