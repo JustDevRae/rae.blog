@@ -49,22 +49,22 @@ export default function AboutPage() {
       <section className="flex flex-col gap-5 rounded-md border p-4">
         <h2 className="text-2xl font-bold">Skill</h2>
         <ul className="flex flex-wrap gap-2">
-          <li className="rounded-md bg-slate-200 px-3 py-1 text-sm font-medium text-slate-800 dark:bg-slate-800 dark:text-slate-200">
+          <li className="rounded-md bg-[#E34F26] px-3 py-1 text-sm font-medium text-white">
             HTML
           </li>
-          <li className="rounded-md bg-slate-200 px-3 py-1 text-sm font-medium text-slate-800 dark:bg-slate-800 dark:text-slate-200">
+          <li className="rounded-md bg-[#1572B6] px-3 py-1 text-sm font-medium text-white">
             CSS
           </li>
-          <li className="rounded-md bg-slate-200 px-3 py-1 text-sm font-medium text-slate-800 dark:bg-slate-800 dark:text-slate-200">
+          <li className="rounded-md bg-[#F7DF1E] px-3 py-1 text-sm font-medium text-black">
             JavaScript
           </li>
-          <li className="rounded-md bg-slate-200 px-3 py-1 text-sm font-medium text-slate-800 dark:bg-slate-800 dark:text-slate-200">
+          <li className="rounded-md bg-[#3178C6] px-3 py-1 text-sm font-medium text-white">
             TypeScript
           </li>
-          <li className="rounded-md bg-slate-200 px-3 py-1 text-sm font-medium text-slate-800 dark:bg-slate-800 dark:text-slate-200">
+          <li className="rounded-md bg-[#61DAFB] px-3 py-1 text-sm font-medium text-black">
             React
           </li>
-          <li className="rounded-md bg-slate-200 px-3 py-1 text-sm font-medium text-slate-800 dark:bg-slate-800 dark:text-slate-200">
+          <li className="rounded-md bg-black px-3 py-1 text-sm font-medium text-white dark:bg-white dark:text-black">
             Next.js
           </li>
         </ul>
