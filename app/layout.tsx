@@ -20,7 +20,7 @@ const notoSansKR = Noto_Sans_KR({
 export const metadata: Metadata = {
   title: {
     default: "Rae",
-    template: "Rae - %s",
+    template: "%s | Rae",
   },
   description:
     "학습한 내용에 대해 다른 사람도 쉽게 읽을 수 있도록 공유하는 김승래의 개인 기술 블로그",
