@@ -1,9 +1,20 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
+
 import GithubIcon from "@/shared/ui/icons/github-icon";
 import GmailIcon from "@/shared/ui/icons/gmail-icon";
 import LinkedinIcon from "@/shared/ui/icons/linkedin-icon";
+import { cn } from "@/shared/lib/utils/utils";
 
 export default function AboutPage() {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleImageClick = () => {
+    setIsClicked(!isClicked);
+  };
+
   return (
     <main className="flex flex-col gap-10">
       <section className="flex flex-col gap-5 rounded-md border p-4 tablet:flex-row">
@@ -28,15 +39,33 @@ export default function AboutPage() {
             </ul>
           </div>
         </div>
-        <div className="relative order-1 aspect-square w-full tablet:order-2 tablet:w-1/3">
+        <button
+          type="button"
+          className="relative order-1 aspect-square w-full cursor-pointer overflow-hidden tablet:order-2 tablet:w-1/3"
+          onClick={handleImageClick}
+        >
           <Image
-            src="/profile.png"
-            alt="profile"
+            src="/profile2.jpg"
+            alt="profile alt"
             fill
-            className="object-fill"
+            className="rounded-full object-fill"
             priority
           />
-        </div>
+          <div
+            className={cn(
+              "absolute left-0 top-0 h-full w-full transition-transform duration-500 ease-in-out",
+              isClicked ? "-translate-y-full" : "translate-y-0",
+            )}
+          >
+            <Image
+              src="/profile.png"
+              alt="profile"
+              fill
+              className="rounded-sm object-fill"
+              priority
+            />
+          </div>
+        </button>
       </section>
 
       {/* about me */}
