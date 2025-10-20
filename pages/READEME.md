@@ -9,3 +9,7 @@ Next.js App Router와 FSD를 하기 위해서는 src 폴더 내에 `app`, `pages
 > [!WARNING]
 >
 > 빌드 에러 방지를 위한 필수 폴더이므로, 삭제하거나 폴더 내에 파일이나 하위 폴더를 생성하지 않도록 주의해주시기 바랍니다.
+
+---
+
+**참고**: <https://feature-sliced.design/docs/guides/tech/with-nextjs>
