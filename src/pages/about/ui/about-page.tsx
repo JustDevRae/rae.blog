@@ -3,11 +3,27 @@ import Image from "next/image";
 export default function AboutPage() {
   return (
     <main className="flex flex-col gap-10">
-      <section className="flex flex-col items-center gap-5 rounded-md border p-4 tablet:flex-row">
-        <Image src="/logo.png" alt="logo" width={300} height={300} priority />
-        <div className="w-[300px] flex-wrap">
-          <p>안녕하세요. </p>
-          <p>프론트엔드 개발자 김승래입니다.</p>
+      <section className="flex flex-col gap-5 rounded-md border p-4 tablet:flex-row">
+        <div className="order-2 w-full self-stretch tablet:order-1 tablet:w-2/3">
+          <div className="flex h-full flex-col justify-between gap-5">
+            <div className="flex flex-col items-center gap-1 tablet:items-start">
+              <h2 className="text-2xl font-bold">김승래</h2>
+              <h3 className="font-bold">FrontEnd Developer</h3>
+              <p>let me introduce</p>
+            </div>
+
+            {/* icons */}
+            <div>icons</div>
+          </div>
+        </div>
+        <div className="relative order-1 aspect-square w-full tablet:order-2 tablet:w-1/3">
+          <Image
+            src="/logo.png"
+            alt="logo"
+            fill
+            className="object-fill"
+            priority
+          />
         </div>
       </section>
 
