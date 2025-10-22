@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-interface ProjectCardProps {
+interface ModalTriggerProps {
   onModalTriggerClick: () => void;
   children: ReactNode;
 }
@@ -8,7 +8,7 @@ interface ProjectCardProps {
 export default function ModalTrigger({
   onModalTriggerClick,
   children,
-}: ProjectCardProps) {
+}: ModalTriggerProps) {
   return (
     <div
       className="cursor-pointer rounded-md border p-4 transition-shadow hover:shadow-lg"
