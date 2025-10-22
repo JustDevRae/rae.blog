@@ -1,40 +1,148 @@
 "use client";
 
-import { ReactNode } from "react";
 import { useModal } from "@/shared/lib/context/modal-context";
+import { PROJECT_DATA } from "@/shared/config/project-data";
+import Image from "next/image";
+import ProjectImageCarousel from "./project-image-carousel";
 
-interface ProjectImageModalProps {
-  children: ReactNode;
+interface ProjectDetailModalProps {
+  project: (typeof PROJECT_DATA)[0];
 }
 
 export default function ProjectDetailModal({
-  children,
-}: ProjectImageModalProps) {
+  project,
+}: ProjectDetailModalProps) {
   const { openModal } = useModal();
 
-  const handleOpenImageModal = () => {
+  const handleOpenImageModal = (initialSlide: string) => {
     openModal(
-      "project-image-modal",
-      // TODO: chilren으로 project-image-carulsel를 받도록 수정 필요
-      <div className="flex flex-col gap-4">
-        <h3 className="text-xl font-bold">Project Image Carulsel</h3>
-      </div>,
+      `project-image-modal-${project.title}-${initialSlide}`,
+      <ProjectImageCarousel
+        images={project.images}
+        initialSlide={initialSlide}
+      />,
     );
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      {/* project-detai-content */}
-      {children}
-      {/* project-image 클릭 시, projec-image-modal이 활성화 */}
-      {/* TODO: image-card를 나열 */}
-      <button
-        type="button"
-        className="mt-4 rounded-md bg-green-500 px-4 py-2 text-white hover:bg-green-600"
-        onClick={handleOpenImageModal}
-      >
-        Image
-      </button>
+    <div className="flex max-h-[80vh] flex-col gap-4 overflow-y-auto p-4">
+      {/* project-summary */}
+      <section>
+        <h2 className="text-2xl font-bold">{project.title}</h2>
+        <p className="text-sm text-gray-500">{project.period}</p>
+        <p>{project.summary}</p>
+
+        {/* github-link */}
+        {project.githubUrl && (
+          <p>
+            <span className="font-semibold">GitHub:</span>
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
+              {project.githubUrl}
+            </a>
+          </p>
+        )}
+
+        {/* deploy-link */}
+        {project.deployUrl && (
+          <p>
+            <span className="font-semibold">Deploy:</span>
+            <a
+              href={project.deployUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
+              {project.deployUrl}
+            </a>
+          </p>
+        )}
+
+        {/* project-description */}
+        <p className="font-semibold">Description:</p>
+        <p>{project.description}</p>
+      </section>
+
+      {/* skills */}
+      <section>
+        <p className="font-semibold">Skills:</p>
+        <div className="flex flex-wrap gap-2">
+          {project.skill.map((skill) => (
+            <span
+              key={skill}
+              className="rounded-md bg-gray-200 px-2 py-1 text-sm dark:bg-gray-700"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* project-implement */}
+      <section>
+        {project.implements && project.implements.length > 0 && (
+          <>
+            <p className="font-semibold">Implements:</p>
+            <ul className="list-disc pl-5">
+              {project.implements.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </>
+        )}
+      </section>
+
+      {/* project-troubleShooting */}
+      <section>
+        {project.troubleShooting && (
+          <>
+            <h3 className="mt-4 text-xl font-bold">Troubleshooting</h3>
+            <p className="font-semibold">
+              Title: {project.troubleShooting.title}
+            </p>
+            <p className="font-semibold">Trouble:</p>
+            <p>{project.troubleShooting.trouble}</p>
+            <p className="font-semibold">Cause:</p>
+            <p>{project.troubleShooting.cause}</p>
+            <p className="font-semibold">Solution:</p>
+            <p>{project.troubleShooting.solution}</p>
+          </>
+        )}
+      </section>
+
+      {/* project-images */}
+      <section>
+        {project.images && project.images.length > 0 ? (
+          <div>
+            <h3 className="mt-4 text-xl font-bold">Images</h3>
+            <div className="sm:grid-cols-3 md:grid-cols-4 grid grid-cols-2 gap-2">
+              {project.images.map((image) => (
+                <div
+                  key={image.alt}
+                  className="cursor-pointer overflow-hidden rounded-lg shadow-md transition-shadow hover:shadow-lg"
+                  onClick={() => handleOpenImageModal(image.alt)}
+                  role="presentation"
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={150}
+                    height={100}
+                    objectFit="cover"
+                    className="h-auto w-full"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div>No images available.</div>
+        )}
+      </section>
     </div>
   );
 }
