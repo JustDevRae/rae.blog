@@ -25,7 +25,7 @@ export default function ProjectDetailModal({
   };
 
   return (
-    <div className="flex max-h-[80vh] flex-col gap-4 overflow-y-auto p-4">
+    <div className="flex max-h-[85vh] flex-col gap-4 overflow-y-auto">
       {/* project-summary */}
       <section>
         <h2 className="text-2xl font-bold">{project.title}</h2>

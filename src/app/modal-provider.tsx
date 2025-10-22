@@ -1,5 +1,6 @@
 "use client";
 
+import { X } from "lucide-react";
 import { ReactNode, useCallback, useState, useEffect, useMemo } from "react";
 import { ModalContext } from "../shared/lib/context/modal-context";
 import Portal from "../shared/ui/portal";
@@ -69,7 +70,7 @@ export default function ModalProvider({ children }: ModalProviderProps) {
             >
               {/* 모달 콘텐츠 영역 */}
               <div
-                className="relative w-3/4 max-w-4xl rounded-md bg-white p-8 dark:bg-gray-800"
+                className="relative w-[90%] max-w-4xl rounded-md bg-white p-4 dark:bg-gray-800"
                 onClick={(e) => e.stopPropagation()}
                 onKeyDown={(e) => e.stopPropagation()}
                 role="presentation"
@@ -80,11 +81,11 @@ export default function ModalProvider({ children }: ModalProviderProps) {
               >
                 {/* 모달 닫기 버튼 */}
                 <button
-                  className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                  className="absolute right-1.5 top-1.5 rounded-md bg-red-500 p-1 text-white hover:bg-red-700"
                   onClick={() => closeModal(modal.id)}
                   type="button"
                 >
-                  Close
+                  <X className="h-5 w-5" />
                 </button>
                 {/* 모달에 전달된 실제 콘텐츠를 렌더링 */}
                 {modal.content}
