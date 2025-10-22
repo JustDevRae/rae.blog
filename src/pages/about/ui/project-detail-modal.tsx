@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Github, SquareArrowOutUpRight } from "lucide-react";
 import { Project } from "@/shared/model/project-data.type";
 import { useModal } from "@/shared/lib/context/modal-context";
 import ProjectImageCarousel from "./project-image-carousel";
@@ -26,48 +25,83 @@ export default function ProjectDetailModal({
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <article className="flex flex-col gap-4">
       {/* project-introduce */}
       <section className="rounded-md border p-4">
-        <h2 className="font-bold">{project.title}</h2>
-        <p className="text-sm text-gray-500">{project.period}</p>
+        <div className="flex items-center justify-between pb-4">
+          <div>
+            <h2 className="pb-1 text-xl font-bold">{project.title}</h2>
+            <time className="text-sm text-gray-500">{project.period}</time>
+          </div>
 
-        {/* github-link */}
-        {project.githubUrl && (
-          <p>
-            <span className="font-semibold">GitHub:</span>
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline"
-            >
-              {project.githubUrl}
-            </a>
-          </p>
-        )}
+          {/* link */}
+          <nav className="my-2 flex gap-4">
+            {/* github-link */}
+            {project.githubUrl && (
+              <button
+                type="button"
+                className="rounded-sm border p-3 dark:hover:bg-gray-800"
+              >
+                <a
+                  aria-label="github link"
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    role="img"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    className="fill-foreground"
+                  >
+                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                  </svg>
+                </a>
+              </button>
+            )}
 
-        {/* deploy-link */}
-        {project.deployUrl && (
-          <p>
-            <span className="font-semibold">Deploy:</span>
-            <a
-              href={project.deployUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline"
-            >
-              {project.deployUrl}
-            </a>
-          </p>
-        )}
+            {/* deploy-link */}
+            {project.deployUrl && (
+              <button
+                type="button"
+                className="rounded-sm border p-3 dark:hover:bg-gray-800"
+              >
+                <a
+                  aria-label="deploy link"
+                  href={project.deployUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+                    <path d="m21 3-9 9" />
+                    <path d="M15 3h6v6" />
+                  </svg>
+                </a>
+              </button>
+            )}
+          </nav>
+        </div>
 
+        {/* project-description */}
         <p>{project.description}</p>
       </section>
 
       {/* skill */}
       <section className="rounded-md border p-4">
-        <h2 className="font-semibold">Skill</h2>
+        <h2 className="pb-3 text-xl font-bold">Skill</h2>
         <div className="flex flex-wrap gap-2">
           {project.skill.map((skill) => (
             <span
@@ -82,7 +116,7 @@ export default function ProjectDetailModal({
 
       {/* implement */}
       <section className="rounded-md border p-4">
-        <h2 className="font-semibold">구현 내용</h2>
+        <h2 className="pb-3 text-xl font-bold">구현 내용</h2>
         {project.implements && project.implements.length > 0 && (
           <ul className="list-disc pl-5">
             {project.implements.map((item) => (
@@ -94,15 +128,15 @@ export default function ProjectDetailModal({
 
       {/* trouble-shooting */}
       <section className="rounded-md border p-4">
-        <h2 className="mt-4 text-xl font-bold">Troubleshooting</h2>
+        <h2 className="pb-3 text-xl font-bold">Troubleshooting</h2>
         {project.troubleShooting && (
           <>
             <h3 className="font-semibold">{project.troubleShooting.title}</h3>
-            <p className="font-semibold">Trouble:</p>
+            <h4 className="font-semibold">Trouble</h4>
             <p>{project.troubleShooting.trouble}</p>
-            <p className="font-semibold">Cause:</p>
+            <h4 className="font-semibold">Cause</h4>
             <p>{project.troubleShooting.cause}</p>
-            <p className="font-semibold">Solution:</p>
+            <h4 className="font-semibold">Solution</h4>
             <p>{project.troubleShooting.solution}</p>
           </>
         )}
@@ -110,33 +144,31 @@ export default function ProjectDetailModal({
 
       {/* project-images */}
       <section className="rounded-md border p-4">
-        <h2 className="mt-4 text-xl font-bold">Images</h2>
+        <h2 className="pb-3 text-xl font-bold">Images</h2>
         {project.images && project.images.length > 0 ? (
-          <div>
-            <div className="grid grid-cols-1 gap-2 tablet:grid-cols-2 desktop:grid-cols-4">
-              {project.images.map((image) => (
-                <div
-                  key={image.alt}
-                  className="cursor-pointer overflow-hidden rounded-lg shadow-md transition-shadow hover:shadow-lg"
-                  onClick={() => handleOpenImageModal(image.alt)}
-                  role="presentation"
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={150}
-                    height={100}
-                    objectFit="cover"
-                    className="h-auto w-full"
-                  />
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 gap-4 tablet:grid-cols-2 desktop:grid-cols-4">
+            {project.images.map((image) => (
+              <figure
+                key={image.alt}
+                className="cursor-pointer rounded-md border hover:border-yellow-500"
+                onClick={() => handleOpenImageModal(image.alt)}
+                role="presentation"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={150}
+                  height={100}
+                  objectFit="cover"
+                  className="h-auto w-full"
+                />
+              </figure>
+            ))}
           </div>
         ) : (
-          <div>No images available.</div>
+          <div className="rounded-md border">Not Ready Images</div>
         )}
       </section>
-    </div>
+    </article>
   );
 }
