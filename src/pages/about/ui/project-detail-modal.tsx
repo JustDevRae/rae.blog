@@ -119,7 +119,7 @@ export default function ProjectDetailModal({
         {project.images && project.images.length > 0 ? (
           <div>
             <h3 className="mt-4 text-xl font-bold">Images</h3>
-            <div className="sm:grid-cols-3 md:grid-cols-4 grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 gap-2 tablet:grid-cols-2 desktop:grid-cols-4">
               {project.images.map((image) => (
                 <div
                   key={image.alt}
