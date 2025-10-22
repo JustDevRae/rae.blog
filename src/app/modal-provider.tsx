@@ -70,7 +70,7 @@ export default function ModalProvider({ children }: ModalProviderProps) {
             >
               {/* 모달 콘텐츠 영역 */}
               <div
-                className="relative w-[90%] max-w-4xl rounded-md bg-white p-4 dark:bg-gray-800"
+                className="relative w-[90%] max-w-4xl rounded-md bg-white p-4 pt-10 dark:bg-gray-800"
                 onClick={(e) => e.stopPropagation()}
                 onKeyDown={(e) => e.stopPropagation()}
                 role="presentation"
@@ -88,7 +88,9 @@ export default function ModalProvider({ children }: ModalProviderProps) {
                   <X className="h-5 w-5" />
                 </button>
                 {/* 모달에 전달된 실제 콘텐츠를 렌더링 */}
-                {modal.content}
+                <div className="hide-scrollbar h-[85vh] overflow-y-auto tablet:max-h-[85vh]">
+                  {modal.content}
+                </div>
               </div>
             </div>
           ))}

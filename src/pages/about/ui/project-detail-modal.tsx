@@ -25,7 +25,7 @@ export default function ProjectDetailModal({
   };
 
   return (
-    <div className="hide-scrollbar flex max-h-[85vh] flex-col gap-4 overflow-y-auto">
+    <div className="flex flex-col gap-4">
       <section className="rounded-md border p-4">
         <h2 className="text-2xl font-bold">{project.title}</h2>
         <p className="text-sm text-gray-500">{project.period}</p>

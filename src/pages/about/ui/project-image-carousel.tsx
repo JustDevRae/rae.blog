@@ -33,28 +33,24 @@ export default function ProjectImageCarousel({
   }, [api, initialSlide, images]);
 
   return (
-    <div className="relative mx-auto max-h-[80vh] w-full max-w-xl overflow-y-auto">
-      <Carousel setApi={setApi}>
-        <CarouselContent>
-          {images.map((image) => (
-            <CarouselItem key={image.alt}>
-              <div className="flex h-full items-center justify-center">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={800}
-                  height={600}
-                  layout="responsive"
-                  objectFit="contain"
-                  className="max-h-[70vh] w-auto rounded-lg"
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-    </div>
+    <Carousel setApi={setApi} className="mx-auto h-full w-full max-w-xl">
+      <CarouselContent>
+        {images.map((image) => (
+          <CarouselItem key={image.alt}>
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={800}
+              height={600}
+              layout="responsive"
+              objectFit="contain"
+              className="max-h-[70vh] w-auto rounded-lg"
+            />
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious className="left-1 top-1/2 -translate-y-1/2 tablet:-left-12" />
+      <CarouselNext className="right-1 top-1/2 -translate-y-1/2 tablet:-right-12" />
+    </Carousel>
   );
 }
