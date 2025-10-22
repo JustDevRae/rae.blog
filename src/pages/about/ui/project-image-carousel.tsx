@@ -1,35 +1,44 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/shared/ui/carousel";
+import { useEffect, useState } from "react";
+
+interface ImageType {
+  src: string;
+  alt: string;
+}
 
 interface ProjectImageCarouselProps {
-  images: { src: string; alt: string }[];
-  initialSlide?: string;
+  images: ImageType[];
+  initialSlide: string;
 }
 
 export default function ProjectImageCarousel({
   images,
-  initialSlide = "",
+  initialSlide,
 }: ProjectImageCarouselProps) {
-  const [api, setApi] = useState<any>();
+  const [api, setApi] = useState<CarouselApi>();
 
   useEffect(() => {
-    if (api && initialSlide !== undefined) {
-      api.scrollTo(initialSlide);
+    if (!api || !initialSlide) return;
+
+    const initialIndex = images.findIndex((img) => img.alt === initialSlide);
+    if (initialIndex !== -1) {
+      api.scrollTo(initialIndex);
     }
-  }, [api, initialSlide]);
+  }, [api, initialSlide, images]);
 
   return (
     <div className="relative mx-auto max-h-[80vh] w-full max-w-xl overflow-y-auto">
-      <Carousel setApi={setApi} opts={{ initialSlide: initialSlide }}>
+      <Carousel setApi={setApi}>
         <CarouselContent>
           {images.map((image) => (
             <CarouselItem key={image.alt}>
