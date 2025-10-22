@@ -1,4 +1,6 @@
-export const PROJECT_DATA = [
+import { Project } from "@/shared/model/project-data.type";
+
+export const PROJECT_DATA: Project[] = [
   {
     title: "프로젝트 제목1", // 프로젝트 제목
     period: "2025.10 - Mar 2025.10", // 프로젝트 기간

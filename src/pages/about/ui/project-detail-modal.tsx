@@ -1,12 +1,12 @@
 "use client";
 
+import { Project } from "@/shared/model/project-data.type";
 import { useModal } from "@/shared/lib/context/modal-context";
-import { PROJECT_DATA } from "@/shared/config/project-data";
 import Image from "next/image";
 import ProjectImageCarousel from "./project-image-carousel";
 
 interface ProjectDetailModalProps {
-  project: (typeof PROJECT_DATA)[0];
+  project: Project;
 }
 
 export default function ProjectDetailModal({

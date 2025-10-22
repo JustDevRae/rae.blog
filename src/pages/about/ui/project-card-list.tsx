@@ -1,5 +1,6 @@
 "use client";
 
+import { Project } from "@/shared/model/project-data.type";
 import { useModal } from "@/shared/lib/context/modal-context";
 import { PROJECT_DATA } from "@/shared/config/project-data";
 import ProjectCard from "./project-card";
@@ -9,7 +10,7 @@ import ModalTrigger from "./modal-trigger";
 export default function ProjectCardList() {
   const { openModal } = useModal();
 
-  const handleModalTriggerClick = (project: (typeof PROJECT_DATA)[0]) => {
+  const handleModalTriggerClick = (project: Project) => {
     openModal(
       `project-detail-modal-${project.title}`,
       <ProjectDetailModal project={project} />,

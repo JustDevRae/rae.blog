@@ -10,14 +10,10 @@ import {
   CarouselPrevious,
 } from "@/shared/ui/carousel";
 import { useEffect, useState } from "react";
-
-interface ImageType {
-  src: string;
-  alt: string;
-}
+import { ProjectImage } from "@/shared/model/project-data.type";
 
 interface ProjectImageCarouselProps {
-  images: ImageType[];
+  images: ProjectImage[];
   initialSlide: string;
 }
 
