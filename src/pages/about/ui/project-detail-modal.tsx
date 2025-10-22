@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
+import { Github, SquareArrowOutUpRight } from "lucide-react";
 import { Project } from "@/shared/model/project-data.type";
 import { useModal } from "@/shared/lib/context/modal-context";
-import Image from "next/image";
 import ProjectImageCarousel from "./project-image-carousel";
 
 interface ProjectDetailModalProps {
@@ -26,10 +27,10 @@ export default function ProjectDetailModal({
 
   return (
     <div className="flex flex-col gap-4">
+      {/* project-introduce */}
       <section className="rounded-md border p-4">
-        <h2 className="text-2xl font-bold">{project.title}</h2>
+        <h2 className="font-bold">{project.title}</h2>
         <p className="text-sm text-gray-500">{project.period}</p>
-        <p>{project.summary}</p>
 
         {/* github-link */}
         {project.githubUrl && (
@@ -61,13 +62,12 @@ export default function ProjectDetailModal({
           </p>
         )}
 
-        {/* project-description */}
-        <p className="font-semibold">Description:</p>
         <p>{project.description}</p>
       </section>
 
+      {/* skill */}
       <section className="rounded-md border p-4">
-        <p className="font-semibold">Skills:</p>
+        <h2 className="font-semibold">Skill</h2>
         <div className="flex flex-wrap gap-2">
           {project.skill.map((skill) => (
             <span
@@ -80,26 +80,24 @@ export default function ProjectDetailModal({
         </div>
       </section>
 
+      {/* implement */}
       <section className="rounded-md border p-4">
+        <h2 className="font-semibold">구현 내용</h2>
         {project.implements && project.implements.length > 0 && (
-          <>
-            <p className="font-semibold">Implements:</p>
-            <ul className="list-disc pl-5">
-              {project.implements.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </>
+          <ul className="list-disc pl-5">
+            {project.implements.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         )}
       </section>
 
+      {/* trouble-shooting */}
       <section className="rounded-md border p-4">
+        <h2 className="mt-4 text-xl font-bold">Troubleshooting</h2>
         {project.troubleShooting && (
           <>
-            <h3 className="mt-4 text-xl font-bold">Troubleshooting</h3>
-            <p className="font-semibold">
-              Title: {project.troubleShooting.title}
-            </p>
+            <h3 className="font-semibold">{project.troubleShooting.title}</h3>
             <p className="font-semibold">Trouble:</p>
             <p>{project.troubleShooting.trouble}</p>
             <p className="font-semibold">Cause:</p>
@@ -112,9 +110,9 @@ export default function ProjectDetailModal({
 
       {/* project-images */}
       <section className="rounded-md border p-4">
+        <h2 className="mt-4 text-xl font-bold">Images</h2>
         {project.images && project.images.length > 0 ? (
           <div>
-            <h3 className="mt-4 text-xl font-bold">Images</h3>
             <div className="grid grid-cols-1 gap-2 tablet:grid-cols-2 desktop:grid-cols-4">
               {project.images.map((image) => (
                 <div

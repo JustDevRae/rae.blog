@@ -70,7 +70,7 @@ export default function ModalProvider({ children }: ModalProviderProps) {
             >
               {/* 모달 콘텐츠 영역 */}
               <div
-                className="relative w-[90%] max-w-4xl rounded-md bg-white p-4 pt-10 dark:bg-gray-800"
+                className="relative w-[90%] max-w-4xl rounded-md bg-white p-4 pt-10 dark:bg-[#121212]"
                 onClick={(e) => e.stopPropagation()}
                 onKeyDown={(e) => e.stopPropagation()}
                 role="presentation"
