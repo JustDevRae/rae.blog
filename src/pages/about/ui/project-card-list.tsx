@@ -2,8 +2,9 @@
 
 import { useModal } from "@/shared/lib/context/modal-context";
 import { PROJECT_DATA } from "@/shared/config/project-data";
-import ModalTrigger from "./modal-trigger";
+import ProjectCard from "./project-card";
 import ProjectDetailModal from "./project-detail-modal";
+import ModalTrigger from "./modal-trigger";
 
 export default function ProjectCardList() {
   const { openModal } = useModal();
@@ -22,23 +23,12 @@ export default function ProjectCardList() {
           key={project.title}
           onModalTriggerClick={() => handleModalTriggerClick(project)}
         >
-          <div className="flex h-full flex-col justify-between">
-            <div>
-              <h3 className="text-xl font-bold">{project.title}</h3>
-              <p className="text-sm text-gray-500">{project.period}</p>
-              <p className="mt-2">{project.summary}</p>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {project.skill.map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-md bg-gray-200 px-2 py-1 text-sm dark:bg-gray-700"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
+          <ProjectCard
+            title={project.title}
+            period={project.period}
+            summary={project.summary}
+            skill={project.skill}
+          />
         </ModalTrigger>
       ))}
     </div>
