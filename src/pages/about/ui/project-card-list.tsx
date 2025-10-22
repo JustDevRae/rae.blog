@@ -2,13 +2,13 @@
 
 import { useModal } from "@/shared/lib/context/modal-context";
 import { PROJECT_DATA } from "@/shared/config/project-data";
-import ProjectCard from "./project-card";
+import ModalTrigger from "./modal-trigger";
 import ProjectDetailModal from "./project-detail-modal";
 
 export default function ProjectCardList() {
   const { openModal } = useModal();
 
-  const handleProjectCardClick = (project: (typeof PROJECT_DATA)[0]) => {
+  const handleModalTriggerClick = (project: (typeof PROJECT_DATA)[0]) => {
     openModal(
       `project-detail-modal-${project.title}`,
       <ProjectDetailModal project={project} />,
@@ -18,12 +18,10 @@ export default function ProjectCardList() {
   return (
     <div className="md:grid-cols-2 grid grid-cols-1 gap-4">
       {PROJECT_DATA.map((project) => (
-        // 모달 오프너
-        <ProjectCard
+        <ModalTrigger
           key={project.title}
-          onProjectCardClick={() => handleProjectCardClick(project)}
+          onModalTriggerClick={() => handleModalTriggerClick(project)}
         >
-          {/* 실질적으로 PostCard에 렌더링되는 정보 */}
           <div className="flex h-full flex-col justify-between">
             <div>
               <h3 className="text-xl font-bold">{project.title}</h3>
@@ -41,7 +39,7 @@ export default function ProjectCardList() {
               ))}
             </div>
           </div>
-        </ProjectCard>
+        </ModalTrigger>
       ))}
     </div>
   );

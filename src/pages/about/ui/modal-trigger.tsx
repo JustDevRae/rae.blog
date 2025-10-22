@@ -1,21 +1,21 @@
 import { ReactNode } from "react";
 
 interface ProjectCardProps {
-  onProjectCardClick: () => void;
+  onModalTriggerClick: () => void;
   children: ReactNode;
 }
 
-export default function ProjectCard({
-  onProjectCardClick,
+export default function ModalTrigger({
+  onModalTriggerClick,
   children,
 }: ProjectCardProps) {
   return (
     <div
       className="cursor-pointer rounded-md border p-4 transition-shadow hover:shadow-lg"
-      onClick={onProjectCardClick}
+      onClick={onModalTriggerClick}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
-          onProjectCardClick();
+          onModalTriggerClick();
         }
       }}
       role="button"
