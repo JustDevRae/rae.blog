@@ -26,8 +26,7 @@ export default function ProjectDetailModal({
 
   return (
     <div className="hide-scrollbar flex max-h-[85vh] flex-col gap-4 overflow-y-auto">
-      {/* project-summary */}
-      <section>
+      <section className="rounded-md border p-4">
         <h2 className="text-2xl font-bold">{project.title}</h2>
         <p className="text-sm text-gray-500">{project.period}</p>
         <p>{project.summary}</p>
@@ -67,8 +66,7 @@ export default function ProjectDetailModal({
         <p>{project.description}</p>
       </section>
 
-      {/* skills */}
-      <section>
+      <section className="rounded-md border p-4">
         <p className="font-semibold">Skills:</p>
         <div className="flex flex-wrap gap-2">
           {project.skill.map((skill) => (
@@ -82,8 +80,7 @@ export default function ProjectDetailModal({
         </div>
       </section>
 
-      {/* project-implement */}
-      <section>
+      <section className="rounded-md border p-4">
         {project.implements && project.implements.length > 0 && (
           <>
             <p className="font-semibold">Implements:</p>
@@ -96,8 +93,7 @@ export default function ProjectDetailModal({
         )}
       </section>
 
-      {/* project-troubleShooting */}
-      <section>
+      <section className="rounded-md border p-4">
         {project.troubleShooting && (
           <>
             <h3 className="mt-4 text-xl font-bold">Troubleshooting</h3>
@@ -115,7 +111,7 @@ export default function ProjectDetailModal({
       </section>
 
       {/* project-images */}
-      <section>
+      <section className="rounded-md border p-4">
         {project.images && project.images.length > 0 ? (
           <div>
             <h3 className="mt-4 text-xl font-bold">Images</h3>
