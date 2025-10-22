@@ -7,7 +7,7 @@ import ProjectCard from "./project-card";
 import ProjectDetailModal from "./project-detail-modal";
 import ModalTrigger from "./modal-trigger";
 
-export default function ProjectCardList() {
+export default function ProjectList() {
   const { openModal } = useModal();
 
   const handleModalTriggerClick = (project: Project) => {

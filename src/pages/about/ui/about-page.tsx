@@ -3,7 +3,7 @@ import GmailIcon from "@/shared/ui/icons/gmail-icon";
 import LinkedinIcon from "@/shared/ui/icons/linkedin-icon";
 import ToggleProfileImage from "@/features/toggle-profile-image/ui/toggle-profile-image";
 import ModalProvider from "@/app/modal-provider";
-import ProjectCardList from "./project-card-list";
+import ProjectList from "./project-list";
 
 export default function AboutPage() {
   return (
@@ -68,7 +68,7 @@ export default function AboutPage() {
         {/* project */}
         <section className="flex flex-col gap-5 rounded-md border p-4">
           <h2 className="text-2xl font-bold">Project</h2>
-          <ProjectCardList />
+          <ProjectList />
         </section>
 
         {/* education */}
