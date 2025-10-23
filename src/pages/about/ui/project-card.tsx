@@ -14,22 +14,22 @@ export default function ProjectCard({
   skill,
 }: ProjectCardProps) {
   return (
-    <div className="flex h-full flex-col justify-between">
+    <div className="flex h-full cursor-pointer flex-col justify-between gap-4 rounded-md border p-4 transition-shadow hover:shadow-lg dark:hover:border-yellow-500">
       <div>
-        <h3 className="text-xl font-bold">{title}</h3>
-        <p className="text-sm text-gray-500">{period}</p>
+        <h2 className="pb-1 text-xl font-bold">{title}</h2>
+        <time className="text-sm text-gray-500">{period}</time>
         <p className="mt-2">{summary}</p>
       </div>
-      <div className="mt-4 flex flex-wrap gap-2">
+      <ul className="flex flex-wrap gap-2">
         {skill.map((s) => (
-          <span
+          <li
             key={s}
             className="rounded-md bg-gray-200 px-2 py-1 text-sm dark:bg-gray-700"
           >
             {s}
-          </span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

@@ -11,7 +11,6 @@ export default function ModalTrigger({
 }: ModalTriggerProps) {
   return (
     <div
-      className="cursor-pointer rounded-md border p-4 transition-shadow hover:shadow-lg"
       onClick={onModalTriggerClick}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
