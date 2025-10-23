@@ -112,7 +112,7 @@ export default function ProjectDetailModal({
         <h2 className="pb-3 text-xl font-bold">주요 기능</h2>
         <div>
           {project.projectFunctions && project.projectFunctions.length > 0 && (
-            <ul className="list-disc pl-5">
+            <ul className="list-disc pl-7">
               {project.projectFunctions.map((func) => (
                 <li key={func}>{func}</li>
               ))}
@@ -126,7 +126,7 @@ export default function ProjectDetailModal({
         <h2 className="pb-3 text-xl font-bold">작업 내역</h2>
         <div>
           {project.implements && project.implements.length > 0 && (
-            <ul className="list-disc pl-5">
+            <ul className="list-disc pl-7">
               {project.implements.map((implement) => (
                 <li key={implement}>{implement}</li>
               ))}
