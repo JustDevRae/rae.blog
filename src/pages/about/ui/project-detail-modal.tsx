@@ -110,13 +110,29 @@ export default function ProjectDetailModal({
       {/* project-functions */}
       <section className="rounded-md border p-4">
         <h2 className="pb-3 text-xl font-bold">주요 기능</h2>
-        {project.projectFunctions && project.projectFunctions.length > 0 && (
-          <ul className="list-disc pl-5">
-            {project.projectFunctions.map((func) => (
-              <li key={func}>{func}</li>
-            ))}
-          </ul>
-        )}
+        <div>
+          {project.projectFunctions && project.projectFunctions.length > 0 && (
+            <ul className="list-disc pl-5">
+              {project.projectFunctions.map((func) => (
+                <li key={func}>{func}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </section>
+
+      {/* implement */}
+      <section className="rounded-md border p-4">
+        <h2 className="pb-3 text-xl font-bold">작업 내역</h2>
+        <div>
+          {project.implements && project.implements.length > 0 && (
+            <ul className="list-disc pl-5">
+              {project.implements.map((implement) => (
+                <li key={implement}>{implement}</li>
+              ))}
+            </ul>
+          )}
+        </div>
       </section>
 
       {/* skill */}
@@ -134,64 +150,64 @@ export default function ProjectDetailModal({
         </div>
       </section>
 
-      {/* implement */}
-      <section className="rounded-md border p-4">
-        <h2 className="pb-3 text-xl font-bold">작업 내역</h2>
-        {project.implements && project.implements.length > 0 && (
-          <ul className="list-disc pl-5">
-            {project.implements.map((implement) => (
-              <li key={implement}>{implement}</li>
-            ))}
-          </ul>
-        )}
-      </section>
-
       {/* trouble-shooting */}
       <section className="rounded-md border p-4">
         <h2 className="pb-3 text-xl font-bold">트러블 슈팅</h2>
-        {project.troubleShootings && project.troubleShootings.length > 0 && (
-          <div className="flex flex-col gap-4">
-            {project.troubleShootings.map((item) => (
-              <div key={item.title} className="">
-                <h3 className="font-bold">{item.title}</h3>
-                <h4 className="font-semibold">문제</h4>
-                <p>{item.trouble}</p>
-                <h4 className="font-semibold">원인</h4>
-                <p>{item.cause}</p>
-                <h4 className="font-semibold">해결</h4>
-                <p>{item.solution}</p>
-              </div>
-            ))}
-          </div>
-        )}
+        <div>
+          {project.troubleShootings && project.troubleShootings.length > 0 && (
+            <ul>
+              {project.troubleShootings.map((item) => (
+                <li key={item.title} className="mb-2 rounded-md border p-4">
+                  <h3 className="mb-3 text-lg font-bold">{item.title}</h3>
+                  <ul className="flex flex-col gap-5">
+                    <li>
+                      <h4 className="font-bold text-red-500">문제</h4>
+                      <p>{item.trouble}</p>
+                    </li>
+                    <li>
+                      <h3 className="font-bold text-yellow-500">원인</h3>
+                      <p>{item.cause}</p>
+                    </li>
+                    <li>
+                      <h3 className="font-bold text-green-500">해결</h3>
+                      <p>{item.solution}</p>
+                    </li>
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </section>
 
       {/* project-images */}
       <section className="rounded-md border p-4">
         <h2 className="pb-3 text-xl font-bold">Images</h2>
-        {project.images && project.images.length > 0 ? (
-          <div className="grid grid-cols-1 gap-4 tablet:grid-cols-2 desktop:grid-cols-4">
-            {project.images.map((image) => (
-              <figure
-                key={image.alt}
-                className="cursor-pointer rounded-md border hover:border-yellow-500"
-                onClick={() => handleOpenImageModal(image.alt)}
-                role="presentation"
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={150}
-                  height={100}
-                  objectFit="cover"
-                  className="h-auto w-full"
-                />
-              </figure>
-            ))}
-          </div>
-        ) : (
-          <div className="rounded-md border">Not Ready Images</div>
-        )}
+        <div>
+          {project.images && project.images.length > 0 ? (
+            <div className="grid grid-cols-1 gap-4 tablet:grid-cols-2 desktop:grid-cols-4">
+              {project.images.map((image) => (
+                <figure
+                  key={image.alt}
+                  className="cursor-pointer rounded-md border hover:border-yellow-500"
+                  onClick={() => handleOpenImageModal(image.alt)}
+                  role="presentation"
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={150}
+                    height={100}
+                    objectFit="cover"
+                    className="h-auto w-full"
+                  />
+                </figure>
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-md border">Not Ready Images</div>
+          )}
+        </div>
       </section>
     </article>
   );
