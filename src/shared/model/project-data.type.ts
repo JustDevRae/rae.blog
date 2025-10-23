@@ -3,6 +3,11 @@ export interface ProjectImage {
   alt: string;
 }
 
+export interface ImplementItem {
+  title: string;
+  detail: string;
+}
+
 export interface TroubleShooting {
   title: string;
   trouble: string;
@@ -17,8 +22,9 @@ export interface Project {
   skill: string[];
   githubUrl: string;
   deployUrl: string;
-  description: string;
-  implements: string[];
-  troubleShooting: TroubleShooting;
+  description: string[];
+  implements: ImplementItem[];
+  projectFunctions: string[];
+  troubleShooting: TroubleShooting[];
   images: ProjectImage[];
 }

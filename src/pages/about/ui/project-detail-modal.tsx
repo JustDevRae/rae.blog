@@ -96,7 +96,27 @@ export default function ProjectDetailModal({
         </div>
 
         {/* project-description */}
-        <p>{project.description}</p>
+        {project.description && project.description.length > 0 && (
+          <ul>
+            {project.description.map((desc) => (
+              <li key={desc} className="mb-3">
+                {desc}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      {/* project-functions */}
+      <section className="rounded-md border p-4">
+        <h2 className="pb-3 text-xl font-bold">주요 기능</h2>
+        {project.projectFunctions && project.projectFunctions.length > 0 && (
+          <ul className="list-disc pl-5">
+            {project.projectFunctions.map((func) => (
+              <li key={func}>{func}</li>
+            ))}
+          </ul>
+        )}
       </section>
 
       {/* skill */}
@@ -116,11 +136,14 @@ export default function ProjectDetailModal({
 
       {/* implement */}
       <section className="rounded-md border p-4">
-        <h2 className="pb-3 text-xl font-bold">구현 내용</h2>
+        <h2 className="pb-3 text-xl font-bold">작업 내역</h2>
         {project.implements && project.implements.length > 0 && (
-          <ul className="list-disc pl-5">
-            {project.implements.map((item) => (
-              <li key={item}>{item}</li>
+          <ul>
+            {project.implements.map((implement) => (
+              <li key={implement.title}>
+                <h3 className="font-semibold">{implement.title}</h3>
+                <p>{implement.detail}</p>
+              </li>
             ))}
           </ul>
         )}
@@ -129,16 +152,20 @@ export default function ProjectDetailModal({
       {/* trouble-shooting */}
       <section className="rounded-md border p-4">
         <h2 className="pb-3 text-xl font-bold">Troubleshooting</h2>
-        {project.troubleShooting && (
-          <>
-            <h3 className="font-semibold">{project.troubleShooting.title}</h3>
-            <h4 className="font-semibold">Trouble</h4>
-            <p>{project.troubleShooting.trouble}</p>
-            <h4 className="font-semibold">Cause</h4>
-            <p>{project.troubleShooting.cause}</p>
-            <h4 className="font-semibold">Solution</h4>
-            <p>{project.troubleShooting.solution}</p>
-          </>
+        {project.troubleShooting && project.troubleShooting.length > 0 && (
+          <div className="flex flex-col gap-4">
+            {project.troubleShooting.map((item) => (
+              <div key={item.title} className="">
+                <h3 className="font-bold">{item.title}</h3>
+                <h4 className="font-semibold">Trouble</h4>
+                <p>{item.trouble}</p>
+                <h4 className="font-semibold">Cause</h4>
+                <p>{item.cause}</p>
+                <h4 className="font-semibold">Solution</h4>
+                <p>{item.solution}</p>
+              </div>
+            ))}
+          </div>
         )}
       </section>
 
