@@ -25,6 +25,6 @@ export interface Project {
   description: string[];
   implements: ImplementItem[];
   projectFunctions: string[];
-  troubleShooting: TroubleShooting[];
+  troubleShootings: TroubleShooting[];
   images: ProjectImage[];
 }

@@ -151,17 +151,17 @@ export default function ProjectDetailModal({
 
       {/* trouble-shooting */}
       <section className="rounded-md border p-4">
-        <h2 className="pb-3 text-xl font-bold">Troubleshooting</h2>
-        {project.troubleShooting && project.troubleShooting.length > 0 && (
+        <h2 className="pb-3 text-xl font-bold">트러블 슈팅</h2>
+        {project.troubleShootings && project.troubleShootings.length > 0 && (
           <div className="flex flex-col gap-4">
-            {project.troubleShooting.map((item) => (
+            {project.troubleShootings.map((item) => (
               <div key={item.title} className="">
                 <h3 className="font-bold">{item.title}</h3>
-                <h4 className="font-semibold">Trouble</h4>
+                <h4 className="font-semibold">문제</h4>
                 <p>{item.trouble}</p>
-                <h4 className="font-semibold">Cause</h4>
+                <h4 className="font-semibold">원인</h4>
                 <p>{item.cause}</p>
-                <h4 className="font-semibold">Solution</h4>
+                <h4 className="font-semibold">해결</h4>
                 <p>{item.solution}</p>
               </div>
             ))}
