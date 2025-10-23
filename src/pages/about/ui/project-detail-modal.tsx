@@ -182,7 +182,7 @@ export default function ProjectDetailModal({
 
       {/* project-images */}
       <section className="rounded-md border p-4">
-        <h2 className="pb-3 text-xl font-bold">Images</h2>
+        <h2 className="pb-3 text-xl font-bold">스크린샷</h2>
         <div>
           {project.images && project.images.length > 0 ? (
             <div className="grid grid-cols-1 gap-4 tablet:grid-cols-2 desktop:grid-cols-4">
