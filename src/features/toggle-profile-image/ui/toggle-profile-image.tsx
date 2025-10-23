@@ -20,8 +20,9 @@ export default function ToggleProfileImage() {
       <Image
         src="/profile2.jpg"
         alt="second profile"
-        fill
-        className="rounded-full object-fill"
+        height={290}
+        width={290}
+        className="mx-auto rounded-full"
         priority
       />
       <div
