@@ -22,10 +22,9 @@ export const PROJECT_DATA: Project[] = [
     ],
 
     implements: [
-      {
-        title: "스터디 및 투두리스트 관리 기능 구현",
-        detail: "스터디 생성, 초대 및 참여 기능 구현",
-      },
+      "노트 목록 및 노트 작성 페이지 반응형 구현",
+      "Tiptap을 통한 리치 텍스트 에디터 구현",
+      "Zustand을 이용한 전역 로딩 상태 구현",
     ],
 
     projectFunctions: [
@@ -116,20 +115,7 @@ export const PROJECT_DATA: Project[] = [
     description: [
       "이 프로젝트는 Vue.js와 JavaScript를 사용하여 개발되었습니다.",
     ], // 프로젝트 상세 설명
-    implements: [
-      {
-        title: "구현 내용 1",
-        detail: "반응형 UI 구현",
-      },
-      {
-        title: "구현 내용 2",
-        detail: "API 연동",
-      },
-      {
-        title: "구현 내용 3",
-        detail: "상태 관리 도입",
-      },
-    ], // 구현 내용 목록
+    implements: ["반응형 UI 구현", "API 연동", "상태 관리 도입"], // 구현 내용 목록
     projectFunctions: [],
     troubleShootings: [
       {

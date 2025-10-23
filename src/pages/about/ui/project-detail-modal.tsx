@@ -138,12 +138,9 @@ export default function ProjectDetailModal({
       <section className="rounded-md border p-4">
         <h2 className="pb-3 text-xl font-bold">작업 내역</h2>
         {project.implements && project.implements.length > 0 && (
-          <ul>
+          <ul className="list-disc pl-5">
             {project.implements.map((implement) => (
-              <li key={implement.title}>
-                <h3 className="font-semibold">{implement.title}</h3>
-                <p>{implement.detail}</p>
-              </li>
+              <li key={implement}>{implement}</li>
             ))}
           </ul>
         )}
