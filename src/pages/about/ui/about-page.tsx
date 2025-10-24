@@ -14,8 +14,8 @@ export default function AboutPage() {
             <div className="flex h-full flex-col justify-between gap-5">
               <div className="flex flex-col items-center gap-1 tablet:items-start">
                 <h2 className="text-2xl font-bold">김승래</h2>
-                <h3 className="font-bold">FrontEnd Developer</h3>
-                <p>let me introduce</p>
+                <h3 className="text-lg font-bold">FrontEnd Developer</h3>
+                <p>정답이 아닌 해답을 찾는 개발자</p>
               </div>
 
               <ul className="flex gap-4 self-center tablet:self-start">
@@ -37,7 +37,22 @@ export default function AboutPage() {
         {/* about me */}
         <section className="flex flex-col gap-5 rounded-md border p-4">
           <h2 className="text-2xl font-bold">About</h2>
-          <div>about me</div>
+          <div>
+            정답이 아닌, 현재 상황에서 가장 적합한 해답을 찾는 것을 지향합니다.
+            트렌드나 대중적인 선택보다는 프로젝트의 요구사항, 팀의 역량,
+            유지보수성을 종합적으로 고려하여 기술적 의사결정을 내립니다.
+          </div>
+          <div>
+            복잡한 기술 개념도 누구나 이해할 수 있도록 풀어서 설명하며, 학습
+            과정에서 겪은 시행착오와 해결 방법을 구조화하여 기록합니다. 현재
+            기술 블로그를 운영하며 프론트엔드 개발 경험과 인사이트를 꾸준히
+            공유하고 있습니다.
+          </div>
+          <div>
+            팀의 문제를 내 일처럼 받아들이고, 적극적인 소통과 피드백을 통해
+            해결책을 제안하는 것은 팀의 성장을 야기하고 이는 낙수효과처럼
+            개인에게도 성장이 흘러들어온다고 생각합니다.
+          </div>
         </section>
 
         {/* skill */}
