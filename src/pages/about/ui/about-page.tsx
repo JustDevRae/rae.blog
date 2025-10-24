@@ -89,7 +89,20 @@ export default function AboutPage() {
         {/* education */}
         <section className="flex flex-col gap-5 rounded-md border p-4">
           <h2 className="text-2xl font-bold">Education</h2>
-          <div>Education</div>
+          <ul className="list-disc space-y-5 pl-7">
+            <li>
+              <p className="font-semibold">코드잇 프론트엔드 단기심화 10기</p>
+              <span className="text-sm dark:text-gray-300">
+                2025.06 ~ 2025.08
+              </span>
+            </li>
+            <li>
+              <p>코드잇 프론트엔드 6기</p>
+              <span className="text-sm dark:text-gray-300">
+                2024.03 ~ 2024.09
+              </span>
+            </li>
+          </ul>
         </section>
       </main>
     </ModalProvider>
