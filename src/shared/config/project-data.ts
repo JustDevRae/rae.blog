@@ -102,33 +102,72 @@ export const PROJECT_DATA: Project[] = [
       },
     ],
   },
-  // other project
+  // TravelMaker
   {
-    title: "두 번째 프로젝트", // 프로젝트 제목
-    period: "2024.05 - Aug 2024.08", // 프로젝트 기간
-    summary: "두 번째 프로젝트의 간략한 설명입니다.", // 간단한 요약
-    skill: ["Vue", "JavaScript", "SCSS"], // 사용된 기술 스택
-
-    githubUrl: "https://github.com/second-project", // 깃허브 URL
-    deployUrl: "https://second-project.vercel.app", // 배포 URL
-
-    description: [
-      "이 프로젝트는 Vue.js와 JavaScript를 사용하여 개발되었습니다.",
-    ], // 프로젝트 상세 설명
-    implements: ["반응형 UI 구현", "API 연동", "상태 관리 도입"], // 구현 내용 목록
+    title: "TravelMaker",
+    period: "2024.07 - 2024.09",
+    summary: "여행 체험 상품 등록 및 예약 서비스를 제공하는 플랫폼",
+    skill: [
+      "Typescript",
+      "Next.js",
+      "TailwindCSS",
+      "Axios",
+      "React-Hook-Form",
+      "Zod",
+      "Zustand",
+      "React-Query",
+    ],
+    githubUrl: "https://github.com/kidnapping-group/TravelMaker",
+    deployUrl: "https://travel-maker.netlify.app/",
+    description: ["코드잇 FE스프린트에서 5명이 진행한 팀 프로젝트"],
+    implements: [
+      "공용 Input 컴포넌트 구현",
+      "SideBar 구현",
+      "내 정보 페이지 구현",
+    ],
     projectFunctions: [],
     troubleShootings: [
       {
-        title: "Project 2 Challenge", // 문제 해결 제목
-        trouble: "데이터 동기화 문제 발생.", // 문제 상황
-        cause: "여러 컴포넌트에서 동일한 데이터를 독립적으로 수정하여 발생.", // 원인 분석
-        solution: "Vuex를 도입하여 중앙 집중식 상태 관리를 통해 해결.", // 해결 방법
+        title: "반응형 사이드바 렌더링 성능 저하 문제",
+        trouble:
+          "브라우저 창 크기 조절 시 resize 이벤트의 과도한 호출로 불필요한 렌더링 발생 및 문자열 비교로 인한 가독성 저하.",
+        cause: "resize 이벤트를 사용하고, 뷰포트 상태를 문자열로 관리.",
+        solution:
+          "matchMedia의 'change' 이벤트를 사용하여 불필요한 렌더링을 방지하고, 뷰포트 상태를 boolean 값으로 관리하여 코드 가독성 및 성능 개선.",
       },
     ],
-    images: [
-      { src: "/public/profile.png", alt: "Project 2 Image 1" },
-      { src: "/public/profile.png", alt: "Project 2 Image 2" },
-      { src: "/public/profile.png", alt: "Project 2 Image 3" },
+    images: [],
+  },
+  // Wikid
+  {
+    title: "Wikid",
+    period: "2024.06 - 2024.07",
+    summary: "자신과 지인들의 위키를 작성하고 공유하는 서비스 플랫폼",
+    skill: [
+      "Typescript",
+      "Next.js",
+      "TailwindCSS",
+      "Axios",
+      "React-Query",
+      "React-Hook-Form",
+      "Zod",
+      "MantineUI",
     ],
+    githubUrl: "https://github.com/JustDevRae/Wikid",
+    deployUrl: "https://7team-next-project.vercel.app/",
+    description: ["코드잇 FE스프린트에서 5명이 진행한 팀 프로젝트"],
+    implements: ["Header 제작", "로그인&회원가입&계정설정페이지 구현"],
+    projectFunctions: [],
+    troubleShootings: [
+      {
+        title: "MantineUI Button 스타일 충돌 문제",
+        trouble: "MantineUI의 Button 컴포넌트가 hover 시에만 보이는 문제 발생.",
+        cause:
+          "TailwindCSS의 Preflight 스타일이 Mantine의 variant='filled' 스타일을 덮어쓰는 충돌.",
+        solution:
+          "tailwind.config.ts에서 Preflight를 비활성화하고, 필요한 Preflight 스타일만 별도 CSS 파일로 적용하여 해결.",
+      },
+    ],
+    images: [],
   },
 ];
