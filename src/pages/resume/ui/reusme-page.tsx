@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { downloadPdf } from "@/shared/lib/utils/downloadPdf";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
@@ -60,14 +59,12 @@ export default function ResumePage() {
             </li>
           </ul>
         </div>
-
         {/* ID photo */}
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src="/resume.png"
           alt="이력서 사진"
-          height={176}
-          width={137}
-          priority
+          className="h-[176px] w-[137px]"
         />
       </section>
 
