@@ -2,22 +2,14 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 interface DownloadPdfProps {
-  /**
-   * PDF로 변환할 HTML 요소
-   */
   element: HTMLElement;
-  /**
-   * 다운로드될 PDF 파일 이름
-   */
   fileName: string;
 }
 
-/**
- * 특정 HTML 요소를 PDF 파일로 변환하여 다운로드하는 함수
- * @param {DownloadPdfProps} props - element: PDF로 변환할 HTML 요소, fileName: 다운로드될 PDF 파일 이름
- */
 export const downloadPdf = async ({ element, fileName }: DownloadPdfProps) => {
   if (!element) {
+    // TODO: 에러 핸들링 추가 예정
+    // eslint-disable-next-line no-console
     console.error("PDF를 생성할 요소를 찾을 수 없습니다.");
     return;
   }
@@ -30,6 +22,8 @@ export const downloadPdf = async ({ element, fileName }: DownloadPdfProps) => {
 
     const imageData = canvas.toDataURL("image/png");
 
+    // NOTE: 생성자 이름은 대문자로 시작해야 하지만, jsPDF 라이브러리는 아래와 같이 소문자로 시작하기 때문에 해당 라인에 대해서는 lint를 비활성화한다
+    // eslint-disable-next-line new-cap
     const pdf = new jsPDF("p", "mm", "a4");
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
@@ -47,7 +41,7 @@ export const downloadPdf = async ({ element, fileName }: DownloadPdfProps) => {
     pdf.addImage(imageData, "PNG", 0, position, pdfImageWidth, pdfImageHeight);
     heightLeft -= pageHeight;
 
-    // 내용이 한 페이지를 넘어갈 경우, 새 페이지를 추가하고 이미지를 잘라 넣습니다.
+    // NOTE: 내용이 한 페이지를 넘어갈 경우, 새 페이지를 추가하고 이미지를 잘라 넣는다
     while (heightLeft > 0) {
       position = heightLeft - pdfImageHeight;
       pdf.addPage();
@@ -64,6 +58,8 @@ export const downloadPdf = async ({ element, fileName }: DownloadPdfProps) => {
 
     pdf.save(`${fileName}.pdf`);
   } catch (error) {
+    // TODO: 에러 핸들링 추가 예정
+    // eslint-disable-next-line no-console
     console.error("PDF 생성 중 오류가 발생했습니다:", error);
   }
 };
