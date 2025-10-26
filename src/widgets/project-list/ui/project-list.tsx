@@ -1,11 +1,11 @@
 "use client";
 
+import { PROJECT_DATA } from "@/shared/config/project-data";
 import { Project } from "@/shared/model/project-data.type";
 import { useModal } from "@/shared/lib/context/modal-context";
-import { PROJECT_DATA } from "@/shared/config/project-data";
-import ProjectCard from "./project-card";
-import ProjectDetailModal from "./project-detail-modal";
-import ModalTrigger from "./modal-trigger";
+import ModalTrigger from "@/shared/ui/modal-trigger";
+import ProjectCard from "@/entities/project/ui/project-card";
+import ProjectDetailModal from "@/features/view-project-detail/ui/project-detail-modal";
 
 export default function ProjectList() {
   const { openModal } = useModal();

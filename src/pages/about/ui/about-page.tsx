@@ -1,10 +1,10 @@
 import GithubIcon from "@/shared/ui/icons/github-icon";
 import GmailIcon from "@/shared/ui/icons/gmail-icon";
 import LinkedinIcon from "@/shared/ui/icons/linkedin-icon";
-import ToggleProfileImage from "@/features/toggle-profile-image/ui/toggle-profile-image";
-import ModalProvider from "@/app/modal-provider";
 import ResumeIcon from "@/shared/ui/icons/resume-icon";
-import ProjectList from "./project-list";
+import ModalProvider from "@/app/modal-provider";
+import ToggleProfileImage from "@/features/toggle-profile-image/ui/toggle-profile-image";
+import ProjectList from "@/widgets/project-list/ui/project-list";
 
 export default function AboutPage() {
   return (

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Project } from "@/shared/model/project-data.type";
 import { useModal } from "@/shared/lib/context/modal-context";
-import ProjectImageCarousel from "./project-image-carousel";
+import ProjectImageCarousel from "@/entities/project/ui/project-image-carousel";
 
 interface ProjectDetailModalProps {
   project: Project;

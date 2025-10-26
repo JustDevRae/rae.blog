@@ -1,10 +1,10 @@
 "use client";
 
-import { X } from "lucide-react";
 import { ReactNode, useCallback, useState, useEffect, useMemo } from "react";
-import { ModalContext } from "../shared/lib/context/modal-context";
-import Portal from "../shared/ui/portal";
-import { ModalProps } from "../shared/model/type";
+import Portal from "@/shared/ui/portal";
+import { ModalProps } from "@/shared/model/type";
+import { ModalContext } from "@/shared/lib/context/modal-context";
+import { X } from "lucide-react";
 
 interface ModalProviderProps {
   children: ReactNode;
