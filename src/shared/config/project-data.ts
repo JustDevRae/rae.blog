@@ -168,6 +168,39 @@ export const PROJECT_DATA: Project[] = [
           "tailwind.config.ts에서 Preflight를 비활성화하고, 필요한 Preflight 스타일만 별도 CSS 파일로 적용하여 해결.",
       },
     ],
-    images: [],
+    images: [
+      {
+        src: "/images/project/wikid/m/m_wikid-start.png",
+        alt: "m_wikid-start",
+      },
+      {
+        src: "/images/project/wikid/m/m_wikid-login.png",
+        alt: "m_wikid-login",
+      },
+      {
+        src: "/images/project/wikid/m/m_wikid-wiki-list.png",
+        alt: "m_wikid-wiki-list",
+      },
+      {
+        src: "/images/project/wikid/m/m_wikid-post-list.png",
+        alt: "m_wikid-post-list",
+      },
+      {
+        src: "/images/project/wikid/m/m_wikid-setting.png",
+        alt: "m_wikid-setting",
+      },
+      {
+        src: "/images/project/wikid/m/m_wikid-addborad.png",
+        alt: "m_wikid-addborad",
+      },
+      {
+        src: "/images/project/wikid/m/m_wikid-board-detail.png",
+        alt: "m_wikid-board-detail",
+      },
+      {
+        src: "/images/project/wikid/m/m_wikid-wiki-detail.png",
+        alt: "m_wikid-wiki-detail",
+      },
+    ],
   },
 ];
