@@ -1,11 +1,21 @@
 "use client";
 
 export default function ResumeDownloadIcon() {
+  const handleDownloadClick = () => {
+    const newTab = window.open("/resume?download=true", "_blank");
+
+    setTimeout(() => {
+      if (newTab) {
+        newTab.close();
+      }
+    }, 1500);
+  };
+
   return (
     <button
       type="button"
       aria-label="Download Resume"
-      onClick={() => window.open("/resume?download=true", "_blank")}
+      onClick={handleDownloadClick}
     >
       <svg
         role="img"
