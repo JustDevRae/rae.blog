@@ -136,7 +136,48 @@ export const PROJECT_DATA: Project[] = [
           "matchMedia의 'change' 이벤트를 사용하여 불필요한 렌더링을 방지하고, 뷰포트 상태를 boolean 값으로 관리하여 코드 가독성 및 성능 개선.",
       },
     ],
-    images: [],
+    images: [
+      {
+        src: "/images/project/travel-maker/m/m_travel-maker-home.png",
+        alt: "m_travel-maker-home",
+      },
+      {
+        src: "/images/project/travel-maker/m/m_travel-maker-login.png",
+        alt: "m_travel-maker-login",
+      },
+      {
+        src: "/images/project/travel-maker/m/m_travel-maker-setting.png",
+        alt: "m_travel-maker-setting",
+      },
+      {
+        src: "/images/project/travel-maker/m/m_travel-maker-reservations.png",
+        alt: "m_travel-maker-reservations",
+      },
+      {
+        src: "/images/project/travel-maker/m/m_travel-maker-add-activity1.png",
+        alt: "m_travel-maker-add-activity1",
+      },
+      {
+        src: "/images/project/travel-maker/m/m_travel-maker-add-activity2.png",
+        alt: "m_travel-maker-add-activity2",
+      },
+      {
+        src: "/images/project/travel-maker/m/m_travel-maker-myactivity.png",
+        alt: "m_travel-maker-myactivity",
+      },
+      {
+        src: "/images/project/travel-maker/m/m_travel-maker-reservation_status.png",
+        alt: "m_travel-maker-reservation_status",
+      },
+      {
+        src: "/images/project/travel-maker/m/m_travel-maker-activity-detail.png",
+        alt: "m_travel-maker-activity-detail",
+      },
+      {
+        src: "/images/project/travel-maker/m/m_travel-maker-activity-list.png",
+        alt: "m_travel-maker-activity-list",
+      },
+    ],
   },
   // Wikid
   {
