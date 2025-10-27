@@ -1,5 +1,3 @@
-"use client";
-
 import ResumePage from "@/pages/resume/ui/reusme-page";
 import { Suspense } from "react";
 
