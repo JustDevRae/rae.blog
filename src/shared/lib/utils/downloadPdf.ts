@@ -57,6 +57,7 @@ export const downloadPdf = async ({ element, fileName }: DownloadPdfProps) => {
     }
 
     pdf.save(`${fileName}.pdf`);
+    window.location.replace("/about");
   } catch (error) {
     // TODO: 에러 핸들링 추가 예정
     // eslint-disable-next-line no-console

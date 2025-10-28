@@ -2,13 +2,7 @@
 
 export default function ResumeDownloadIcon() {
   const handleDownloadClick = () => {
-    const newTab = window.open("/resume?download=true", "_blank");
-
-    setTimeout(() => {
-      if (newTab) {
-        newTab.close();
-      }
-    }, 1500);
+    window.open("/resume?download=true", "_self");
   };
 
   return (
