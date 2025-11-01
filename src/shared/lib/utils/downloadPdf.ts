@@ -1,5 +1,3 @@
-import html2pdf from "html2pdf.js";
-
 interface DownloadPdfProps {
   element: HTMLElement;
   fileName: string;
@@ -14,6 +12,8 @@ export const downloadPdf = async ({ element, fileName }: DownloadPdfProps) => {
   }
 
   try {
+    const html2pdf = (await import("html2pdf.js")).default;
+
     await html2pdf()
       .set({
         margin: 10,
