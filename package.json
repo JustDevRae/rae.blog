@@ -23,6 +23,7 @@
     "es-toolkit": "^1.31.0",
     "gray-matter": "^4.0.3",
     "html2canvas": "^1.4.1",
+    "html2pdf.js": "^0.12.1",
     "jspdf": "^3.0.3",
     "lucide-react": "^0.471.0",
     "next": "15.1.3",
