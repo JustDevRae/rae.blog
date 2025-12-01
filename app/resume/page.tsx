@@ -1,4 +1,4 @@
-import ResumePage from "@/pages/resume/ui/resume-page";
+import ResumePage from "@/pages/resume/ui/reusme-page";
 import { Suspense } from "react";
 
 export default function Page() {

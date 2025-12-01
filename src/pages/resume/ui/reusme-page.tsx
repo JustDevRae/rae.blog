@@ -12,70 +12,78 @@ export default function ResumePage() {
     const isDownload = searchParams?.get("download") === "true";
 
     if (isDownload && resumeRef.current) {
-      downloadPdf({ element: resumeRef.current, fileName: "이력서" });
+      downloadPdf({ element: resumeRef.current, fileName: "김승래_이력서" });
     }
   }, [searchParams]);
 
   return (
     <div ref={resumeRef} className="my-12 bg-white p-12 text-black">
       <div className="mb-12">
-        {/* name */}
-        <div className="mb-6 flex items-end">
-          <h2 className="text-4xl font-bold">
-            김승래&nbsp;
-            <span className="text-xl font-semibold">
-              최소의 동작으로 최대의 만족을 제공하는 개발자
-            </span>
-          </h2>
+        <div className="mb-8 flex items-center gap-10">
+          <div>
+            {/* name */}
+            <h2 className="mb-6 text-4xl font-bold">김승래</h2>
+            <h3 className="mb-6 text-xl font-semibold">
+              최소 동작으로 최대 가치를 제공하는 개발자
+            </h3>
+            {/* contact */}
+            <ul className="mb-6 space-y-2">
+              <li>
+                <span className="font-semibold">Email. </span>ksrae165@gmail.com
+              </li>
+              <li>
+                <span className="font-semibold">Phone. </span>010-2506-9397
+              </li>
+              <li>
+                <span className="font-semibold">GitHub. </span>
+                <a
+                  href="https://github.com/JustDevRae"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-current"
+                >
+                  https://github.com/JustDevRae
+                </a>
+              </li>
+              <li>
+                <span className="font-semibold">Blog. </span>
+                <a
+                  href="https://dev-rae.blog/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-current"
+                >
+                  https://dev-rae.blog/
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/resume_photo.jpg"
+            alt="이력서 사진"
+            className="w-[200px]"
+          />
         </div>
 
-        {/* contact */}
-        <ul className="mb-6 space-y-2">
-          <li>
-            <span className="font-semibold">Email. </span>ksrae165@gmail.com
-          </li>
-          <li>
-            <span className="font-semibold">Phone. </span>010-2506-9397
-          </li>
-          <li>
-            <span className="font-semibold">GitHub. </span>
-            <a
-              href="https://github.com/JustDevRae"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-current"
-            >
-              https://github.com/JustDevRae
-            </a>
-          </li>
-          <li>
-            <span className="font-semibold">Blog. </span>
-            <a
-              href="https://dev-rae.blog/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-current"
-            >
-              https://dev-rae.blog/
-            </a>
-          </li>
-        </ul>
         <div className="space-y-4">
           <p>
-            정답이 아닌, 현재 상황에서 가장 적합한 해답을 찾는 것을 지향합니다.
-            트렌드나 대중적인 선택보다는 프로젝트의 요구사항, 팀의 역량,
-            유지보수성을 종합적으로 고려하여 기술적 의사결정을 내립니다.
+            프로덕트를 이용하는 고객이 &quot;최소한의 동작으로 최대한의
+            가치&quot;를 경험할 수 있도록 합니다. 이를 위해 스크롤 한 번, 클릭
+            한 번에도 의미가 있도록 설계하며, 단순한 사용 편의성을 넘어
+            직관적이고 몰입감 있는 경험을 제공하는 것을 지향합니다.
           </p>
           <p>
-            복잡한 기술 개념도 누구나 이해할 수 있도록 풀어서 설명하며, 학습
-            과정에서 겪은 시행착오와 해결 방법을 구조화하여 기록합니다. 현재
-            기술 블로그를 운영하며 프론트엔드 개발 경험과 인사이트를 꾸준히
-            공유하고 있습니다.
+            이 철학은 단지 사용자 경험에만 국한되지 않습니다. 함께 일하는 동료
+            개발자들에게도 같은 원칙을 적용하여 불필요한 복잡함을 줄이고, 누구나
+            쉽게 이해하고 유지보수할 수 있는 코드를 작성합니다.
           </p>
           <p>
-            팀의 문제를 내 일처럼 받아들이고, 적극적인 소통과 피드백을 통해
-            해결책을 제안하는 것은 팀의 성장을 야기하고 이는 낙수효과처럼
-            개인에게도 성장이 흘러들어온다고 생각합니다.
+            더 나은 사용자 경험과 효율적인 협업을 위한 &apos;더 나은
+            방법&apos;을 찾기 위해 꾸준히 학습합니다. 단순히 지식을 습득하는 데
+            그치지 않고, 직접 구축해 운영 중인 기술 블로그에 배운 내용을
+            정리하고 공유하고 있습니다.
           </p>
         </div>
       </div>
